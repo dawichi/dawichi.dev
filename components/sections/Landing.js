@@ -25,12 +25,12 @@ const Landing = () => {
 				</a>
 				<a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/dawichi/">
 					<span className="animate__animated animate__rollIn animate__delay-1s">
-						<i class="bi bi-linkedin"></i>
+						<i className="bi bi-linkedin"></i>
 					</span>
 				</a>
 				<a target="_blank" rel="noreferrer" href="https://twitter.com/dawichi_">
 					<span className="animate__animated animate__rollIn animate__delay-1s animate__slow">
-						<i class="bi bi-twitter"></i>
+						<i className="bi bi-twitter"></i>
 					</span>
 				</a>
 			</h1>

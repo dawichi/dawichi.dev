@@ -14,7 +14,7 @@ const Skills = () => {
 
 			<Container className={styles.whoiam} fluid>
 				<div>
-					<h3 id="skillset">Web development <br/> <i class="bi bi-code-slash"></i></h3> 
+					<h3 id="skillset">Web development <br/> <i className="bi bi-code-slash"></i></h3> 
 				</div>
 			</Container>
 			
@@ -25,7 +25,7 @@ const Skills = () => {
 			<Container className={styles.whaticando} fluid>
 				<Row>
 					<Col xs={12} lg={3} className={styles.label}>
-						<h4><i class="bi bi-kanban"></i> What I can do?</h4>
+						<h4><i className="bi bi-kanban"></i> What I can do?</h4>
 					</Col>
 
 					<Col xs={12} lg={4} className={styles.progressBars}>
