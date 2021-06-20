@@ -1,0 +1,44 @@
+.container {
+	padding-right: 0;
+	padding-left: 0;
+
+	> svg {
+		height: 12vh;
+		width: 100%;
+		
+		path {stroke: none;fill: #bb86fc27;}
+	}
+
+	.whoiam {
+		background-color: #bb86fc27;
+		color: var(--text);
+
+		h3 {
+			padding: 15px 0;
+			margin: 0;
+			text-align: center;
+		}
+	}
+
+	.invertedSvg {
+		background-color: #bb86fc27;
+		path {stroke: none;fill: white;}
+	}
+
+	.whaticando {
+		border-radius: 10px;
+		color: var(--color-text);
+		padding: 30px 10px;
+
+		.label {text-align: center;}
+
+		.progressBars > div { padding-bottom: 1rem;}
+		
+		h4 {margin: 30px 0 20px 0;}
+		button {
+			margin: 0 20px 35px 20px;
+			a {color: white; display: block; text-decoration: none;}
+		}
+		span {float: right;}
+	}
+}

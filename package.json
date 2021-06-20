@@ -10,7 +10,9 @@
   "dependencies": {
     "@types/react": "^17.0.11",
     "next": "10.x",
+    "next-images": "^1.8.1",
     "react": "17.x",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "17.x",
     "sass": "^1.34.1",
     "typescript": "^4.3.2"

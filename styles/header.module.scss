@@ -1,0 +1,31 @@
+/* NavBar Bootstrap */
+.nav {
+	padding: 20px;
+	background-color: var(--navbar);
+	backdrop-filter: blur(4px);
+	border-bottom: 1px solid #bbb;
+	transition: box-shadow 0.3s ease-in-out;
+
+	> div {
+		justify-content: space-around;
+	}
+
+	.link {
+		color: var(--text)!important;
+		&:hover {color: var(--secondary)!important;}
+	}
+	a {
+		color: var(--text);
+		padding: 8px 20px;
+		margin: 0 5px;
+		border-radius: 5px;
+		border: 1px solid rgba(0, 0, 0, 0);
+		
+		&:hover {
+			color: var(--secondary);
+			border: 1px solid #bbb;
+			text-decoration: none;
+			box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.15);
+		}
+	}
+}
