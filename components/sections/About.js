@@ -33,13 +33,13 @@ const About = () => {
 				<Col xs={12} lg={7}>
 					<div className={styles.text}>
 						<p className={setClassName()}>
-							I'm a <b>web developer</b>, mainly focused on <b>MERN stack</b> and <b>React Native</b>. I have studied systems administration while learning self-taught my real love: programming.
+							Hello! I'm a <b>software developer</b> who works with <b className="code js">JS</b> and <b className="code py">Python</b>. My favourite tools are <b className="code re">React</b> based technologies, as React Native and NEXT.js.
 						</p>
 						<p className={setClassName()}>
-							I invest my time in continuing to improve as a software developer and <b>never stop learning</b>. I'm currently studying <i>Microservices</i> and <i>Data Analysis</i> in freecodecamp, getting better in python.
+							I invest my free time in continuing to improve myself as a developer and <b>never stop learning</b>. I'm currently studying in <a href="https://www.freecodecamp.org/">freecodecamp</a>, getting better in python.
 						</p>
 						<p  className={setClassName()}>
-							I try to contribute and publish good <b>open source</b> code, always thinking on what could be useful or interesting fot others. I have <b>colaborated with remote developers</b> on small projects for fun, and I believe that being surrounded by a good team is the best asset to succeed. I am also fascinated by UI design, so I always try to make any project look it's best in terms of <b>aesthetics and usability</b>.
+							I try to contribute and publish good <b>open source</b> code, always thinking on what could be useful or interesting for others. I have <b>colaborated with remote developers</b> on small projects for fun, and I believe that being surrounded by a good team is the best asset to succeed. I'm also fascinated by UI design, so I always try to make any project look it's best in terms of <b>aesthetics and usability</b>.
 						</p>
 					</div>
 				</Col>

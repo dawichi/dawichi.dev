@@ -23,6 +23,7 @@ a {
 body[data-theme="light"] {
 	--navbar: #fafbfcdd;
 	--text: #121212;
+	--primary: #6200ee;
 	--secondary: #41c7c7;
 }
 body[data-theme="dark"] {
@@ -33,9 +34,13 @@ body[data-theme="dark"] {
 
 
 .code {
-	background: #fafafa;
+	background: #eee;
+	color: var(--primary);
 	border-radius: 5px;
-	padding: 0.75rem;
+	padding: .3rem;
 	font-size: 1.1rem;
 }
+.code.js { color: #e4c900;}
+.code.py { color: #3571a5;}
+.code.re { color: #5eccee;}
   
