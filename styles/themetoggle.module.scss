@@ -1,0 +1,14 @@
+.button {
+	background-color: var(--container);
+	border: none;
+	color: var(--text)!important;
+	transition: 0.2s;
+	
+	&:focus {
+		box-shadow: none;
+	}
+
+	&:hover {
+		background-color: var(--contenthover);
+	}
+}

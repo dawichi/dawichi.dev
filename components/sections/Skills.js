@@ -1,9 +1,22 @@
 import React from 'react'
-import { Col, Container, Row, ProgressBar } from 'react-bootstrap'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 import styles from '../../styles/skills.module.scss'
 
-const Skills = () => {
+const Skill = ({ color, percentage, label }) => (
+	<Col xs={12} lg={6} className={styles.progressBars}>
+		<div>
+			{ label } <span>{ percentage }%</span>
+			<ProgressBar variant={color} now={percentage} />
+		</div>
+	</Col>
+)
+
+
+export default function Skills() {
 
 	return (
 		<Container className={styles.container} fluid>
@@ -28,71 +41,22 @@ const Skills = () => {
 						<h4><i className="bi bi-kanban"></i> What I can do?</h4>
 					</Col>
 
-					<Col xs={12} lg={4} className={styles.progressBars}>
-						<div>
-							HTML / CSS / JavaScript / JQuery <span>95%</span>
-							<ProgressBar variant="danger" now={95} />
-						</div>
-						<div>
-							Node / Express <span>75%</span>
-							<ProgressBar variant="success" now={75} />
-						</div>
-						<div>
-							React / React Native <span>95%</span>
-							<ProgressBar variant="primary" now={95} />
-						</div>
-						<div>
-							NEXT.js / Gatsby / GraphQL <span>85%</span>
-							<ProgressBar variant="dark" now={85} />
-						</div>
-						<div>
-							TypeScript / Angular 9 <span>80%</span>
-							<ProgressBar variant="danger" now={80} />
-						</div>
-						<div>
-							MariaDB / MySQL <span>55%</span>
-							<ProgressBar variant="warning" now={55} />
-						</div>
-						<div>
-							MongoDB / Mongoose <span>70%</span>
-							<ProgressBar variant="success" now={70} />
-						</div>
-					</Col>
-
-					<Col xs={12} lg={4} className={styles.progressBars}>
-						<div>
-							PHP / Laravel / Symphony <span>15%</span>
-							<ProgressBar variant="warning" now={20} />
-						</div>
-						<div>
-							Python / Flask / Django <span>40%</span>
-							<ProgressBar variant="info" now={40} />
-						</div>
-						<div>
-							Wordpress / Prestashop / <span>70%</span>
-							<ProgressBar variant="danger" now={70}  />
-						</div>
-						<div>
-							Strapi <span>30%</span>
-							<ProgressBar variant="dark" now={30} />
-						</div>
-						<div>
-							Linux services <span>80%</span>
-							<ProgressBar variant="success" now={80} />
-						</div>
-						<div>
-							Docker <span>75%</span>
-							<ProgressBar variant="primary" now={75} />
-						</div>
-						<div>
-							Jira / Trello / Slack <span>95%</span>
-							<ProgressBar variant="dark" now={95} />
-						</div>
+					<Col xs={12} lg={8} className={styles.progressBars}>
+						<Row>
+							<Skill color="danger" 	percentage="95" label="HTML / CSS / JS / TS" />
+							<Skill color="primary" 	percentage="95" label="React / React Native" />
+							<Skill color="dark" 	percentage="85" label="NEXT.js / Gatsby / GraphQL" />
+							<Skill color="success" 	percentage="80" label="MongoDB / Mongoose" />
+							<Skill color="primary" 	percentage="75" label="Node / Express" />
+							<Skill color="danger" 	percentage="70" label="Jira / Trello / Slack" />
+							<Skill color="success" 	percentage="60" label="Wordpress / Prestashop / Strapi" />
+							<Skill color="warning" 	percentage="55" label="MariaDB / MySQL" />
+							<Skill color="warning" 	percentage="50" label="Python / Flask / Django" />
+							<Skill color="dark" 	percentage="40" label="Linux services / Docker" />
+						</Row>
 					</Col>
 				</Row>
 			</Container>
 		</Container>
 	)
 }
-
-export default Skills

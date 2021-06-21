@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import styles from '../styles/header.module.scss'
+import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
 	return (
@@ -14,6 +15,9 @@ const Header = () => {
 				<Nav className="mr-auto ml-auto">
 					<Link href="/">Home</Link>
 					<Link href="/projects">Projects</Link>
+				</Nav>
+				<Nav>
+					<ThemeToggle/>
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>
