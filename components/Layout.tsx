@@ -2,7 +2,7 @@ import React from 'react'
 import Navbar from './Header'
 import Footer from './Footer'
 
-const Layout = ({ children }) => {
+const Layout: React.FC = ({ children }) => {
 	return (
 		<>
 			<Navbar/>

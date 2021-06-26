@@ -3,7 +3,6 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-import world from '../../public/svg/languages.svg'
 import styles from '../../styles/languages.module.scss'
 
 const Languages = () => {
@@ -19,7 +18,7 @@ const Languages = () => {
 			
 			<Row>
 				<Col xs={12} md={6}>
-					<img src={world} alt="" className={styles.worldSvg} />
+					<img src="../../public/svg/languages.svg" alt="" className={styles.worldSvg} />
 				</Col>
 				<Col xs={12} md={6}>
 					<Container className={styles.bars}>

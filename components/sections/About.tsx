@@ -3,7 +3,6 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 
-import meSvg from '../../public/svg/me.svg'
 import styles from '../../styles/about.module.scss'
 
 const About = () => {
@@ -46,7 +45,7 @@ const About = () => {
 					</div>
 				</Col>
 				<Col xs={12} lg={5}>
-					<img src={meSvg} className={styles.meSvg} alt=""/>
+					<img src="../../public/svg/github.svg" className={styles.meSvg} alt=""/>
 				</Col>
 			</Row>
 		</Container>

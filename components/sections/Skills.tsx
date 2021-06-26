@@ -6,7 +6,12 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 
 import styles from '../../styles/skills.module.scss'
 
-const Skill = ({ color, percentage, label }) => (
+interface skillProps {
+	color: string;
+	percentage: number;
+	label: string;
+} 
+const Skill = ({ color, percentage, label }: skillProps) => (
 	<Col xs={12} lg={6} className={styles.progressBars}>
 		<div>
 			{ label } <span>{ percentage }%</span>
@@ -43,16 +48,16 @@ export default function Skills() {
 
 					<Col xs={12} lg={8} className={styles.progressBars}>
 						<Row>
-							<Skill color="danger" 	percentage="95" label="HTML / CSS / JS / TS" />
-							<Skill color="primary" 	percentage="95" label="React / React Native" />
-							<Skill color="dark" 	percentage="85" label="NEXT.js / Gatsby / GraphQL" />
-							<Skill color="success" 	percentage="80" label="MongoDB / Mongoose" />
-							<Skill color="primary" 	percentage="75" label="Node / Express" />
-							<Skill color="danger" 	percentage="70" label="Jira / Trello / Slack" />
-							<Skill color="success" 	percentage="60" label="Wordpress / Prestashop / Strapi" />
-							<Skill color="warning" 	percentage="55" label="MariaDB / MySQL" />
-							<Skill color="warning" 	percentage="50" label="Python / Flask / Django" />
-							<Skill color="dark" 	percentage="40" label="Linux services / Docker" />
+							<Skill color="danger" 	percentage={95} label="HTML / CSS / JS / TS" />
+							<Skill color="primary" 	percentage={95} label="React / React Native" />
+							<Skill color="dark" 	percentage={85} label="NEXT.js / Gatsby / GraphQL" />
+							<Skill color="success" 	percentage={80} label="MongoDB / Mongoose" />
+							<Skill color="primary" 	percentage={75} label="Node / Express" />
+							<Skill color="danger" 	percentage={70} label="Jira / Trello / Slack" />
+							<Skill color="success" 	percentage={60} label="Wordpress / Prestashop / Strapi" />
+							<Skill color="warning" 	percentage={55} label="MariaDB / MySQL" />
+							<Skill color="warning" 	percentage={50} label="Python / Flask / Django" />
+							<Skill color="dark" 	percentage={40} label="Linux services / Docker" />
 						</Row>
 					</Col>
 				</Row>

@@ -14,7 +14,7 @@ const ThemeToggle = () => {
 	}, [activeTheme])
 
 	return (
-		<Button variant="outline-dark"
+		<Button variant="none"
 			className={styles.button}
 			onClick={() => setActiveTheme(inactiveTheme)}
 		>

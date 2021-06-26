@@ -1,7 +1,5 @@
 import React from 'react'
 import Container from 'react-bootstrap/Container'
-import devApp from '../../public/svg/dev-app.svg'
-import devWeb from '../../public/svg/dev-web.svg'
 
 import styles from '../../styles/landing.module.scss'
 
@@ -40,8 +38,8 @@ const Landing = () => {
 			</div>
 
 			<div className={styles.svgs}>
-				<img src={devWeb} className={styles.webDev} alt=""/>
-				<img src={devApp} className={styles.appDev} alt=""/>
+				<img src="../../public/svg/dev-app.svg" className={styles.webDev} alt=""/>
+				<img src="../../public/svg/dev-app.svg" className={styles.appDev} alt=""/>
 			</div>
 			
 		</Container>
