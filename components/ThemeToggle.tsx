@@ -18,7 +18,7 @@ const ThemeToggle = () => {
 			className={styles.button}
 			onClick={() => setActiveTheme(inactiveTheme)}
 		>
-			{ activeTheme === 'light' ? <i class="bi bi-moon-fill"></i> : <i class="bi bi-brightness-high-fill"></i> }
+			{ activeTheme === 'light' ? <i className="bi bi-moon-fill"></i> : <i className="bi bi-brightness-high-fill"></i> }
 		</Button>
 	);
 };
