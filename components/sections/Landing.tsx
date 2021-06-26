@@ -38,7 +38,7 @@ const Landing = () => {
 			</div>
 
 			<div className={styles.svgs}>
-				<img src="/svg/dev-app.svg" className={styles.webDev} alt=""/>
+				<img src="/svg/dev-web.svg" className={styles.webDev} alt=""/>
 				<img src="/svg/dev-app.svg" className={styles.appDev} alt=""/>
 			</div>
 			
