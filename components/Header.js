@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -8,8 +7,8 @@ import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
 	return (
-		<Navbar collapseOnSelect expand="lg" variant="light" sticky="top"  id="navboxshadow" className={styles.nav}>
-			<Navbar.Brand>다 위 치</Navbar.Brand>
+		<Navbar collapseOnSelect expand="lg" sticky="top"  id="navboxshadow" className={styles.nav}>
+			<Navbar.Brand><b>다 위 치</b></Navbar.Brand>
 			<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 			<Navbar.Collapse id="responsive-navbar-nav">
 				<Nav className="mr-auto ml-auto">

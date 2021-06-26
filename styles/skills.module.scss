@@ -1,6 +1,7 @@
 .container {
 	padding-right: 0;
 	padding-left: 0;
+	color: var(--text);
 
 	> svg {
 		height: 12vh;
@@ -22,7 +23,7 @@
 
 	.invertedSvg {
 		background-color: #bb86fc27;
-		path {stroke: none;fill: white;}
+		path {stroke: none;fill: var(--background);}
 	}
 
 	.whaticando {

@@ -3,12 +3,11 @@
 	padding: 20px;
 	background-color: var(--navbar);
 	backdrop-filter: blur(4px);
-	border-bottom: 1px solid #bbb;
+	// border-bottom: 1px solid #bbb;
 	transition: box-shadow 0.3s ease-in-out;
 
-	> div {
-		justify-content: space-around;
-	}
+	> span { color: var(--text)!important; }
+	> div {	justify-content: space-around; }
 
 	.link {
 		color: var(--text)!important;

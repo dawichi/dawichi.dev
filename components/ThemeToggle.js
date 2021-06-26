@@ -6,12 +6,12 @@ import styles from '../styles/themetoggle.module.scss'
 
 const ThemeToggle = () => {
 
+	const [activeTheme, setActiveTheme] = useState('light')
+	const inactiveTheme = activeTheme === 'light' ? 'dark' : 'light'
+
 	useEffect(() => {
 		document.body.dataset.theme = activeTheme
 	}, [activeTheme])
-
-	const [activeTheme, setActiveTheme] = useState('light')
-	const inactiveTheme = activeTheme === 'light' ? 'dark' : 'light'
 
 	return (
 		<Button variant="outline-dark"

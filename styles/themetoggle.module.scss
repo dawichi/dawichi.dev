@@ -1,8 +1,9 @@
 .button {
-	background-color: var(--container);
 	border: none;
 	color: var(--text)!important;
 	transition: 0.2s;
+	text-align: left;
+	margin-left: 12px;
 	
 	&:focus {
 		box-shadow: none;
