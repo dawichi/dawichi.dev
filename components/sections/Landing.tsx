@@ -38,8 +38,8 @@ const Landing = () => {
 			</div>
 
 			<div className={styles.svgs}>
-				<img src="../../public/svg/dev-app.svg" className={styles.webDev} alt=""/>
-				<img src="../../public/svg/dev-app.svg" className={styles.appDev} alt=""/>
+				<img src="/svg/dev-app.svg" className={styles.webDev} alt=""/>
+				<img src="/svg/dev-app.svg" className={styles.appDev} alt=""/>
 			</div>
 			
 		</Container>

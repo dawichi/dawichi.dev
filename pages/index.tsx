@@ -5,6 +5,7 @@ import Landing from '../components/sections/Landing'
 import Languages from '../components/sections/Languages'
 import Projects from '../components/sections/Projects'
 import Skills from '../components/sections/Skills'
+import Timeline from '../components/sections/Timeline'
 
 const index = () => {
 	return (
@@ -13,7 +14,8 @@ const index = () => {
 			<Skills/>
 			<About/>
 			<Languages/>
-			<Projects/>
+			{/* <Projects/> */}
+			<Timeline/>
 		</Layout>
 	)
 }

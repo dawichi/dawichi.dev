@@ -24,6 +24,7 @@ a {
 body[data-theme="light"] {
 	--background: #fafbfc;
 	--container: #f0f0f0;
+	--content: #ffffff;
 	--navbar: #fafbfcb3;
 	--text: #121212;
 	--primary: #6200ee;
@@ -32,10 +33,11 @@ body[data-theme="light"] {
 body[data-theme="dark"] {
 	--background: #121212;
 	--container: #1d1d1d;
+	--content: #2d2d2d;
 	--navbar: #1d1d1db3;
 	--text: #f7f7f7;
-	--primary: #6200ee;
-	--secondary: #41c7c7;
+	--primary: #bb86fc;
+	--secondary: #03dac6;
 }
 
 
