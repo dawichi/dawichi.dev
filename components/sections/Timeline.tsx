@@ -26,6 +26,10 @@ const Timeline = () => {
 							<h5>Sysadmin internship</h5>
 							<p>Nubodata - 4 months</p>
 						</li>
+						<li data-date="2017 - 2019">
+							<h5>Summer non-tech jobs</h5>
+							<p>as waiter, storekeeper...</p>
+						</li>
 					</ul>
 					<br></br>
 					<h4>Studies</h4>
