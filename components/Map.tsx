@@ -17,9 +17,6 @@ const Map = () => {
 				{({ geographies }) =>
 					geographies.map(geo => {
 						const visited =  ['Sp.', 'Fr.', 'Ger.', 'Cz.', 'Port.', 'Pol.']
-						if (geo.properties.CONTINENT == 'Europe') {
-							console.log(geo.properties.ABBREV)
-						}
 
 						return (
 							<Geography

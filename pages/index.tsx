@@ -7,6 +7,7 @@ import Projects from '../components/sections/Projects'
 import Skills from '../components/sections/Skills'
 import Timeline from '../components/sections/Timeline'
 import Travel from '../components/sections/Travel'
+import Contact from '../components/sections/Contact'
 
 const index = () => {
 	return (
@@ -17,6 +18,7 @@ const index = () => {
 			<Timeline/>
 			<Languages/>
 			<Travel/>
+			<Contact/>
 			{/* <Projects/> */}
 		</Layout>
 	)
