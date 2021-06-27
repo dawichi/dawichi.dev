@@ -1,7 +1,7 @@
 <h1 align="center">dawichi.dev</h1>
 
 <div align="center">
-<img src="https://img.shields.io/badge/made%20with-next%20js-black" /><img src="https://img.shields.io/badge/made%20with-typescript-blue" /><img src="https://img.shields.io/badge/made%20with-sass-ff69b4" />
+  <img src="https://img.shields.io/badge/made%20with-next%20js-black" /><span> </span><img src="https://img.shields.io/badge/made%20with-typescript-blue" /><span> </span><img src="https://img.shields.io/badge/made%20with-sass-ff69b4" />
 </div>
 
 
