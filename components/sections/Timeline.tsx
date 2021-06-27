@@ -31,12 +31,12 @@ const Timeline = () => {
 					<h4>Studies</h4>
 					<ul>
 						<li data-date="2017 - 2020">
-							<h5>Junior Frontend Developer</h5>
-							<p>IES Armando Cotarelo Valledor</p>
+							<h5>Technician in Computer Systems Administration</h5>
+							<p>I.E.S. Armando Cotarelo Valledor</p>
 						</li>
 						<li data-date="2015 - 2017">
 							<h5>European baccalaureate</h5>
-							<p>IES Castro Alobre</p>
+							<p>I.E.S. Castro Alobre</p>
 						</li>
 					</ul>
 				</Col>
