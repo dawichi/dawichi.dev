@@ -7,7 +7,7 @@
 
 ### My personal website!
 
-<img src="./public/img/screenshot_light.png" width="50%;" /><img src="./public/img/screenshot_dark.png" width="50%;" />
+<img src="./public/assets/img/screenshot_light.png" width="50%;" /><img src="./public/assets/img/screenshot_dark.png" width="50%;" />
 
 
 

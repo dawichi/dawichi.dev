@@ -26,6 +26,11 @@ const Landing = () => {
 						<i className="bi bi-linkedin"></i>
 					</span>
 				</a>
+				<a target="_blank" rel="noreferrer" href="https://www.instagram.com/dawichi_/">
+					<span className="animate__animated animate__rollIn animate__delay-1s">
+						<i className="bi bi-instagram"></i>
+					</span>
+				</a>
 				<a target="_blank" rel="noreferrer" href="https://twitter.com/dawichi_">
 					<span className="animate__animated animate__rollIn animate__delay-1s animate__slow">
 						<i className="bi bi-twitter"></i>
@@ -38,8 +43,8 @@ const Landing = () => {
 			</div>
 
 			<div className={styles.svgs}>
-				<img src="/svg/dev-web.svg" className={styles.webDev} alt=""/>
-				<img src="/svg/dev-app.svg" className={styles.appDev} alt=""/>
+				<img src="/assets/svg/dev-web.svg" className={styles.webDev} alt=""/>
+				<img src="/assets/svg/dev-app.svg" className={styles.appDev} alt=""/>
 			</div>
 			
 		</Container>

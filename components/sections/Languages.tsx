@@ -18,7 +18,7 @@ const Languages = () => {
 			
 			<Row>
 				<Col xs={12} md={6}>
-					<img src="/svg/languages.svg" alt="" className={styles.worldSvg} />
+					<img src="/assets/svg/languages.svg" alt="" className={styles.worldSvg} />
 				</Col>
 				<Col xs={12} md={6}>
 					<Container className={styles.bars}>

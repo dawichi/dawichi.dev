@@ -45,7 +45,7 @@ const Timeline = () => {
 					</ul>
 				</Col>
 				<Col xs={12} md={6}>
-					<img src="/svg/workalone.svg" alt="" className={styles.image} />
+					<img src="/assets/svg/workalone.svg" alt="" className={styles.image} />
 				</Col>
 			</Row>
 		</Container>

@@ -45,7 +45,7 @@ const About = () => {
 					</div>
 				</Col>
 				<Col xs={12} lg={5}>
-					<img src="/svg/github.svg" className={styles.meSvg} alt=""/>
+					<img src="/assets/svg/github.svg" className={styles.meSvg} alt=""/>
 				</Col>
 			</Row>
 		</Container>
