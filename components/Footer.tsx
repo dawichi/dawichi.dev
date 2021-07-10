@@ -8,7 +8,7 @@ import styles from '../styles/footer.module.scss'
 const Footer = () => {
 	return (
 		<footer className={ styles.footer }>
-			<Container className={styles.buymeacoffee} fluid>
+			{/* <Container className={styles.buymeacoffee} fluid>
 				<a href="https://www.buymeacoffee.com/dawichi">
 					<img
 						height="50px"
@@ -17,7 +17,7 @@ const Footer = () => {
 						src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=dawichi&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff"
 					/>
 				</a>
-			</Container>
+			</Container> */}
 			<Container>
 				<Row className={styles.row}>
 					<Col xs={12} sm={6}>
