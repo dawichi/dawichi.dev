@@ -14,6 +14,7 @@ const Header = () => {
 				<Nav className="mr-auto ml-auto">
 					<Link href="/">Home</Link>
 					<Link href="/projects">Projects</Link>
+					<Link href="/blog">Blog</Link>
 				</Nav>
 				<Nav>
 					<ThemeToggle/>

@@ -1,10 +1,11 @@
 import React from 'react'
+import Layout from '../components/Layout'
 
 const projects = () => {
 	return (
-		<div>
-			Project page incoming!
-		</div>
+		<Layout>
+			<div className="m-5">Projects page, incoming!</div>
+		</Layout>
 	)
 }
 

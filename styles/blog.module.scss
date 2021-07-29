@@ -1,0 +1,18 @@
+.container {
+	color: var(--text);
+
+	> div {
+		margin: 40px;
+	}
+}
+
+
+.post {
+	color: var(--text);
+
+	> div {
+		height: 50vh;
+		background-position: center;
+		background-size: cover;
+	}
+}

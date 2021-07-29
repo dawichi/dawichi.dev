@@ -52,4 +52,12 @@ body[data-theme="dark"] {
 .code.js { color: #e4c900;}
 .code.py { color: #3571a5;}
 .code.re { color: #5eccee;}
-  
+
+.cursor-pointer {
+	cursor: pointer;
+
+	&:hover {
+		transform: scale(1.03);
+		transition: all .3s ease-in;
+	}
+}
