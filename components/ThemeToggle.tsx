@@ -13,6 +13,9 @@ export default function ThemeToggle() {
 		if (localStorage.getItem('theme') === 'dark') {
 			setActiveTheme('dark')
 		}
+		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			setActiveTheme('dark')
+		}
 	}, [])
 
 	useEffect(() => {
