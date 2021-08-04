@@ -10,7 +10,7 @@ import styles from '../../styles/blog.module.scss'
 
 
 export default function Post({ content, frontmatter }) {
-	console.log(frontmatter)
+	
 	return (
 		<Layout>
 			<div className={styles.post}>
