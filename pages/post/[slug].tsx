@@ -13,18 +13,20 @@ export default function Post({ content, frontmatter }) {
 	
 	return (
 		<Layout>
-			<div className={styles.post}>
-				<div style={{backgroundImage: `url(${frontmatter.image})`}} />
-				<article className="container p-5">
-					<ReactMarkdown>
-						{content}
-					</ReactMarkdown>
-					<Link href="/blog">
-						<span className="my-3 btn btn-danger btn-sm">
-							<i className="bi bi-arrow-left"></i> Back
-						</span>
-					</Link>
-				</article>
+			<div className="animate__animated animate__slideInUp">
+				<div className={styles.post}>
+					<div style={{backgroundImage: `url(${frontmatter.image})`}} />
+					<article className="container p-5">
+						<ReactMarkdown>
+							{content}
+						</ReactMarkdown>
+						<Link href="/blog">
+							<span className="my-3 btn btn-danger btn-sm">
+								<i className="bi bi-arrow-left"></i> Back
+							</span>
+						</Link>
+					</article>
+				</div>
 			</div>
 		</Layout>
 	)
