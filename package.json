@@ -10,7 +10,7 @@
   "dependencies": {
     "@types/react": "^17.0.11",
     "gray-matter": "^4.0.3",
-    "next": "10.x",
+    "next": "11.x",
     "next-images": "^1.8.1",
     "react": "17.x",
     "react-bootstrap": "^1.6.1",
