@@ -20,7 +20,7 @@ const Timeline = () => {
 					<ul>
 						<li data-date="Dec 20 - now">
 							<h5>Junior Frontend Developer</h5>
-							<p><a href="https://dosespacios.com" target="_blank">Dos Espacios</a> - 8 months</p>
+							<p><a href="https://dosespacios.com" target="_blank">Dos Espacios</a> - 10 months</p>
 						</li>
 						<li data-date="Sep 20 - Dec 20">
 							<h5>Sysadmin internship</h5>
@@ -34,6 +34,10 @@ const Timeline = () => {
 					<br></br>
 					<h4>Studies</h4>
 					<ul>
+						<li data-date="2021 - now">
+							<h5>Degree in Telecommunication Technologies Engineering</h5>
+							<p>Uvigo - Vigo University</p>
+						</li>
 						<li data-date="2017 - 2020">
 							<h5>Technician in Computer Systems Administration</h5>
 							<p>I.E.S. Armando Cotarelo Valledor</p>

@@ -44,7 +44,7 @@ body[data-theme="dark"] {
 
 
 .code {
-	background: #eee;
+	background: var(--content);
 	border-radius: 5px;
 	padding: .3rem;
 	font-size: 1.1rem;
