@@ -14,7 +14,7 @@ export default function Blog({ posts }) {
 			<div className="container">
 				<div className={styles.container}>
 					{ posts.reverse().map(({frontmatter: {title, description, date, image}, slug}, index: number) => (
-						<Link href={'/post/[slug]'} as={`/post/${slug}`}>
+						<Link href={'/post/[slug]'} as={`/post/${slug}`} key={index}>
 							<div className={`animate__animated ${index % 2 == 0 ? 'animate__slideInLeft' : 'animate__slideInRight'}`}>
 								<div className={`row border rounded shadow-sm cursor-pointer ${index % 2 == 0 ? 'flex-row-reverse' : ''}`}>
 									<div className="col-lg-6 p-5">
