@@ -11,11 +11,12 @@ interface skillProps {
 	percentage: number;
 	label: string;
 } 
+
 const Skill = ({ color, percentage, label }: skillProps) => (
 	<Col xs={12} lg={6} className={styles.progressBars}>
 		<div>
 			{ label } <span>{ percentage }%</span>
-			<ProgressBar variant={color} now={percentage} />
+			<ProgressBar variant={color} now={percentage} animated={true} />
 		</div>
 	</Col>
 )
@@ -50,13 +51,13 @@ export default function Skills() {
 						<Row>
 							<Skill color="danger" 	percentage={95} label="HTML / CSS / JS / TS" />
 							<Skill color="primary" 	percentage={95} label="React / React Native" />
-							<Skill color="dark" 	percentage={85} label="NEXT.js / Gatsby / GraphQL" />
-							<Skill color="success" 	percentage={80} label="MongoDB / Mongoose" />
-							<Skill color="primary" 	percentage={75} label="Node / Express" />
-							<Skill color="danger" 	percentage={70} label="Jira / Trello / Slack" />
-							<Skill color="success" 	percentage={60} label="Wordpress / Prestashop / Strapi" />
+							<Skill color="dark" 	percentage={90} label="Jira / Trello / Slack" />
+							<Skill color="success" 	percentage={85} label="NEXT.js / Gatsby / GraphQL" />
+							<Skill color="primary" 	percentage={80} label="Python / Flask / Django" />
+							<Skill color="danger" 	percentage={75} label="Node / Express" />
+							<Skill color="success" 	percentage={65} label="MongoDB / Mongoose" />
+							<Skill color="warning" 	percentage={60} label="Wordpress / Prestashop / Strapi" />
 							<Skill color="warning" 	percentage={55} label="MariaDB / MySQL" />
-							<Skill color="warning" 	percentage={50} label="Python / Flask / Django" />
 							<Skill color="dark" 	percentage={40} label="Linux services / Docker" />
 						</Row>
 					</Col>

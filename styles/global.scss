@@ -49,9 +49,15 @@ body[data-theme="dark"] {
 	padding: .3rem;
 	font-size: 1.1rem;
 }
-.code.js { color: #e4c900;}
-.code.py { color: #3571a5;}
-.code.re { color: #5eccee;}
+.code.js { color: #e4c900; }
+.code.py { color: #3571a5; }
+.code.re { color: #5eccee; }
+
+.h-key { color: #f87171; }
+.h-string { color:#93c5fd; }
+.h-number { color:#34d399; }
+.h-const { color:#60a5fa; }
+
 
 .cursor-pointer {
 	cursor: pointer;
@@ -61,3 +67,4 @@ body[data-theme="dark"] {
 		transition: all .3s ease-in;
 	}
 }
+
