@@ -53,10 +53,6 @@ body[data-theme="dark"] {
 .code.py { color: #3571a5; }
 .code.re { color: #5eccee; }
 
-.h-key { color: #f87171; }
-.h-string { color:#93c5fd; }
-.h-number { color:#34d399; }
-.h-const { color:#60a5fa; }
 
 
 .cursor-pointer {
@@ -68,3 +64,30 @@ body[data-theme="dark"] {
 	}
 }
 
+
+/*
+┌─────────────────────────
+│        Typewritter
+└─────────────────────────
+*/
+.h-key { color: #f87171; }
+.h-string { color:#93c5fd; }
+.h-number { color:#34d399; }
+.h-const { color:#60a5fa; }
+
+#typewritter::after {
+	content: "|";
+	animation: blink 500ms linear infinite alternate;
+}
+@-webkit-keyframes blink{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
+@-moz-keyframes blink{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
+@keyframes blink{
+	0%{opacity: 0;}
+	100%{opacity: 1;}
+}
