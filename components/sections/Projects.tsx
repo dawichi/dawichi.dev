@@ -10,7 +10,7 @@ const Projects = () => {
 	const Card = ({ title, image, url, desc, tech }) => {
 		return (
 			<Col xs={12} lg={6} style={{padding: 15}}>
-				<a href={url} target="_blank" style={{height: '100%'}}>
+				<a className="animate__animated animate__backInDown" href={url} target="_blank" style={{height: '100%'}}>
 					<div className={styles.card}>
 						<h5><i className="bi bi-folder"></i> {title}</h5>
 						<div className="px-5">
