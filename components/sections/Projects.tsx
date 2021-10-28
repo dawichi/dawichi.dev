@@ -64,6 +64,29 @@ const Projects = () => {
 						]}
 					/>
 					<Card
+						title='Hexastats'
+						image='https://raw.githubusercontent.com/Dawichi/hexastats/main/showcase.jpg'
+						url='https://github.com/Dawichi/hexastats'
+						desc='A for fun web to make custom graphs of my friends stats from an online game'
+						tech={[
+							{name: 'NextJS', color: 'black'},
+							{name: 'TypeScript', color: '#2f76c4'},
+							{name: 'Tailwindcss', color: '#e879f9'},
+							{name: 'Bootstrap', color: '#7952b3'}
+						]}
+					/>
+					<Card
+						title='Hexakill'
+						image='https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.jpg'
+						url='https://github.com/Dawichi/hexakill'
+						desc='A web game at a very first stage, just an experiment with gaming programming'
+						tech={[
+							{name: 'NextJS', color: 'black'},
+							{name: 'TypeScript', color: '#2f76c4'},
+							{name: 'Tailwindcss', color: '#e879f9'}
+						]}
+					/>
+					<Card
 						title='Gif Search'
 						image='https://raw.githubusercontent.com/Dawichi/gif-search/main/public/showcase.png'
 						url='https://github.com/Dawichi/gif-search'
@@ -71,7 +94,7 @@ const Projects = () => {
 						tech={[
 							{name: 'NextJS', color: 'black'},
 							{name: 'TypeScript', color: '#2f76c4'},
-							{name: 'Tailwindcss', color: '#e879f9'},
+							{name: 'Tailwindcss', color: '#e879f9'}
 						]}
 					/>
 					<Card
@@ -80,7 +103,7 @@ const Projects = () => {
 						url='https://github.com/Dawichi/map-markers'
 						desc='Mobile app to store markers in a map'
 						tech={[
-							{name: 'React Native', color: '#61dafb'},
+							{name: 'React Native', color: '#61dafb'}
 						]}
 					/>
 				</Row>
