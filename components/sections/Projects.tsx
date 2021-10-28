@@ -65,7 +65,7 @@ const Projects = () => {
 					/>
 					<Card
 						title='Hexastats'
-						image='https://raw.githubusercontent.com/Dawichi/hexastats/main/showcase.jpg'
+						image='https://raw.githubusercontent.com/Dawichi/hexastats/main/showcase.png'
 						url='https://github.com/Dawichi/hexastats'
 						desc='A for fun web to make custom graphs of my friends stats from an online game'
 						tech={[
@@ -77,7 +77,7 @@ const Projects = () => {
 					/>
 					<Card
 						title='Hexakill'
-						image='https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.jpg'
+						image='https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png'
 						url='https://github.com/Dawichi/hexakill'
 						desc='A web game at a very first stage, just an experiment with gaming programming'
 						tech={[
