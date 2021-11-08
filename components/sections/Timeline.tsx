@@ -18,13 +18,13 @@ const Timeline = () => {
 				<Col xs={12} lg={6}>
 					<h4>Experience</h4>
 					<ul>
-						<li data-date="Dec 20 - now">
+						<li data-date="Dec 20 - Nov 21">
 							<h5>Junior Frontend Developer</h5>
-							<p><a href="https://dosespacios.com" target="_blank">Dos Espacios</a> - 10 months</p>
+							<p><a href="https://dosespacios.com" target="_blank">Dos Espacios</a> - 11 months</p>
 						</li>
 						<li data-date="Sep 20 - Dec 20">
 							<h5>Sysadmin internship</h5>
-							<p>Nubodata - 4 months</p>
+							<p><a href="https://www.nubodata.com" target="_blank">Nubodata</a> - 4 months</p>
 						</li>
 						<li data-date="2017 - 2019">
 							<h5>Summer non-tech jobs</h5>
