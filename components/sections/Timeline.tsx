@@ -8,6 +8,16 @@ import styles from '../../styles/timeline.module.scss'
 
 const Timeline = () => {
 
+	const getMonthsWorking = (month: number, year: number) => {
+		const date = new Date()
+		const currentMonth = date.getMonth()+1
+		const currentYear = date.getFullYear()
+		const result = (currentMonth - month) + ((currentYear - year) * 12) + 1
+		if (result === 1)
+			return result.toString() + ' month'
+		return result.toString() + ' months'
+	}
+
 	return (
 		<Container className={styles.container}>
 			<h4><i className="bi bi-bezier2"></i> Timeline</h4>
@@ -15,9 +25,16 @@ const Timeline = () => {
 			<br/>
 
 			<Row>
+				<Col xs={12} md={6}>
+					<img src="/assets/svg/workalone.svg" alt="" className={styles.image} />
+				</Col>
 				<Col xs={12} lg={6}>
 					<h4>Experience</h4>
 					<ul>
+						<li data-date="Nov 21 - now">
+							<h5>Backend Engineer</h5>
+							<p><a href="https://bizaway.com" target="_blank">Bizaway</a> - {getMonthsWorking(11, 2021)}</p>
+						</li>
 						<li data-date="Dec 20 - Nov 21">
 							<h5>Junior Frontend Developer</h5>
 							<p><a href="https://dosespacios.com" target="_blank">Dos Espacios</a> - 11 months</p>
@@ -32,6 +49,8 @@ const Timeline = () => {
 						</li>
 					</ul>
 					<br></br>
+				</Col>
+				<Col xs={12} md={6}>
 					<h4>Studies</h4>
 					<ul>
 						<li data-date="2021 - now">
@@ -49,7 +68,7 @@ const Timeline = () => {
 					</ul>
 				</Col>
 				<Col xs={12} md={6}>
-					<img src="/assets/svg/workalone.svg" alt="" className={styles.image} />
+					<img src="/assets/svg/study.svg" alt="" className={styles.image} />
 				</Col>
 			</Row>
 		</Container>
