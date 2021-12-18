@@ -23,7 +23,7 @@ const Map = () => {
 								key={geo.rsmKey}
 								geography={geo}
 								fill={visited.indexOf(geo.properties.ABBREV) >= 0 ? '#14b8a6' : '#93939352'}
-								stroke="#EAEAEC"
+								stroke="#EAEAECa6"
 							/>
 						)
 					})

@@ -18,6 +18,9 @@ const Contact = () => {
 					<button className="bg-teal-500 shadow rounded text-white p-2 px-4" type="submit">Send</button>
 				</div>
 			</form>
+			<br/>
+			<br/>
+			<br/>
 		</div>
 	)
 }
