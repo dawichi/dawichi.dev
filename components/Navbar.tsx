@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { Disclosure, Switch } from '@headlessui/react'
+
 
 export default function Navbar() {
 	
 	// Navigation menu, selects each section availble
 	// add new sections here
 	const navigation = [
-		{ name: 'Home', onClick: () => {}, current: 1 },
-		{ name: 'Projects', onClick: () => {}, current: 0 },
-		{ name: 'Blog', onClick: () => {}, current: 0 },
+		{ name: 'Home', url: '/', current: 1 },
+		{ name: 'Projects', url: '/projects', current: 0 },
+		{ name: 'Blog', url: '/blog', current: 0 },
 	]
 
 	// DARK MODE
@@ -62,15 +64,17 @@ export default function Navbar() {
 								</div>
 								<div className="hidden sm:block sm:ml-6">
 									<div className="flex space-x-4">
+										{/* TODO: factorize both menus */}
 										{navigation.map((item) => (
-											<button
-												key={item.name}
-												onClick={item.onClick}
-												className={'px-3 py-2 rounded-md text-sm font-bold tracking-widest ' + 
-													(item.current ? 'bg-teal-500 text-white' : 'hover:bg-zinc-200 hover:dark:bg-zinc-700')
-												}
-												aria-current={item.current ? 'page' : undefined}
-											>{item.name}</button>
+											<Link href={item.url}>
+												<button
+													key={item.name}
+													className={'px-3 py-2 rounded-md text-sm font-bold tracking-widest ' + 
+														(item.current ? 'bg-teal-500 text-white' : 'hover:bg-zinc-200 hover:dark:bg-zinc-700')
+													}
+													aria-current={item.current ? 'page' : undefined}
+												>{item.name}</button>
+											</Link>
 										))}
 									</div>
 								</div>
@@ -89,12 +93,14 @@ export default function Navbar() {
 					<Disclosure.Panel className="sm:hidden">
 						<div className="px-2 pt-2 pb-3 space-y-1">
 							{navigation.map((item) => (
-								<button key={item.name} onClick={item.onClick}
-									className={'block px-3 py-2 rounded-md text-base font-medium ' + 
-										(item.current ? 'bg-zinc-900 text-white' : 'text-zinc-300 hover:bg-zinc-700 hover:text-white')
-									}
-									aria-current={item.current ? 'page' : undefined}
-								>{item.name}</button>
+								<Link href={item.url}>
+									<button key={item.name}
+										className={'block px-3 py-2 rounded-md text-sm font-bold tracking-widest ' + 
+											(item.current ? 'bg-teal-500 text-white' : 'hover:bg-zinc-200 hover:dark:bg-zinc-700')
+										}
+										aria-current={item.current ? 'page' : undefined}
+									>{item.name}</button>
+								</Link>
 							))}
 						</div>
 					</Disclosure.Panel>
