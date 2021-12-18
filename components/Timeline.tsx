@@ -90,7 +90,7 @@ const Timeline = () => {
 		<div>
 			<h3 className='text-xl text-center my-5'>{timeline.title}</h3>
 			<div className='flex flex-col items-center'>
-				<ul className='border-l-4 border-teal-500 bg-white/50 dark:bg-zinc-800 shadow rounded-r-lg p-4 md:translate-x-[6rem]'>
+				<ul className='border-l-4 border-teal-500 bg-white/50 dark:bg-zinc-800 shadow hover:shadow-xl rounded-r-lg p-4 md:translate-x-[6rem]'>
 					{ timeline.list.map((element:any, idx:number) => (
 						<li key={idx} className='p-4 border-b-2 relative last:border-0'>
 							<span className='block md:absolute md:translate-x-[-12rem]'>{element.time}</span>
@@ -109,7 +109,7 @@ const Timeline = () => {
 
 	return (
 		<div className='container mx-auto mt-40 p-5'>
-			<h2 className="text-2xl text-center my-5"><i className="bi bi-person-fill"></i> About me</h2>
+			<h2 className="text-2xl text-center my-5"><i className="bi bi-bezier2"></i> Timeline</h2>
 			<hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto'/>
 			<div className='grid lg:grid-cols-2 mt-5'>
 				<div><img src="/assets/svg/workalone.svg" className='opacity-90 mx-auto m-5 w-3/4' alt="" /></div>

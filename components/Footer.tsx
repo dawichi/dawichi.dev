@@ -1,10 +1,8 @@
 import React from 'react'
 
-import styles from '../styles/footer.module.scss'
-
 const Footer = () => {
 	return (
-		<footer className={ styles.footer }>
+		<footer className='bg-white/50 dark:bg-zinc-800'>
 			{/* <Container className={styles.buymeacoffee} fluid>
 				<a href="https://www.buymeacoffee.com/dawichi">
 					<img

@@ -1,5 +1,5 @@
 import React from 'react'
-import { About, Landing, Skills, Timeline } from '../components'
+import { About, Contact, Landing, Languages, Skills, Timeline, Travel } from '../components'
 const index = () => {
 	return (
 		<>
@@ -7,9 +7,9 @@ const index = () => {
 			<Skills/>
 			<About/>
 			<Timeline/>
-			{/* <Travel/>
 			<Languages/>
-			<Contact/> */}
+			<Travel/>
+			<Contact/>
 		</>
 	)
 }
