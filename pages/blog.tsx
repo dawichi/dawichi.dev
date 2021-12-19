@@ -3,41 +3,33 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import Link from 'next/link'
 
-import Layout from '../components/Layout'
-import styles from '../styles/blog.module.scss'
-
-
 export default function Blog({ posts }) {
 	
 	return (
-		<Layout>
-			<div className="container">
-				<div className={styles.container}>
-					{ posts.reverse().map(({frontmatter: {title, description, date, image}, slug}, index: number) => (
-						<Link href={'/post/[slug]'} as={`/post/${slug}`} key={index}>
-							<div className={`animate__animated ${index % 2 == 0 ? 'animate__slideInLeft' : 'animate__slideInRight'}`}>
-								<div className={`row border rounded shadow-sm cursor-pointer ${index % 2 == 0 ? 'flex-row-reverse' : ''}`}>
-									<div className="col-lg-6 p-5">
-										<article key={title}>
-											<header className="mb-3">
-												<h3>{title}</h3>
-												<span>{date}</span>
-											</header>
-											<section>
-												<p>{description}</p>
-											</section>
-										</article>
-									</div>
-									<div className="col-lg-6 p-0">
-										<img src={image} alt={title} className="w-100" />
-									</div>
-								</div>
+		<div className="container">
+			{ posts.reverse().map(({frontmatter: {title, description, date, image}, slug}, index: number) => (
+				<Link href={'/post/[slug]'} as={`/post/${slug}`} key={index}>
+					<div className={`animate__animated ${index % 2 == 0 ? 'animate__slideInLeft' : 'animate__slideInRight'}`}>
+						<div className={`row border rounded shadow-sm cursor-pointer ${index % 2 == 0 ? 'flex-row-reverse' : ''}`}>
+							<div className="col-lg-6 p-5">
+								<article key={title}>
+									<header className="mb-3">
+										<h3>{title}</h3>
+										<span>{date}</span>
+									</header>
+									<section>
+										<p>{description}</p>
+									</section>
+								</article>
 							</div>
-						</Link>
-					)) }				
-				</div>
-			</div>
-		</Layout>
+							<div className="col-lg-6 p-0">
+								<img src={image} alt={title} className="w-100" />
+							</div>
+						</div>
+					</div>
+				</Link>
+			)) }				
+		</div>
 	)
 }
 

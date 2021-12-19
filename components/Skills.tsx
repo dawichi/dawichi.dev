@@ -1,4 +1,5 @@
 import React from 'react'
+import { styles } from '../styles/styles.config'
 
 const skill_sections = [
 	{
@@ -84,7 +85,7 @@ export default function Skills() {
 
 	return (
 		<div>
-			<div className='text-center p-10 text-2xl bg-white/50 dark:bg-zinc-800 skew-y-6 shadow-lg dark:shadow-zinc-700'>
+			<div className={'text-center p-10 text-2xl skew-y-6 shadow-lg ' + styles.card}>
 				<h3>Web development <br/> <i className="bi bi-code-slash"></i></h3> 
 			</div>
 
@@ -92,7 +93,7 @@ export default function Skills() {
 				<h2 className='text-2xl my-5'><i className="bi bi-kanban"></i> What I do</h2>
 				<div className='grid sm:grid-cols-2 xl:grid-cols-4 gap-4'>
 					{ skill_sections.map((section, idx) => (
-						<div key={idx} className='bg-white/50 dark:bg-zinc-800 shadow hover:shadow-xl rounded p-5'>
+						<div key={idx} className={'rounded p-5 ' + styles.card}>
 							<h3 className='text-xl'>
 								<i className={'bi bi-' + section.icon}></i>&nbsp;{section.title}
 							</h3>

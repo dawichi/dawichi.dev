@@ -1,4 +1,5 @@
 import React from 'react'
+import { styles } from '../styles/styles.config'
 
 const Languages = () => {
 
@@ -39,7 +40,7 @@ const Languages = () => {
 		<div>
 			<ul className='grid xl:grid-cols-2'>
 				{langs.map((lang:lang, idx:number) => (
-					<li key={idx} className='bg-white/50 dark:bg-zinc-800 shadow hover:shadow-xl rounded m-3 p-5'>
+					<li key={idx} className={'rounded m-3 p-5 ' + styles.card}>
 						<img className='inline w-8 m-1 border' src={lang.flag}/>
 						<span>{lang.name}</span>
 						<div className='bg-zinc-200 dark:bg-zinc-700 h-2 rounded'>

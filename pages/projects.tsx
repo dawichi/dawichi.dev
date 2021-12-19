@@ -1,121 +1,92 @@
 import React from 'react'
+import { styles } from '../styles/styles.config'
 
-const projects = () => {
-	
-	const Card = ({ title, image, url, desc, tech }) => {
-		return (
-			// TODO: SHADOW DARK para todos los componentes
-			<div className='p-4 bg-white/50 dark:bg-zinc-800 shadow hover:shadow-xl rounded'>
-				<a className="animate__animated animate__backInDown" href={url} target="_blank" style={{height: '100%'}}>
-					<div className={''}>
-						<h5><i className="bi bi-folder"></i> {title}</h5>
-						<div className="px-5">
-							<img className="w-100" src={image} alt={title}/>
-						</div>
-						<p className="mt-3">{desc}</p>
-						<div className={''}>
-							{ tech.map(x => (
-								<span style={{position: 'relative'}}>
-									<span className={''} style={{backgroundColor: x.color}}></span>
-									<span>{x.name}</span>
-								</span>
-							))}
-						</div>
-					</div>
-				</a>
-			</div>
-		)
-	}
 
-	return (
-		<div className='container mx-auto mt-20 p-5'>
-			<h2 className="text-2xl text-center my-5"><i className="bi bi-github"></i> Open source projects</h2>
-			<hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto'/>
-			<div className='grid lg:grid-cols-3 gap-4 mt-5'>
-
-			{projects_list.map((project, idx) => (
-				<Card
-					title={project.title}
-					image={project.image}
-					url={project.url}
-					desc={project.desc}
-					tech={project.tech}
-				/>
-			))}
-			</div>
-		</div>			
-	)
+interface project {
+	title: string,
+	image: string,
+	url: string,
+	desc: string,
+	tech: string[],
 }
+
+const projects = () => (
+	<div className='container mx-auto my-20 p-5 animate__animated animate__fadeIn'>
+		<h2 className="text-2xl text-center my-5"><i className="bi bi-github"></i> Open source projects</h2>
+		<hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto'/>
+		<div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5'>
+
+		{projects_list.map((project: project, idx) => (
+			<a key={idx} href={'https://github.com/Dawichi/' + project.url} target="_blank" className={'py-4 px-10 rounded-lg animate__animated animate__zoomIn ' + styles.card}>
+				<h4 className='text-center text-xl mb-5'><i className="bi bi-folder"></i> {project.title}</h4>
+				{project.tech.map(tech => <span className={'m-1 p-1 rounded text-white ' + tint(tech)}>{tech}</span>)}
+				<img className="py-5 w-100" src={project.image} alt={project.title}/>
+				<p>{project.desc}</p>
+				<br/>
+			</a>
+		))}
+		</div>
+	</div>			
+)
 
 export default projects
 
+const tint = (tech:string) => {
+	const colors = {
+		'JavaScript': 'bg-yellow-500',
+		'TypeScript': 'bg-blue-500',
+		'NextJS': 'bg-black',
+		'Bootstrap': 'bg-purple-500',
+		'Tailwindcss': 'bg-fuchsia-500',
+		'MongoDB': 'bg-green-500',
+		'Docker': 'bg-sky-500',
+		'React Native': 'bg-cyan-500',
 
+	}
+	return colors[tech]
+}
 
-const projects_list = [
+const projects_list: project[] = [
 	{
 		title: 'dawichi.dev',
 		image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/screenshot_dark.png',
-		url: 'https://github.com/dawichi/dawichi.dev',
+		url: 'dawichi.dev',
 		desc: 'This website! Explore its code on GitHub',
-		tech: [
-			{name: 'NextJS', color: 'black'},
-			{name: 'TypeScript', color: '#2f76c4'},
-			{name: 'Bootstrap', color: '#7952b3'}
-		],
+		tech: ['NextJS','TypeScript','Tailwindcss'],
 	},
 	{
 		title: 'Hexastats',
 		image: 'https://raw.githubusercontent.com/Dawichi/hexastats/main/showcase.png',
-		url: 'https://github.com/Dawichi/hexastats',
-		desc: 'A web to make custom graphs of my friends\'s stats from an online game',
-		tech: [
-			{name: 'NextJS', color: 'black'},
-			{name: 'TypeScript', color: '#2f76c4'},
-			{name: 'Tailwindcss', color: '#e879f9'},
-			{name: 'Bootstrap', color: '#7952b3'}
-		],
+		url: 'hexastats',
+		desc: 'Custom graphs of stats from an online game',
+		tech: ['NextJS','TypeScript','Tailwindcss'],
 	},
 	{
 		title: 'Cloud app',
 		image: 'https://raw.githubusercontent.com/Dawichi/cloud-app/main/sample2.png',
-		url: 'https://github.com/Dawichi/cloud-app',
-		desc: 'My final project, a MERN cloud storage app',
-		tech: [
-			{name: 'JS', color: '#f4dc1a'},
-			{name: 'Tailwindcss', color: '#e879f9'},
-			{name: 'MongoDB', color: '#13aa52'},
-			{name: 'Docker', color: '#2496ed'}
-		],
+		url: 'cloud-app',
+		desc: 'React MERN cloud storage app',
+		tech: ['JavaScript','Bootstrap','MongoDB','Docker'],
 	},
 	{
 		title: 'Hexakill',
 		image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png',
-		url: 'https://github.com/Dawichi/hexakill',
+		url: 'hexakill',
 		desc: 'A web game at a very first stage, just an experiment with gaming programming',
-		tech: [
-			{name: 'NextJS', color: 'black'},
-			{name: 'TypeScript', color: '#2f76c4'},
-			{name: 'Tailwindcss', color: '#e879f9'}
-		],
+		tech: ['NextJS','TypeScript','Tailwindcss'],
 	},
 	{
 		title: 'Gif Search',
 		image: 'https://raw.githubusercontent.com/Dawichi/gif-search/main/public/showcase.png',
-		url: 'https://github.com/Dawichi/gif-search',
+		url: 'gif-search',
 		desc: 'GIF search app, using the Giphy API',
-		tech: [
-			{name: 'NextJS', color: 'black'},
-			{name: 'TypeScript', color: '#2f76c4'},
-			{name: 'Tailwindcss', color: '#e879f9'}
-		],
+		tech: ['NextJS','TypeScript','Tailwindcss'],
 	},
 	{
 		title: 'Map Markers',
 		image: 'https://raw.githubusercontent.com/Dawichi/map-markers/main/showcase.jpg',
-		url: 'https://github.com/Dawichi/map-markers',
+		url: 'map-markers',
 		desc: 'Mobile app to store markers in a map',
-		tech: [
-			{name: 'React Native', color: '#61dafb'}
-		],
+		tech: ['React Native'],
 	},
 ]

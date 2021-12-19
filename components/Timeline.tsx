@@ -1,4 +1,5 @@
 import React from 'react'
+import { styles } from '../styles/styles.config'
 
 const Timeline = () => {
 
@@ -90,7 +91,7 @@ const Timeline = () => {
 		<div>
 			<h3 className='text-xl text-center my-5'>{timeline.title}</h3>
 			<div className='flex flex-col items-center'>
-				<ul className='border-l-4 border-teal-500 bg-white/50 dark:bg-zinc-800 shadow hover:shadow-xl rounded-r-lg p-4 md:translate-x-[6rem]'>
+				<ul className={'border-l-4 border-teal-500 rounded-r-lg p-4 md:translate-x-[6rem] ' + styles.card}>
 					{ timeline.list.map((element:any, idx:number) => (
 						<li key={idx} className='p-4 border-b-2 relative last:border-0'>
 							<span className='block md:absolute md:translate-x-[-12rem]'>{element.time}</span>
