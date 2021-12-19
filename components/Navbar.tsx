@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Disclosure, Switch } from '@headlessui/react'
 
 
 export default function Navbar() {
 	
+	const router = useRouter()
+
 	// Navigation menu, selects each section availble
 	// add new sections here
 	const navigation = [
-		{ name: 'Home', url: '/', current: 1 },
-		{ name: 'Projects', url: '/projects', current: 0 },
-		{ name: 'Blog', url: '/blog', current: 0 },
+		{
+			name: 'Home',
+			url: '/',
+			current: router.pathname === '/'
+		},{
+			name: 'Projects',
+			url: '/projects',
+			current: router.pathname === '/projects',
+		},{
+			name: 'Blog',
+			url: '/blog',
+			current: router.pathname === '/blog'
+		},
 	]
-
+	
 	// DARK MODE
 	const [darkMode, setDarkMode] = useState(false)
 	const theme = darkMode ? 'dark' : 'light'
