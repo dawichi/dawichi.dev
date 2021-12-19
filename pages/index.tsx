@@ -1,17 +1,8 @@
 import React from 'react'
-import Layout from '../components/Layout'
-import About from '../components/sections/About'
-import Landing from '../components/sections/Landing'
-import Languages from '../components/sections/Languages'
-import Projects from '../components/sections/Projects'
-import Skills from '../components/sections/Skills'
-import Timeline from '../components/sections/Timeline'
-import Travel from '../components/sections/Travel'
-import Contact from '../components/sections/Contact'
-
+import { About, Contact, Landing, Languages, Skills, Timeline, Travel } from '../components'
 const index = () => {
 	return (
-		<Layout>
+		<div className='animate__animated animate__fadeIn animate__faster'>
 			<Landing/>
 			<Skills/>
 			<About/>
@@ -19,8 +10,7 @@ const index = () => {
 			<Languages/>
 			<Travel/>
 			<Contact/>
-			{/* <Projects/> */}
-		</Layout>
+		</div>
 	)
 }
 

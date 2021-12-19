@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComposableMap, Geographies, Geography, Graticule } from 'react-simple-maps'
   
-  const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json"
+const geoUrl = "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json"
   
 const Map = () => {
 	return (
@@ -22,8 +22,8 @@ const Map = () => {
 							<Geography
 								key={geo.rsmKey}
 								geography={geo}
-								fill={visited.indexOf(geo.properties.ABBREV) >= 0 ? '#6200ee' : '#9998A3'}
-								stroke="#EAEAEC"
+								fill={visited.indexOf(geo.properties.ABBREV) >= 0 ? '#14b8a6' : '#93939352'}
+								stroke="#EAEAECa6"
 							/>
 						)
 					})
