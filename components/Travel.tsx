@@ -9,9 +9,9 @@ const Travel = () => (
         <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
 
         <p className='my-5 text-center'>
-            I dream of traveling and knowing as many more countries as possible. I would love to be able to live in
-            different countries throughout my life. Luckily, in software development we have the ability to work from
-            where we want and for whoever we want through the internet. What an amazing job.
+            I dream of traveling and knowing as many countries as possible. I would love to live in different countries
+            throughout my life. Luckily, in software development we have the ability to work from where we want and for
+            whoever we want through the internet. What an amazing job!
         </p>
         <Map />
     </div>

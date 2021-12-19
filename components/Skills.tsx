@@ -83,7 +83,11 @@ const skill_sections = [
 export default function Skills() {
     return (
         <div>
-            <div className={'text-center p-10 text-2xl skew-y-6 shadow-lg ' + styles.card}>
+            <div
+                className={
+                    'text-center p-10 text-2xl skew-y-6 shadow-lg bg-teal-500 bg-teal-500 text-white shadow dark:bg-teal-800 shadow-teal-300 dark:shadow-teal-500'
+                }
+            >
                 <h3>
                     Web development <br /> <i className='bi bi-code-slash'></i>
                 </h3>

@@ -8,7 +8,13 @@ export default function Navbar() {
 
     // Navigation menu, selects each section availble
     // add new sections here
-    const navigation = [
+    interface item {
+        name: string
+        url: string
+        current: boolean
+    }
+
+    const navigation: item[] = [
         {
             name: 'Home',
             url: '/',
@@ -81,8 +87,8 @@ export default function Navbar() {
                                 <div className='hidden sm:block sm:ml-6'>
                                     <div className='flex space-x-4'>
                                         {/* TODO: factorize both menus */}
-                                        {navigation.map(item => (
-                                            <Link href={item.url}>
+                                        {navigation.map((item: item, idx: number) => (
+                                            <Link href={item.url} key={idx}>
                                                 <button
                                                     key={item.name}
                                                     className={
@@ -102,7 +108,7 @@ export default function Navbar() {
                             </div>
                             <div className='absolute right-0 flex'>
                                 <Toggle darkMode={darkMode} setDarkMode={setDarkMode} />
-                                <div className='flex items-center justify-center ml-10 hidden md:block hover:text-violet-500'>
+                                <div className='flex items-center justify-center ml-10 hidden md:block hover:text-teal-500'>
                                     <a
                                         href='https://github.com/dawichi'
                                         target='_blank'
@@ -118,8 +124,8 @@ export default function Navbar() {
 
                     <Disclosure.Panel className='sm:hidden'>
                         <div className='px-2 pt-2 pb-3 space-y-1'>
-                            {navigation.map(item => (
-                                <Link href={item.url}>
+                            {navigation.map((item: item, idx: number) => (
+                                <Link href={item.url} key={idx}>
                                     <button
                                         key={item.name}
                                         className={

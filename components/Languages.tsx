@@ -62,7 +62,7 @@ const Languages = () => {
             <p className='max-w-5xl mx-auto text-center'>
                 I have always been interested in traveling and meeting people from different cultures, so why not try to
                 learn as many languages as possible? After all, if language is the way to interact with other people, a
-                new language grants you new kinds of unique interactions!
+                fresh one grants you with new kinds of unique interactions!
             </p>
 
             <div className='grid md:grid-cols-2 mt-10'>

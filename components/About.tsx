@@ -3,13 +3,16 @@ import React, { useEffect, useState } from 'react'
 const About = () => {
     const [scrolled, setScrolled] = useState(true)
 
+    const handle_scroll = () => {
+        const isTop = window.scrollY > 1300 && window.scrollY < 2500
+        if (isTop !== scrolled) {
+            setScrolled(isTop)
+        }
+    }
+
     useEffect(() => {
-        document.addEventListener('scroll', () => {
-            const isTop = window.scrollY > 1300 && window.scrollY < 2500
-            if (isTop !== scrolled) {
-                setScrolled(isTop)
-            }
-        })
+        document.addEventListener('scroll', handle_scroll)
+        return () => document.removeEventListener('scroll', handle_scroll)
     }, [scrolled])
 
     const setClassName = () => {
@@ -50,8 +53,7 @@ const About = () => {
                     <br />
 
                     <p>
-                        I invest my free time in continuing to improve myself as a developer and{' '}
-                        <b>never stop learning</b>.
+                        I invest my free time in improving myself as a developer and <b>never stop learning</b>.
                     </p>
                     <p>I'm currently studying software engineering in the Universitat Oberta de Catalunya.</p>
                     <br />

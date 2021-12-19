@@ -16,9 +16,9 @@ const projects = () => (
         </h2>
         <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
         <div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5'>
-            {projects_list.map((project: project, idx) => (
+            {projects_list.map((project: project, idx_p: number) => (
                 <a
-                    key={idx}
+                    key={idx_p}
                     href={'https://github.com/Dawichi/' + project.url}
                     target='_blank'
                     className={'py-4 px-10 rounded-lg animate__animated animate__zoomIn animate__faster ' + styles.card}
@@ -26,8 +26,10 @@ const projects = () => (
                     <h4 className='text-center text-xl mb-5'>
                         <i className='bi bi-folder'></i> {project.title}
                     </h4>
-                    {project.tech.map(tech => (
-                        <span className={'m-1 p-1 rounded text-white ' + tint(tech)}>{tech}</span>
+                    {project.tech.map((tech: string, idx_t: number) => (
+                        <span key={idx_t} className={'m-1 p-1 rounded text-white ' + tint(tech)}>
+                            {tech}
+                        </span>
                     ))}
                     <img className='py-5 w-100' src={project.image} alt={project.title} />
                     <p>{project.desc}</p>
