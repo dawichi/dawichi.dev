@@ -2,36 +2,33 @@ import React from 'react'
 import fs from 'fs'
 import matter from 'gray-matter'
 import Link from 'next/link'
+import { styles } from '../styles/styles.config'
 
-export default function Blog({ posts }) {
-	
-	return (
-		<div className="container">
-			{ posts.reverse().map(({frontmatter: {title, description, date, image}, slug}, index: number) => (
-				<Link href={'/post/[slug]'} as={`/post/${slug}`} key={index}>
-					<div className={`animate__animated ${index % 2 == 0 ? 'animate__slideInLeft' : 'animate__slideInRight'}`}>
-						<div className={`row border rounded shadow-sm cursor-pointer ${index % 2 == 0 ? 'flex-row-reverse' : ''}`}>
-							<div className="col-lg-6 p-5">
-								<article key={title}>
-									<header className="mb-3">
-										<h3>{title}</h3>
-										<span>{date}</span>
-									</header>
-									<section>
-										<p>{description}</p>
-									</section>
-								</article>
-							</div>
-							<div className="col-lg-6 p-0">
-								<img src={image} alt={title} className="w-100" />
-							</div>
+
+const Blog = ({ posts }) => (
+	<div className='container mx-auto mt-20 p-5'>
+		<h2 className="text-2xl text-center my-5"><i className="bi bi-pen-fill"></i> Blog posts</h2>
+		<hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto'/>
+		<div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5'>
+			{ posts.map(({frontmatter: {title, description, date, image}, slug}, idx: number) => (
+				<article key={idx} className={`p-5 m-2 rounded-lg cursor-pointer ${styles.card} animate__animated animate__fadeIn animate__faster`}>
+					<Link href={'/post/[slug]'} as={`/post/${slug}`} key={idx}>
+						<div>
+							<h3 className='text-center text-lg'>{title}</h3>
+							<p className='text-center text-sm my-3'>{date}</p>
+							<img src={image} alt={title} className="w-100" />
+							<p className='mt-5'>{description}</p>
 						</div>
-					</div>
-				</Link>
-			)) }				
-		</div>
-	)
-}
+					</Link>
+				</article>
+			)) }	
+		</div>			
+	</div>
+)
+
+export default Blog
+
+
 
 export async function getStaticProps() {
 	const files = fs.readdirSync(`${process.cwd()}/posts`)

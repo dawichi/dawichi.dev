@@ -5,32 +5,25 @@ import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
 import Link from 'next/link'
 
-import Layout from '../../components/Layout'
-import styles from '../../styles/blog.module.scss'
 
+const Post = ({ content, frontmatter }) => (
+	<div className="animate__animated animate__fadeIn animate__faster min-h-screen">
+		<div className='h-[50vh] bg-cover bg-center' style={{backgroundImage: `url(${frontmatter.image})`}} />
+		<article className="max-w-5xl mx-auto p-5">
+			<ReactMarkdown>
+				{content}
+			</ReactMarkdown>
+			<button className="bg-red-600 hover:bg-red-800 text-white p-1 px-2 rounded mt-3">
+				<Link href="/blog">
+					<span><i className="bi bi-arrow-left"></i> Back</span>
+				</Link>
+			</button>
+		</article>
+	</div>
+)
 
-export default function Post({ content, frontmatter }) {
-	
-	return (
-		<Layout>
-			<div className="animate__animated animate__slideInUp">
-				<div className={styles.post}>
-					<div style={{backgroundImage: `url(${frontmatter.image})`}} />
-					<article className="container p-5">
-						<ReactMarkdown>
-							{content}
-						</ReactMarkdown>
-						<Link href="/blog">
-							<span className="my-3 btn btn-danger btn-sm">
-								<i className="bi bi-arrow-left"></i> Back
-							</span>
-						</Link>
-					</article>
-				</div>
-			</div>
-		</Layout>
-	)
-}
+export default Post
+
 
 export async function getStaticPaths() {
 	const files = fs.readdirSync('posts')

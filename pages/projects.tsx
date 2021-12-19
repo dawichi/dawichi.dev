@@ -11,13 +11,13 @@ interface project {
 }
 
 const projects = () => (
-	<div className='container mx-auto my-20 p-5 animate__animated animate__fadeIn'>
+	<div className='container mx-auto my-20 p-5 animate__animated animate__fadeIn animate__faster'>
 		<h2 className="text-2xl text-center my-5"><i className="bi bi-github"></i> Open source projects</h2>
 		<hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto'/>
 		<div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5'>
 
 		{projects_list.map((project: project, idx) => (
-			<a key={idx} href={'https://github.com/Dawichi/' + project.url} target="_blank" className={'py-4 px-10 rounded-lg animate__animated animate__zoomIn ' + styles.card}>
+			<a key={idx} href={'https://github.com/Dawichi/' + project.url} target="_blank" className={'py-4 px-10 rounded-lg animate__animated animate__zoomIn animate__faster ' + styles.card}>
 				<h4 className='text-center text-xl mb-5'><i className="bi bi-folder"></i> {project.title}</h4>
 				{project.tech.map(tech => <span className={'m-1 p-1 rounded text-white ' + tint(tech)}>{tech}</span>)}
 				<img className="py-5 w-100" src={project.image} alt={project.title}/>
