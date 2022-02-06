@@ -1,8 +1,17 @@
-import React from 'react'
+/* eslint-disable @next/next/no-img-element */
+import { ReactChild } from 'react'
 
 const Landing = () => {
     // Wraps the children inside a div with an animation
-    const Animate = ({ animation, children }) => {
+    const Animate = ({ animation, children }: { animation: number; children: ReactChild }) => {
+        interface AnimationKeyof {
+            0: string
+            1: string
+            2: string
+            3: string
+            4: string
+            5: string
+        }
         const animations = {
             0: 'animate__backInDown',
             1: 'animate__lightSpeedInRight',
@@ -11,7 +20,7 @@ const Landing = () => {
             4: 'animate__rollIn',
             5: 'animate__rotateInUpRight',
         }
-        return <div className={`animate__animated ${animations[animation]}`}>{children}</div>
+        return <div className={`animate__animated ${animations[animation as keyof AnimationKeyof]}`}>{children}</div>
     }
 
     // Returns a icon with a link to the url
@@ -35,7 +44,9 @@ const Landing = () => {
                         <div className='flex justify-center'>
                             <Animate animation={0}>Hi&nbsp;</Animate>
                             <Animate animation={1}>
-                                all <i className='bi bi-suit-heart-fill'></i>
+                                <span>
+                                    all <i className='bi bi-suit-heart-fill'></i>
+                                </span>
                             </Animate>
                         </div>
                         <div className='flex justify-center'>

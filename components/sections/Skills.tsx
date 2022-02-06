@@ -1,5 +1,4 @@
-import React from 'react'
-import { styles } from '../styles/styles.config'
+import { styles } from 'styles/styles.config'
 
 const skill_sections = [
     {

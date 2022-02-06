@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Disclosure, Switch } from '@headlessui/react'
@@ -34,7 +34,6 @@ export default function Navbar() {
 
     // DARK MODE
     const [darkMode, setDarkMode] = useState(false)
-    const theme = darkMode ? 'dark' : 'light'
 
     // detects prefgerence
     useEffect(() => {
@@ -50,6 +49,7 @@ export default function Navbar() {
 
     // modifies the mode based on the value of activeTheme
     useEffect(() => {
+        const theme = darkMode ? 'dark' : 'light'
         document.body.dataset.theme = theme
         if (darkMode) {
             localStorage.setItem('theme', 'dark')
@@ -88,7 +88,7 @@ export default function Navbar() {
                                     <div className='flex space-x-4'>
                                         {/* TODO: factorize both menus */}
                                         {navigation.map((item: item, idx: number) => (
-                                            <Link href={item.url} key={idx}>
+                                            <Link href={item.url} key={idx} passHref>
                                                 <button
                                                     key={item.name}
                                                     className={
@@ -125,7 +125,7 @@ export default function Navbar() {
                     <Disclosure.Panel className='sm:hidden'>
                         <div className='px-2 pt-2 pb-3 space-y-1'>
                             {navigation.map((item: item, idx: number) => (
-                                <Link href={item.url} key={idx}>
+                                <Link href={item.url} key={idx} passHref>
                                     <button
                                         key={item.name}
                                         className={
@@ -149,7 +149,7 @@ export default function Navbar() {
 }
 
 // Toggle to switch between dark and light mode
-const Toggle = ({ darkMode, setDarkMode }) => {
+const Toggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: Dispatch<SetStateAction<boolean>> }) => {
     return (
         <Switch
             checked={darkMode}

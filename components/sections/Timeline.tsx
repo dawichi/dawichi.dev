@@ -1,5 +1,5 @@
-import React from 'react'
-import { styles } from '../styles/styles.config'
+/* eslint-disable @next/next/no-img-element */
+import { styles } from 'styles/styles.config'
 
 const Timeline = () => {
     const getMonthsWorking = (month: number, year: number) => {
@@ -86,7 +86,21 @@ const Timeline = () => {
         },
     ]
 
-    const Timeline = ({ timelines }) =>
+    interface Timeline {
+        title: string
+        list: TimelineElement[]
+    }
+
+    interface TimelineElement {
+        title: string
+        time: string
+        position: string
+        url: string
+        months: number
+        type: string
+    }
+
+    const Timeline = ({ timelines }: { timelines: Timeline[] }) =>
         timelines.map((timeline: any, idx_t: number) => (
             <div key={idx_t}>
                 <h3 className='text-xl text-center my-5'>{timeline.title}</h3>
@@ -99,7 +113,12 @@ const Timeline = () => {
                                 <h5>{element.position}</h5>
                                 {element.months ? (
                                     <p>
-                                        <a className='text-teal-500' href={'https://' + element.url} target='_blank'>
+                                        <a
+                                            className='text-teal-500'
+                                            href={'https://' + element.url}
+                                            target='_blank'
+                                            rel='noreferrer'
+                                        >
                                             {element.title}
                                         </a>{' '}
                                         - {element.months} months

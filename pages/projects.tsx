@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 import { styles } from '../styles/styles.config'
 
@@ -22,16 +23,21 @@ const projects = () => (
                     href={'https://github.com/Dawichi/' + project.url}
                     target='_blank'
                     className={'py-4 px-10 rounded-lg animate__animated animate__zoomIn animate__faster ' + styles.card}
+                    rel='noreferrer'
                 >
                     <h4 className='text-center text-xl mb-5'>
                         <i className='bi bi-folder'></i> {project.title}
                     </h4>
-                    {project.tech.map((tech: string, idx_t: number) => (
-                        <span key={idx_t} className={'m-1 p-1 rounded text-white ' + tint(tech)}>
-                            {tech}
-                        </span>
-                    ))}
-                    <img className='py-5 w-100' src={project.image} alt={project.title} />
+					<div className='flex justify-center'>
+						{project.tech.map((tech: string, idx_t: number) => (
+							<span key={idx_t} className={'m-1 p-1 rounded text-white ' + tint(tech)}>
+								{tech}
+							</span>
+						))}
+					</div>
+					<div className='relative rounded overflow-hidden my-5 w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
+						<Image src={project.image} alt={project.title} layout='fill' />
+					</div>
                     <p>{project.desc}</p>
                     <br />
                 </a>

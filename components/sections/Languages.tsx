@@ -1,5 +1,5 @@
-import React from 'react'
-import { styles } from '../styles/styles.config'
+/* eslint-disable @next/next/no-img-element */
+import { styles } from 'styles/styles.config'
 
 const Languages = () => {
     interface lang {
@@ -35,12 +35,12 @@ const Languages = () => {
         },
     ]
 
-    const Lang = ({ langs }) => (
+    const Lang = ({ langs }: { langs: lang[] }) => (
         <div>
             <ul className='grid xl:grid-cols-2'>
                 {langs.map((lang: lang, idx: number) => (
                     <li key={idx} className={'rounded m-3 p-5 ' + styles.card}>
-                        <img className='inline w-8 m-1 border' src={lang.flag} />
+                        <img className='inline w-8 m-1 border' src={lang.flag} alt={lang.name} />
                         <span>{lang.name}</span>
                         <div className='bg-zinc-200 dark:bg-zinc-700 h-2 rounded'>
                             <div className='bg-teal-500 h-2 rounded' style={{ width: `${lang.progress}%` }}></div>

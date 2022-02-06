@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const About = () => {
     const [scrolled, setScrolled] = useState(true)
 
-    const handle_scroll = () => {
-        const isTop = window.scrollY > 1300 && window.scrollY < 2500
-        if (isTop !== scrolled) {
-            setScrolled(isTop)
-        }
-    }
-
     useEffect(() => {
+		const handle_scroll = () => {
+			const isTop = window.scrollY > 1300 && window.scrollY < 2500
+			if (isTop !== scrolled) {
+				setScrolled(isTop)
+			}
+		}
         document.addEventListener('scroll', handle_scroll)
         return () => document.removeEventListener('scroll', handle_scroll)
     }, [scrolled])
 
     const setClassName = () => {
-        if (scrolled) {
-            return 'animate__animated animate__pulse'
-        } else {
-            return ''
-        }
+        if (!scrolled) return ''
+        return 'animate__animated animate__pulse'
     }
 
     const tint = (text: string) => <span className='bg-teal-500 p-1 rounded skew-y-6 text-white'>{text}</span>
@@ -43,7 +39,7 @@ const About = () => {
             <div className='grid lg:grid-cols-3 mt-5'>
                 <div className={`lg:col-span-2 ${setClassName()}`}>
                     <p>
-                        Hi! I'm a <b>software developer</b> based in Galiza (Spain), who works with {tint('JavaScript')}{' '}
+                        Hi! I&apos;m a <b>software developer</b> based in Galiza (Spain), who works with {tint('JavaScript')}{' '}
                         and {tint('Python')}.
                     </p>
                     <p>
@@ -55,18 +51,19 @@ const About = () => {
                     <p>
                         I invest my free time in improving myself as a developer and <b>never stop learning</b>.
                     </p>
-                    <p>I'm currently studying software engineering in the Universitat Oberta de Catalunya.</p>
+                    <p>I&apos;m currently studying software engineering in the Universitat Oberta de Catalunya.</p>
                     <br />
 
                     <p>
                         I try to contribute and publish good <b>open source</b> code, always thinking on what could be
                         useful or interesting for others. I have <b>colaborated with remote developers</b> on small
                         projects for fun, and I believe that being surrounded by the correct people is the best asset to
-                        succeed. I'm also fascinated by UI design, so I always try to make any project look it's best in
+                        succeed. I&apos;m also fascinated by UI design, so I always try to make any project look it&apos;s best in
                         terms of <b>aesthetics and usability</b>.
                     </p>
                 </div>
                 <div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src='/assets/svg/github.svg' className='opacity-90 mx-auto m-5 w-3/4 md:w-full' alt='' />
                 </div>
             </div>

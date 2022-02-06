@@ -1,11 +1,11 @@
 // Layout
-export { default as Navbar } from './Navbar'
+export { default as Navbar } from './layout/Navbar'
 
 // Sections
-export { default as Landing } from './Landing'
-export { default as Skills } from './Skills'
-export { default as About } from './About'
-export { default as Timeline } from './Timeline'
-export { default as Languages } from './Languages'
-export { default as Travel } from './Travel'
-export { default as Contact } from './Contact'
+export { default as Landing } from './sections/Landing'
+export { default as Skills } from './sections/Skills'
+export { default as About } from './sections/About'
+export { default as Timeline } from './sections/Timeline'
+export { default as Languages } from './sections/Languages'
+export { default as Travel } from './sections/Travel'
+export { default as Contact } from './sections/Contact'

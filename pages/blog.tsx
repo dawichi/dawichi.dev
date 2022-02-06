@@ -1,10 +1,20 @@
-import React from 'react'
 import fs from 'fs'
 import matter from 'gray-matter'
+import Image from 'next/image'
 import Link from 'next/link'
 import { styles } from '../styles/styles.config'
 
-const Blog = ({ posts }) => (
+interface Post {
+    slug: string
+    frontmatter: {
+        title: string
+        description: string
+        date: string
+        image: string
+    }
+}
+
+const Blog = ({ posts }: { posts: Post[] }) => (
     <div className='container mx-auto mt-20 p-5'>
         <h2 className='text-2xl text-center my-5'>
             <i className='bi bi-pen-fill'></i> Blog posts
@@ -16,11 +26,13 @@ const Blog = ({ posts }) => (
                     key={idx}
                     className={`p-5 m-2 rounded-lg cursor-pointer ${styles.card} animate__animated animate__fadeIn animate__faster`}
                 >
-                    <Link href={'/post/[slug]'} as={`/post/${slug}`} key={idx}>
+                    <Link href={'/post/[slug]'} as={`/post/${slug}`} key={idx} passHref>
                         <div>
                             <h3 className='text-center text-lg'>{title}</h3>
                             <p className='text-center text-sm my-3'>{date}</p>
-                            <img src={image} alt={title} className='w-100' />
+                            <div className='relative w-full w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
+                                <Image src={image} alt={title} layout='fill' />
+                            </div>
                             <p className='mt-5'>{description}</p>
                         </div>
                     </Link>

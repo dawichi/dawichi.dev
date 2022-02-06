@@ -1,10 +1,11 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import Image from 'next/image'
+import { Navbar } from '../components'
 import '../styles/global.scss'
 import 'tailwindcss/tailwind.css'
 import 'animate.css'
-
-import { Navbar } from '../components'
+import Script from 'next/script'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -27,8 +28,19 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </main>
 
                 <footer className='bg-white/50 dark:bg-zinc-800'>
+                    <div className='flex justify-center items-center'>
+                        <a href='https://www.buymeacoffee.com/dawichi' target='_blank' rel='noreferrer'>
+                            <div className='w-64 h-24 relative'>
+                                <Image
+                                    alt='buymeacoffee'
+                                    src='https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=dawichi&button_colour=14b8a6&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00'
+                                    layout='fill'
+                                />
+                            </div>
+                        </a>
+                    </div>
                     <div className='dark:bg-zinc-800 p-3'>
-                        <div className='container mx-auto flex justify-around'>
+                        <div className='container mx-auto grid lg:grid-cols-2 text-center'>
                             <div>
                                 <span>Site developed by me! ^^ &copy; {new Date().getFullYear().toString()} </span>
                             </div>
@@ -41,7 +53,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </footer>
             </div>
 
-            <script src='/scripts/navbar_box_shadow.js' type='text/javascript'></script>
+			<Script src='/scripts/navbar_box_shadow.js' />
         </>
     )
 }

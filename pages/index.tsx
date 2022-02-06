@@ -1,6 +1,6 @@
-import React from 'react'
 import { About, Contact, Landing, Languages, Skills, Timeline, Travel } from '../components'
-const index = () => {
+
+const Index = () => {
     return (
         <div className='animate__animated animate__fadeIn animate__faster'>
             <Landing />
@@ -14,4 +14,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Index
