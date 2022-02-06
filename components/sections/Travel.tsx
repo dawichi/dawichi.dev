@@ -27,7 +27,6 @@ const Travel = () => (
                 {({ geographies }) =>
                     geographies.map(geo => {
                         const visited = ['Sp.', 'Fr.', 'Ger.', 'Cz.', 'Port.', 'Pol.', 'Italy', 'Neth.']
-						console.log(geo.properties.ABBREV)
 
                         return (
                             <Geography
