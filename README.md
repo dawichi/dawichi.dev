@@ -8,7 +8,3 @@
 ### My personal website!
 
 <img src="./public/assets/img/screenshot_light.png" width="50%;" /><img src="./public/assets/img/screenshot_dark.png" width="50%;" />
-
-
-
-After a first version with Gatsby, and after having learned better React and Typescript, I have decided on NEXTjs for my personal website!

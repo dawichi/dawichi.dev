@@ -1,11 +1,13 @@
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Navbar } from '../components'
-import '../styles/global.scss'
+import Script from 'next/script'
+
 import 'tailwindcss/tailwind.css'
 import 'animate.css'
-import Script from 'next/script'
+
+import { Navbar } from 'components'
+import 'styles/global.scss'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -53,7 +55,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </footer>
             </div>
 
-			<Script src='/scripts/navbar_box_shadow.js' />
+            <Script src='/scripts/navbar_box_shadow.js' />
         </>
     )
 }

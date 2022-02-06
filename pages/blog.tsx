@@ -2,7 +2,8 @@ import fs from 'fs'
 import matter from 'gray-matter'
 import Image from 'next/image'
 import Link from 'next/link'
-import { styles } from '../styles/styles.config'
+
+import { styles } from 'styles/styles.config'
 
 interface Post {
     slug: string
@@ -20,7 +21,7 @@ const Blog = ({ posts }: { posts: Post[] }) => (
             <i className='bi bi-pen-fill'></i> Blog posts
         </h2>
         <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
-        <div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5'>
+        <div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5 mb-32'>
             {posts.map(({ frontmatter: { title, description, date, image }, slug }, idx: number) => (
                 <article
                     key={idx}
@@ -28,7 +29,7 @@ const Blog = ({ posts }: { posts: Post[] }) => (
                 >
                     <Link href={'/post/[slug]'} as={`/post/${slug}`} key={idx} passHref>
                         <div>
-                            <h3 className='text-center text-lg'>{title}</h3>
+                            <h3 className='text-center text-xl'>{title}</h3>
                             <p className='text-center text-sm my-3'>{date}</p>
                             <div className='relative w-full w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
                                 <Image src={image} alt={title} layout='fill' />

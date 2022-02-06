@@ -4,12 +4,12 @@ const About = () => {
     const [scrolled, setScrolled] = useState(true)
 
     useEffect(() => {
-		const handle_scroll = () => {
-			const isTop = window.scrollY > 1300 && window.scrollY < 2500
-			if (isTop !== scrolled) {
-				setScrolled(isTop)
-			}
-		}
+        const handle_scroll = () => {
+            const isTop = window.scrollY > 1300 && window.scrollY < 2500
+            if (isTop !== scrolled) {
+                setScrolled(isTop)
+            }
+        }
         document.addEventListener('scroll', handle_scroll)
         return () => document.removeEventListener('scroll', handle_scroll)
     }, [scrolled])
@@ -39,8 +39,8 @@ const About = () => {
             <div className='grid lg:grid-cols-3 mt-5'>
                 <div className={`lg:col-span-2 ${setClassName()}`}>
                     <p>
-                        Hi! I&apos;m a <b>software developer</b> based in Galiza (Spain), who works with {tint('JavaScript')}{' '}
-                        and {tint('Python')}.
+                        Hi! I&apos;m a <b>software developer</b> based in Galiza (Spain), who works with{' '}
+                        {tint('JavaScript')} and {tint('Python')}.
                     </p>
                     <p>
                         My favourite tools are <b className='code re'>React</b> based technologies, as React Native and
@@ -58,8 +58,8 @@ const About = () => {
                         I try to contribute and publish good <b>open source</b> code, always thinking on what could be
                         useful or interesting for others. I have <b>colaborated with remote developers</b> on small
                         projects for fun, and I believe that being surrounded by the correct people is the best asset to
-                        succeed. I&apos;m also fascinated by UI design, so I always try to make any project look it&apos;s best in
-                        terms of <b>aesthetics and usability</b>.
+                        succeed. I&apos;m also fascinated by UI design, so I always try to make any project look
+                        it&apos;s best in terms of <b>aesthetics and usability</b>.
                     </p>
                 </div>
                 <div>

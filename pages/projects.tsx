@@ -1,6 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
-import { styles } from '../styles/styles.config'
+import { styles } from 'styles/styles.config'
 
 interface project {
     title: string
@@ -10,7 +9,7 @@ interface project {
     tech: string[]
 }
 
-const projects = () => (
+const Projects = () => (
     <div className='container mx-auto my-20 p-5 animate__animated animate__fadeIn animate__faster'>
         <h2 className='text-2xl text-center my-5'>
             <i className='bi bi-github'></i> Open source projects
@@ -28,16 +27,16 @@ const projects = () => (
                     <h4 className='text-center text-xl mb-5'>
                         <i className='bi bi-folder'></i> {project.title}
                     </h4>
-					<div className='flex justify-center'>
-						{project.tech.map((tech: string, idx_t: number) => (
-							<span key={idx_t} className={'m-1 p-1 rounded text-white ' + tint(tech)}>
-								{tech}
-							</span>
-						))}
-					</div>
-					<div className='relative rounded overflow-hidden my-5 w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
-						<Image src={project.image} alt={project.title} layout='fill' />
-					</div>
+                    <div className='flex justify-center'>
+                        {project.tech.map((tech: string, idx_t: number) => (
+                            <span key={idx_t} className={'m-1 p-1 rounded text-white ' + tint(tech)}>
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+                    <div className='relative rounded overflow-hidden my-5 w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
+                        <Image src={project.image} alt={project.title} layout='fill' />
+                    </div>
                     <p>{project.desc}</p>
                     <br />
                 </a>
@@ -46,9 +45,20 @@ const projects = () => (
     </div>
 )
 
-export default projects
+export default Projects
 
 const tint = (tech: string) => {
+    interface colorsKeyOf {
+        JavaScript: string
+        TypeScript: string
+        NextJS: string
+        Bootstrap: string
+        Tailwindcss: string
+        MongoDB: string
+        Docker: string
+        'React Native': string
+    }
+
     const colors = {
         JavaScript: 'bg-yellow-500',
         TypeScript: 'bg-blue-500',
@@ -59,7 +69,7 @@ const tint = (tech: string) => {
         Docker: 'bg-sky-500',
         'React Native': 'bg-cyan-500',
     }
-    return colors[tech]
+    return colors[tech as keyof colorsKeyOf]
 }
 
 const projects_list: project[] = [
