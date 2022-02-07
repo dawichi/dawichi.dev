@@ -98,8 +98,15 @@ const projects_list: project[] = [
         title: 'Hexakill',
         image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png',
         url: 'hexakill',
-        desc: 'A web game at a very first stage, just an experiment with gaming programming',
+        desc: 'Basic RPG game made with TypeScript',
         tech: ['NextJS', 'TypeScript', 'Tailwindcss'],
+    },
+    {
+        title: 'Hexakill CLI',
+        image: 'https://raw.githubusercontent.com/Dawichi/hexakill-cli/main/showcase.png',
+        url: 'hexakill-cli',
+        desc: 'The terminal version of hexakill',
+        tech: ['TypeScript'],
     },
     {
         title: 'Gif Search',
