@@ -100,38 +100,45 @@ const Timeline = () => {
         type: string
     }
 
-    const Timeline = ({ timelines }: { timelines: Timeline[] }) =>
-        timelines.map((timeline: any, idx_t: number) => (
-            <div key={idx_t}>
-                <h3 className='text-xl text-center my-5'>{timeline.title}</h3>
-                <div className='flex flex-col items-center'>
-                    <ul className={'border-l-4 border-teal-500 rounded-r-lg p-4 md:translate-x-[6rem] ' + styles.card}>
-                        {timeline.list.map((element: any, idx_e: number) => (
-                            <li key={idx_e} className='p-4 border-b-2 relative last:border-0'>
-                                <span className='block md:absolute md:translate-x-[-12rem]'>{element.time}</span>
-                                <span>{element.type}</span>
-                                <h5>{element.position}</h5>
-                                {element.months ? (
-                                    <p>
-                                        <a
-                                            className='text-teal-500'
-                                            href={'https://' + element.url}
-                                            target='_blank'
-                                            rel='noreferrer'
-                                        >
-                                            {element.title}
-                                        </a>{' '}
-                                        - {element.months} months
-                                    </p>
-                                ) : (
-                                    <p>{element.title}</p>
-                                )}
-                            </li>
-                        ))}
-                    </ul>
+    const Timeline = ({ timelines }: { timelines: Timeline[] }) => (
+        <div>
+            {timelines.map((timeline: any, idx_t: number) => (
+                <div key={idx_t}>
+                    <h3 className='text-xl text-center my-5'>{timeline.title}</h3>
+                    <div className='flex flex-col items-center'>
+                        <ul
+                            className={
+                                'border-l-4 border-teal-500 rounded-r-lg p-4 md:translate-x-[6rem] ' + styles.card
+                            }
+                        >
+                            {timeline.list.map((element: any, idx_e: number) => (
+                                <li key={idx_e} className='p-4 border-b-2 relative last:border-0'>
+                                    <span className='block md:absolute md:translate-x-[-12rem]'>{element.time}</span>
+                                    <span>{element.type}</span>
+                                    <h5>{element.position}</h5>
+                                    {element.months ? (
+                                        <p>
+                                            <a
+                                                className='text-teal-500'
+                                                href={'https://' + element.url}
+                                                target='_blank'
+                                                rel='noreferrer'
+                                            >
+                                                {element.title}
+                                            </a>{' '}
+                                            - {element.months} months
+                                        </p>
+                                    ) : (
+                                        <p>{element.title}</p>
+                                    )}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        ))
+            ))}
+        </div>
+    )
 
     return (
         <div className='container mx-auto mt-40 p-5'>
