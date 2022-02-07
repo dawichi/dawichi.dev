@@ -96,7 +96,7 @@ const projects_list: project[] = [
     },
     {
         title: 'Hexakill',
-        image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png',
+        image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase2.png',
         url: 'hexakill',
         desc: 'Basic RPG game made with TypeScript',
         tech: ['NextJS', 'TypeScript', 'Tailwindcss'],

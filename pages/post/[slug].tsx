@@ -6,8 +6,11 @@ import Link from 'next/link'
 
 const Post = ({ content, frontmatter }: { content: string; frontmatter: { image: string } }) => (
     <div className='animate__animated animate__fadeIn animate__faster min-h-screen'>
-        <div className='h-[50vh] bg-cover bg-center' style={{ backgroundImage: `url(${frontmatter.image})` }} />
-        <article className='max-w-5xl mx-auto p-5'>
+        <div
+            className='container mx-auto h-[50vh] bg-cover bg-center'
+            style={{ backgroundImage: `url(${frontmatter.image})` }}
+        />
+        <article className='max-w-5xl mx-auto p-5 post-article'>
             <ReactMarkdown>{content}</ReactMarkdown>
             <hr />
             <button className='bg-red-600 hover:bg-red-800 text-white p-1 px-2 rounded mt-3'>

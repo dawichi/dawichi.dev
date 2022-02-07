@@ -7,7 +7,9 @@ image: "https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png"
 
 
 
-A few months ago came to me the idea of creating a game with JavaScript.
+A few months ago came to me the idea of creating my first game in JavaScript.
+
+
 
 I had 0 gaming knowledge until that moment and I was afraid of how a system with so much variables and interactions could being made from 0. 
 
@@ -33,7 +35,6 @@ The intention was to develop a basic system where:
 4. The actions are applied based on entity speed
 
 
-
 So, the first goal was set, and I started coding it!
 
 
@@ -48,31 +49,7 @@ The intention was to use OOP for the generation of entities. I defined a basic e
 
 Because the game was intended to have 2 types of damage (physical and magic) I needed also 2 different methods to recieve damage (recieveAttack and recieveMagic)  so each one applies the armor or MagicResist reduction to the damage before pass the value to the #getDamage function
 
-```tsx
-export class BaseEntity {
-    constructor(level: number, name: string) {
-        this.level = level
-        this.name = name
-        this.dmgRecieved = 0
-        this.health = level * 200
-        this.ad = level * 30
-        this.ap = level * 40
-        this.armor = level * 20
-        this.mr = level * 20
-        this.speed = level * 20
-    }
-
-    // recieve damage from external entity
-    #getDamage(damage: number) { }
-    recieveAttack(damage: number) { }
-    recieveMagic(damage: number) { }
-
-	// actions available for this entity
-    attack() { }
-    magic() { }
-    heal() { }
-}
-```
+![BaseEntity](/assets/img/blog/00-BaseEntity.png)
 
 
 
@@ -85,17 +62,7 @@ Now comes the base for all the playable characters. Unlike the enemies, the play
 
 So we extend the base and add that logic.
 
-```tsx
-export class Character extends BaseEntity {
-    constructor(level: number, name: string) {
-        super(level, name)
-        this.exp = 0
-    }
-
-    #levelUp() {}
-    gainExp(exp: number) { }
-}
-```
+![Character](/assets/img/blog/00-Character.png)
 
 
 
@@ -103,19 +70,8 @@ export class Character extends BaseEntity {
 
 To create the enemies, we can use directly the BaseEntity, modifying some options to change a little each enemy. Example:
 
-```ts
-// good AP  =>  but weak vs AD
-export class Slime extends BaseEntity {
-    constructor(level: number = 1, name: string = 'SLIME') {
-        super(level, name)
-        // + buff
-        this.ap = level * 50
-        // - nerf
-        this.health = level * 150
-        this.armor = level * 15
-    }
-}
-```
+
+![Slime](/assets/img/blog/00-Slime.png)
 
 
 
