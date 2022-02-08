@@ -43,6 +43,7 @@ const Timeline = () => {
             type: '',
         },
     ]
+
     const studies_timeline = [
         {
             title: 'Universitat Oberta de Catalunya',
