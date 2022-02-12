@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('/scripts/prismjs/prism.css');
+@import url('/scripts/prismjs/onedark-theme.css');
 
 html, body {
 	// font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -9,6 +11,7 @@ html, body {
 /* width */
 ::-webkit-scrollbar {
 	width: 8px;
+	height: 8px;
 }
 
 /* Track */
@@ -73,11 +76,27 @@ html, body {
 		border-radius: 8px;
 	}
 
-	code {
-		background-color: #282c34;
+	p > code {
+		background-color: #27272a;
 		padding: 1px 5px;
 		margin: 0 3px;
 		border-radius: 3px;
 		color: white;
+	}
+
+	pre[class*='language-'] {
+		background-color: #27272a;
+		background-image: url(/assets/img/window-buttons.png);
+		background-repeat: no-repeat;
+		background-size: 44px 10px;
+		background-position: 16px 14px;
+		padding: 3rem 1rem 1rem 2rem;
+		overflow-x: auto;
+		border: none;
+		box-shadow: none;
+	}
+
+	pre > code {
+		background-color: #27272a;
 	}
 }
