@@ -239,6 +239,7 @@ pre[class*='language-'] {
 .token.comment,
 .token.italic {
     font-style: italic;
+	font-weight: bold;
 }
 
 .token.entity {

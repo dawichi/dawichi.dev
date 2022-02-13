@@ -7,13 +7,13 @@ image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png'
 
 A few months ago I came up with the idea of creating a game in JavaScript.
 
-I had 0 knowledge of the game up to that point and was afraid of how a system with so many variables and interactions could be made from 0. Here I'll walk you through the process I went through to create this project, what problems I ran into, and how to avoid them.
+I had no knowledge about game programming up to that point and I was afraid of how a system with so many variables and interactions could be made from 0. Here I'll walk you through the process I went through to create this project, what problems I ran into, and how to avoid them.
 
-Check the result here: [hexaskill.vercel.app](https://hexakill.vercel.app) 🎉🎉🎉
+Check the result here: [hexakill.vercel.app](https://hexakill.vercel.app) 🎉🎉🎉
 
 ## 1. Planing
 
-My first impresion when trying to build it, was that going straight into web development might be too intimidating, so I spent a few days testing things out in a basic terminal version which you can find [here](https://github.com/dawichi/hexakill-cli).
+My first impresion when trying to build it, was that going straight into a web development version might be too intimidating, so I spent a few days testing things out in a basic terminal version which you can find here: [hexakill-cli](https://github.com/dawichi/hexakill-cli).
 
 ![hexakill-cli](https://raw.githubusercontent.com/dawichi/hexakill-cli/main/showcase3.png)
 
@@ -32,19 +32,53 @@ The intention was to use OOP for entity generation. I defined a basic entity wit
 
 #### 2.1 - BaseEntity
 
-Because the game was meant to have 2 types of damage (physical and magic) it also needed 2 different methods of taking damage (`recieveAttack` and `recieveMagic`), so each applies armor reduction or MagicResist to the damage before passing the value to `#getDamage` function.
+Because the game was meant to have 2 types of damage (physical and magic), it also needed 2 different methods of taking damage (`receiveAttack` and `receiveMagic`), so each applies armor reduction or MagicResist to the damage before passing the value to the `#getDamage` function.
+
+Regarding the health counter, the final approach was to store a variable with the value of the damage received. So:
+
+Total health: `this.health = 500`  
+Dmg received: `this.dmgReceived = 350`  
+Current health: `this.health - this.dmgReceived` = 150
+
+This, which might seem confusing instead of storing a variable like "currentHP", simplifies the leveling up, because if the levelUp() increases total HP by 200, current health will also increase by the same amount, since current health is being calculated based on that total HP, instead of needing to modify both variables, total HP and "currentHP".
 
 ```ts
 export class BaseEntity {
     constructor(level: number, name: string) {
         this.level = level
         this.name = name
-        this.dmgRecieved = 0
+        this.dmgReceived = 0
+        this.health = level * 200
+        this.ad = level * 30
+        this.ap = level * 40
+        this.armor = level * 20
+        this.mr = level * 20
+        this.speed = level * 12
     }
+
+    // process the damage received
+    #getDamage(damage: number) {
+        this.dmgReceived += damage
+        // If dies, HP counter shows 0 HP, not negative HP
+        if (this.dmgReceived > this.health) {
+            this.dmgReceived = this.health
+        }
+    }
+
+    receiveAttack(damage: number) {
+        this.#getDamage(damage - this.armor)
+    }
+
+    receiveMagic(damage: number) {
+        this.#getDamage(damage - this.mr)
+    }
+
+    // actions available
+    attack() {}
+    magic() {}
+    heal() {}
 }
 ```
-
-![BaseEntity](/assets/img/blog/00-BaseEntity.png)
 
 #### 2.2 - Character
 
@@ -55,10 +89,66 @@ Now comes the base for all playable characters. Unlike enemies, player character
 
 So we extend the base and add that logic.
 
-![Character](/assets/img/blog/00-Character.png)
+```ts
+export class Character extends BaseEntity {
+    constructor(level: number, name: string) {
+        super(level, name)
+        this.exp = 0
+    }
+
+    #levelUp() {
+        this.level++
+        // increment the entity stats, for example:
+        this.health += 250
+        this.ad += 20
+    }
+
+    // the idea is that each time you reach
+    // 100 exp points, you levelup. The while is to
+    // allow levelup 2 at a time if you gain +200 exp.
+    // The return is to know if a level up ocurred.
+    gainExp(exp: number) {
+        const exp_total = this.exp + exp
+        if (exp_total >= 100) {
+            while (true) {
+                this.#levelUp()
+                exp_total -= 100
+                if (exp_total < 100) break
+            }
+            this.exp = exp_total
+            return true
+        } else {
+            this.exp += exp
+            return false
+        }
+    }
+}
+```
 
 #### 2.3 - Enemies
 
-To create the enemies, we can directly use the BaseEntity, modifying some options to change each enemy a bit. Example:
+To create the enemies, we can directly use the BaseEntity without a base "Enemy" class, modifying some options to change each enemy a bit. Example:
 
-![Slime](/assets/img/blog/00-Slime.png)
+```ts
+// good AP ⇒ but weak vs AD
+export class Slime extends BaseEntity {
+    constructor(
+        level: number = 1,
+        name: string = 'SLIME'
+	) {
+        super(level, name)
+        // + buff
+        this.ap = level * 50
+        // - nerf
+        this.health = level * 150
+        this.armor = level * 15
+    }
+}
+```
+
+
+## 3. The game loop
+
+The game loop will contain another 2 loops: the 'fight loop' and the 'turn loop'
+
+Each game will be 
