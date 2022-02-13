@@ -239,7 +239,7 @@ pre[class*='language-'] {
 .token.comment,
 .token.italic {
     font-style: italic;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .token.entity {
@@ -273,7 +273,7 @@ div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
     background: hsl(220, 13%, 26%);
-	color: white;
+    color: white;
     padding: 0.1em 0.4em;
     border-radius: 0.3em;
 }
@@ -285,7 +285,7 @@ div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
 div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
     background: hsl(220, 13%, 26%);
-	color: white;
+    color: white;
     color: hsl(220, 14%, 71%);
 }
 

@@ -75,7 +75,7 @@ const tint = (tech: string) => {
 const projects_list: project[] = [
     {
         title: 'dawichi.dev',
-        image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/screenshot_dark.png',
+        image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/showcase/screenshot_dark.png',
         url: 'dawichi.dev',
         desc: 'This website! Explore its code on GitHub',
         tech: ['NextJS', 'TypeScript', 'Tailwindcss'],

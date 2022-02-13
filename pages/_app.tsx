@@ -11,7 +11,7 @@ import 'styles/global.scss'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <>
+		<>
             <Head>
                 <title>Dawichi - software developer</title>
                 <link rel='icon' href='/favicon.ico' />
@@ -20,7 +20,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 <link
                     rel='stylesheet'
                     href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'
-                />
+					/>
+				{/* eslint-disable @next/next/no-css-tags */ }
+				<link rel="stylesheet" href="/scripts/prismjs/prism.css"/>
+				<link rel="stylesheet" href="/scripts/prismjs/onedark-theme.css"/>
             </Head>
 
             <div className='bg-amber-50 text-zinc-900 dark:text-white dark:bg-zinc-900'>

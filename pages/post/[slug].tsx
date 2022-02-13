@@ -7,7 +7,7 @@ import Link from 'next/link'
 const Post = ({ content, frontmatter }: { content: string; frontmatter: { image: string } }) => (
     <div className='animate__animated animate__fadeIn animate__faster min-h-screen'>
         <div
-            className='container mx-auto h-[50vh] bg-cover bg-center'
+            className='container mx-auto h-[50vh] bg-cover bg-center border border-x-0 border-t-0'
             style={{ backgroundImage: `url(${frontmatter.image})` }}
         />
         <article className='max-w-5xl mx-auto p-5 post-article'>
