@@ -132,10 +132,7 @@ To create the enemies, we can directly use the BaseEntity without a base "Enemy"
 ```ts
 // good AP ⇒ but weak vs AD
 export class Slime extends BaseEntity {
-    constructor(
-        level: number = 1,
-        name: string = 'SLIME'
-	) {
+    constructor(level: number = 1, name: string = 'SLIME') {
         super(level, name)
         // + buff
         this.ap = level * 50
@@ -146,9 +143,89 @@ export class Slime extends BaseEntity {
 }
 ```
 
-
 ## 3. The game loop
 
-The game loop will contain another 2 loops: the 'fight loop' and the 'turn loop'
+The game loop will consist in 2 loops: the 'fight loop' and the 'turn loop'
 
-Each game will be 
+Each game consists of a sequence of multiple fights against different enemies.  
+And each fight against an enemy consists of a sequence of turns.
+
+![hexakill-cli](/assets/img/blog/game_diagram.svg)
+
+### 3.1 Turn loop
+
+This loop needs:
+
+1. Asks for an action
+2. Executes the actions
+3. Checks if anyone was defeated
+
+```ts
+let fightResult = ''
+
+while (!fightResult) {
+    // get the answer from prompt, popup with buttons, etc
+    const playerAction = askPlayerForAction()
+
+    if (enemy.speed > player.speed) {
+        enemyAction()
+        if (playerDied()) {
+            fightResult = 'defeat'
+            break
+        }
+        playerAction()
+        if (enemyDied()) {
+            fightResult = 'win'
+            break
+        }
+    } else {
+        playerAction()
+        if (enemyDied()) {
+            fightResult = 'win'
+            break
+        }
+        enemyAction()
+        if (playerDied()) {
+            fightResult = 'defeat'
+            break
+        }
+    }
+}
+```
+
+### 3.2 Fight loop
+
+This loop needs:
+
+1. Generates an enemy
+2. Turn loop
+3. Gives experience once the fight ended
+
+```ts
+let playing = true
+while (playing) {
+    const enemy = new randomEnemy()
+    let fightResult = ''
+
+    while (!fightResult) {
+        /* Fight Loop */
+    }
+
+    if (fightResult === 'defeat') {
+        gameOverMessage()
+        break
+    }
+
+    // exit the upper while loop
+    // to go to the next combat
+    winFightMessage()
+
+    // example of exp formula to levelup
+    // if the enemy is the same level as you
+    const exp = (enemy.level / player.level) * 100
+    player.gainExp(exp)
+}
+```
+
+
+## 4. Problems found and how I solved them
