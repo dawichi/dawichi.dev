@@ -51,7 +51,7 @@ const Timeline = () => {
             position: 'Software Engineering',
             url: 'bizaway.com',
             months: 0,
-            type: 'Degree (unfinished)',
+            type: 'Degree (on progress)',
         },
         {
             title: 'Vigo University',
@@ -59,7 +59,7 @@ const Timeline = () => {
             position: 'Telecommunication Engineering',
             url: 'bizaway.com',
             months: 0,
-            type: 'Degree (unfinished)',
+            type: 'Degree (dropped out)',
         },
         {
             title: 'IES Armando Cotarelo Valledor',
