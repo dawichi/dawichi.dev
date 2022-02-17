@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { styles } from 'styles/styles.config'
 
-interface project {
+interface Project {
     title: string
     image: string
     url: string
@@ -16,7 +16,7 @@ const Projects = () => (
         </h2>
         <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
         <div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5'>
-            {projects_list.map((project: project, idx_p: number) => (
+            {projects_list.map((project: Project, idx_p: number) => (
                 <a
                     key={idx_p}
                     href={'https://github.com/Dawichi/' + project.url}
@@ -27,14 +27,14 @@ const Projects = () => (
                     <h4 className='text-center text-xl mb-5'>
                         <i className='bi bi-folder'></i> {project.title}
                     </h4>
-                    <div className='flex justify-center'>
+                    <div className='flex justify-center flex-wrap'>
                         {project.tech.map((tech: string, idx_t: number) => (
                             <span key={idx_t} className={'m-1 p-1 rounded text-white ' + tint(tech)}>
                                 {tech}
                             </span>
                         ))}
                     </div>
-                    <div className='relative rounded overflow-hidden my-5 w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
+                    <div className='relative rounded overflow-hidden my-5 w-full h-48 sm:h-72 md:h-96 lg:h-56 mx-auto'>
                         <Image src={project.image} alt={project.title} layout='fill' />
                     </div>
                     <p>{project.desc}</p>
@@ -72,7 +72,7 @@ const tint = (tech: string) => {
     return colors[tech as keyof colorsKeyOf]
 }
 
-const projects_list: project[] = [
+const projects_list: Project[] = [
     {
         title: 'dawichi.dev',
         image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/showcase/screenshot_dark.png',
