@@ -8,6 +8,8 @@ import 'animate.css'
 
 import { Navbar } from 'components'
 import 'styles/global.scss'
+import 'styles/prism.css'
+import 'styles/prism-onedark-theme.css'
 
 export default function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -21,9 +23,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                     rel='stylesheet'
                     href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css'
 					/>
-				{/* eslint-disable @next/next/no-css-tags */ }
-				<link rel="stylesheet" href="/scripts/prismjs/prism.css"/>
-				<link rel="stylesheet" href="/scripts/prismjs/onedark-theme.css"/>
             </Head>
 
             <div className='bg-amber-50 text-zinc-900 dark:text-white dark:bg-zinc-900'>

@@ -75,7 +75,8 @@ html, body {
 		border-radius: 8px;
 	}
 
-	p > code {
+	p > code,
+	li > code {
 		background-color: #27272a;
 		padding: 1px 5px;
 		margin: 0 3px;
