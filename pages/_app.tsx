@@ -58,7 +58,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             </div>
 
             <Script src='/scripts/navbar_box_shadow.js' />
-            <Script src='/scripts/prismjs/prism.js' />
+            <Script src='/scripts/prism.js' />
 
         </>
     )
