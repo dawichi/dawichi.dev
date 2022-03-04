@@ -3,11 +3,11 @@ import { ComposableMap, Geographies, Geography, Graticule } from 'react-simple-m
 const geoUrl = 'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json'
 
 const Travel = () => (
-    <div className='max-w-5xl mx-auto mt-40 p-5'>
-        <h2 className='text-2xl text-center my-5'>
+    <div className='mx-auto mt-40 max-w-5xl p-5'>
+        <h2 className='my-5 text-center text-2xl'>
             <i className='bi bi-geo-fill'></i> Discovering the world
         </h2>
-        <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
+        <hr className='mx-auto h-1 w-3/4 rounded border-0 bg-zinc-700 dark:bg-zinc-200' />
 
         <p className='my-5 text-center'>
             I dream of traveling and knowing as many countries as possible. I would love to live in different countries

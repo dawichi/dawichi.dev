@@ -84,7 +84,7 @@ export default function Skills() {
         <div>
             <div
                 className={
-                    'text-center p-10 text-2xl skew-y-6 shadow-lg bg-teal-500 bg-teal-500 text-white shadow dark:bg-teal-800 shadow-teal-300 dark:shadow-teal-500'
+                    'skew-y-6 bg-teal-500 bg-teal-500 p-10 text-center text-2xl text-white shadow-lg shadow shadow-teal-300 dark:bg-teal-800 dark:shadow-teal-500'
                 }
             >
                 <h3>
@@ -93,10 +93,10 @@ export default function Skills() {
             </div>
 
             <div className='container mx-auto mt-20 px-5'>
-                <h2 className='text-2xl my-5'>
+                <h2 className='my-5 text-2xl'>
                     <i className='bi bi-kanban'></i> What I do
                 </h2>
-                <div className='grid sm:grid-cols-2 xl:grid-cols-4 gap-4'>
+                <div className='grid gap-4 sm:grid-cols-2 xl:grid-cols-4'>
                     {skill_sections.map((section, idx) => (
                         <div key={idx} className={'rounded p-5 ' + styles.card}>
                             <h3 className='text-xl'>
@@ -107,9 +107,9 @@ export default function Skills() {
                             {section.skills.map((skill, idx_skill) => (
                                 <div key={idx_skill}>
                                     <span>{skill.name}</span>
-                                    <div className='bg-zinc-200 dark:bg-zinc-700 h-2 rounded'>
+                                    <div className='h-2 rounded bg-zinc-200 dark:bg-zinc-700'>
                                         <div
-                                            className='bg-teal-500 h-2 rounded'
+                                            className='h-2 rounded bg-teal-500'
                                             style={{ width: `${skill.percent}%` }}
                                         ></div>
                                     </div>

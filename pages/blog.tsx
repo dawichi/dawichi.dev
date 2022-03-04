@@ -17,21 +17,21 @@ interface Post {
 
 const Blog = ({ posts }: { posts: Post[] }) => (
     <div className='container mx-auto mt-20 p-5'>
-        <h2 className='text-2xl text-center my-5'>
+        <h2 className='my-5 text-center text-2xl'>
             <i className='bi bi-pen-fill'></i> Blog posts
         </h2>
-        <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
-        <div className='grid lg:grid-cols-2 xl:grid-cols-3 gap-4 mt-5 mb-32'>
+        <hr className='mx-auto h-1 w-3/4 rounded border-0 bg-zinc-700 dark:bg-zinc-200' />
+        <div className='mt-5 mb-32 grid gap-4 lg:grid-cols-2 xl:grid-cols-3'>
             {posts.map(({ frontmatter: { title, description, date, image }, slug }, idx: number) => (
                 <article
                     key={idx}
-                    className={`p-5 m-2 rounded-lg cursor-pointer ${styles.card} animate__animated animate__fadeIn animate__faster`}
+                    className={`m-2 cursor-pointer rounded-lg p-5 ${styles.card} animate__animated animate__fadeIn animate__faster`}
                 >
                     <Link href={'/post/[slug]'} as={`/post/${slug}`} key={idx} passHref>
                         <div>
                             <h3 className='text-center text-xl'>{title}</h3>
-                            <p className='text-center text-sm my-3'>{date}</p>
-                            <div className='relative w-full w-full h-56 sm:h-72 md:h-96 lg:h-56 mx-auto'>
+                            <p className='my-3 text-center text-sm'>{date}</p>
+                            <div className='relative mx-auto h-56 w-full w-full sm:h-72 md:h-96 lg:h-56'>
                                 <Image src={image} alt={title} layout='fill' />
                             </div>
                             <p className='mt-5'>{description}</p>

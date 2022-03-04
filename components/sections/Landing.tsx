@@ -26,17 +26,17 @@ const Landing = () => {
     // Returns a icon with a link to the url
     const Icon = ({ icon, url }: { icon: string; url: string }) => (
         <a className={'hover:text-teal-500'} target='_blank' rel='noreferrer' href={url}>
-            <div className='m-3 animate__animated animate__rollIn animate__delay-1s'>
+            <div className='animate__animated animate__rollIn animate__delay-1s m-3'>
                 <i className={'bi bi-' + icon}></i>
             </div>
         </a>
     )
 
     return (
-        <div className='min-h-screen flex flex-col justify-center items-center'>
-            <div className='grid md:grid-cols-3 gap-4'>
-                <div className='flex justify-start items-center px-10 md:block'>
-                    <img src='/assets/svg/dev-web.svg' className='w-1/3 md:w-full opacity-90' alt='' />
+        <div className='flex min-h-screen flex-col items-center justify-center'>
+            <div className='grid gap-4 md:grid-cols-3'>
+                <div className='flex items-center justify-start px-10 md:block'>
+                    <img src='/assets/svg/dev-web.svg' className='w-1/3 opacity-90 md:w-full' alt='' />
                 </div>
 
                 <div className='text-center text-2xl md:text-3xl md:text-4xl'>
@@ -65,13 +65,13 @@ const Landing = () => {
                     </h1>
                 </div>
 
-                <div className='flex justify-end items-center px-10 md:block'>
-                    <img src='/assets/svg/dev-app.svg' className='w-1/3 md:w-full opacity-90' alt='' />
+                <div className='flex items-center justify-end px-10 md:block'>
+                    <img src='/assets/svg/dev-app.svg' className='w-1/3 opacity-90 md:w-full' alt='' />
                 </div>
             </div>
 
             <svg
-                className='fill-black dark:fill-white animate-bounce duration-300'
+                className='animate-bounce fill-black duration-300 dark:fill-white'
                 version='1.1'
                 width='80px'
                 xmlns='http://www.w3.org/2000/svg'

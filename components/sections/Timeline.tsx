@@ -90,11 +90,11 @@ const Timeline = () => {
 
     const TimelineList = ({ timeline, title }: { timeline: Timeline[]; title: string }) => (
         <div>
-            <h3 className='text-xl text-center my-5'>{title}</h3>
+            <h3 className='my-5 text-center text-xl'>{title}</h3>
             <div className='flex flex-col items-center'>
-                <ul className={'border-l-4 border-teal-500 rounded-r-lg p-4 md:translate-x-[6rem] ' + styles.card}>
+                <ul className={'rounded-r-lg border-l-4 border-teal-500 p-4 md:translate-x-[6rem] ' + styles.card}>
                     {timeline.map((element: any, idx_e: number) => (
-                        <li key={idx_e} className='p-4 border-b-2 relative last:border-0'>
+                        <li key={idx_e} className='relative border-b-2 p-4 last:border-0'>
                             <span className='block md:absolute md:translate-x-[-12rem]'>{element.time}</span>
                             <span>{element.type}</span>
                             <h5>{element.position}</h5>
@@ -122,18 +122,18 @@ const Timeline = () => {
 
     return (
         <div className='container mx-auto mt-40 p-5'>
-            <h2 className='text-2xl text-center my-5'>
+            <h2 className='my-5 text-center text-2xl'>
                 <i className='bi bi-bezier2'></i> Timeline
             </h2>
-            <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
-            <div className='grid lg:grid-cols-2 mt-5'>
+            <hr className='mx-auto h-1 w-3/4 rounded border-0 bg-zinc-700 dark:bg-zinc-200' />
+            <div className='mt-5 grid lg:grid-cols-2'>
                 <div>
-                    <img src='/assets/svg/workalone.svg' className='opacity-90 mx-auto m-5 w-3/4' alt='' />
+                    <img src='/assets/svg/workalone.svg' className='m-5 mx-auto w-3/4 opacity-90' alt='' />
                 </div>
                 <TimelineList timeline={experience_timeline} title='Experience' />
                 <TimelineList timeline={studies_timeline} title='Studies' />
                 <div>
-                    <img src='/assets/svg/study.svg' className='opacity-90 mx-auto m-5 w-3/4' alt='' />
+                    <img src='/assets/svg/study.svg' className='m-5 mx-auto w-3/4 opacity-90' alt='' />
                 </div>
             </div>
         </div>

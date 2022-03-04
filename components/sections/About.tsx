@@ -19,7 +19,7 @@ const About = () => {
         return 'animate__animated animate__pulse'
     }
 
-    const tint = (text: string) => <span className='bg-teal-500 p-1 rounded skew-y-6 text-white'>{text}</span>
+    const tint = (text: string) => <span className='skew-y-6 rounded bg-teal-500 p-1 text-white'>{text}</span>
 
     const getMyAge = (month: number, year: number) => {
         const date = new Date()
@@ -32,11 +32,11 @@ const About = () => {
 
     return (
         <div className='container mx-auto mt-40 p-5'>
-            <h2 className='text-2xl text-center my-5'>
+            <h2 className='my-5 text-center text-2xl'>
                 <i className='bi bi-person-fill'></i> About me
             </h2>
-            <hr className='bg-zinc-700 dark:bg-zinc-200 border-0 rounded h-1 w-3/4 mx-auto' />
-            <div className='grid lg:grid-cols-3 mt-5'>
+            <hr className='mx-auto h-1 w-3/4 rounded border-0 bg-zinc-700 dark:bg-zinc-200' />
+            <div className='mt-5 grid lg:grid-cols-3'>
                 <div className={`lg:col-span-2 ${setClassName()}`}>
                     <p>
                         Hi! I&apos;m a <b>software developer</b> based in Galiza (Spain), who works with{' '}
@@ -64,7 +64,7 @@ const About = () => {
                 </div>
                 <div>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src='/assets/svg/github.svg' className='opacity-90 mx-auto m-5 w-3/4 md:w-full' alt='' />
+                    <img src='/assets/svg/github.svg' className='m-5 mx-auto w-3/4 opacity-90 md:w-full' alt='' />
                 </div>
             </div>
         </div>

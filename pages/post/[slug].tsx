@@ -13,13 +13,13 @@ export default function Post({ content, frontmatter }: { content: string; frontm
     return (
         <div className='animate__animated animate__fadeIn animate__faster min-h-screen'>
             <div
-                className='container mx-auto h-[50vh] bg-cover bg-center border border-x-0 border-t-0'
+                className='container mx-auto h-[50vh] border border-x-0 border-t-0 bg-cover bg-center'
                 style={{ backgroundImage: `url(${frontmatter.image})` }}
             />
-            <article className='max-w-5xl mx-auto p-5 post-article'>
+            <article className='post-article mx-auto max-w-5xl p-5'>
                 <ReactMarkdown>{content}</ReactMarkdown>
                 <hr />
-                <button className='bg-red-600 hover:bg-red-800 text-white p-1 px-2 rounded mt-3'>
+                <button className='mt-3 rounded bg-red-600 p-1 px-2 text-white hover:bg-red-800'>
                     <Link href='/blog' passHref>
                         <span>
                             <i className='bi bi-arrow-left'></i> Back
