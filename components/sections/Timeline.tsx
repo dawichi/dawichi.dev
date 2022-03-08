@@ -6,6 +6,7 @@ const Timeline = () => {
         const date = new Date()
         const currentMonth = date.getMonth() + 1
         const currentYear = date.getFullYear()
+		
         return currentMonth - month + (currentYear - year) * 12 + 1
     }
 

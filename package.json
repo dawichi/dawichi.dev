@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "prettier:write": "npx prettier --write **/*.{js,jsx,ts,tsx,json} && npx prettier --write *.{js,jsx,ts,tsx,json}"
+        "prettier:write": "npx prettier --write **/*.{js,ts,json} && npx prettier --write *.{js,ts,json}"
     },
     "dependencies": {
         "@headlessui/react": "1.4.3",

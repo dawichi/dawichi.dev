@@ -20,6 +20,7 @@ const Landing = () => {
             4: 'animate__rollIn',
             5: 'animate__rotateInUpRight',
         }
+		
         return <div className={`animate__animated ${animations[animation as keyof AnimationKeyof]}`}>{children}</div>
     }
 

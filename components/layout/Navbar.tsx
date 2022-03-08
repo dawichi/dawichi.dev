@@ -35,7 +35,7 @@ export default function Navbar() {
     // DARK MODE
     const [darkMode, setDarkMode] = useState(false)
 
-    // detects prefgerence
+    // detects preference
     useEffect(() => {
         // if the user defined anything in the localstorage
         if (localStorage.getItem('theme') === 'dark') {
@@ -60,7 +60,37 @@ export default function Navbar() {
         }
     }, [darkMode])
 
-    // END DARK MODE
+    // Toggle to switch between dark and light mode
+    const Toggle = ({
+        darkMode,
+        setDarkMode,
+    }: {
+        darkMode: boolean
+        setDarkMode: Dispatch<SetStateAction<boolean>>
+    }) => (
+        <Switch
+            checked={darkMode}
+            onChange={setDarkMode}
+            className={
+                'relative inline-flex h-[34px] w-[58px] flex-shrink-0 cursor-pointer rounded-full border-2 border-orange-100 bg-orange-50 transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 dark:border-transparent dark:bg-zinc-900'
+            }
+        >
+            <span className='sr-only'>Use setting</span>
+            <span
+                aria-hidden='true'
+                className={`${
+                    darkMode ? 'translate-x-6 bg-zinc-700' : 'translate-x-0 bg-orange-200'
+                } pointer-events-none inline-block flex h-[30px]
+				w-[30px] transform items-center justify-center rounded-full shadow-lg ring-0 transition duration-200 ease-in-out`}
+            >
+                {darkMode ? (
+                    <i className='bi bi-moon-fill text-white'></i>
+                ) : (
+                    <i className='bi bi-sun-fill text-black'></i>
+                )}
+            </span>
+        </Switch>
+    )
 
     return (
         <Disclosure
@@ -145,33 +175,5 @@ export default function Navbar() {
                 </>
             )}
         </Disclosure>
-    )
-}
-
-// Toggle to switch between dark and light mode
-const Toggle = ({ darkMode, setDarkMode }: { darkMode: boolean; setDarkMode: Dispatch<SetStateAction<boolean>> }) => {
-    return (
-        <Switch
-            checked={darkMode}
-            onChange={setDarkMode}
-            className={
-                'relative inline-flex h-[34px] w-[58px] flex-shrink-0 cursor-pointer rounded-full border-2 border-orange-100 bg-orange-50 transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 dark:border-transparent dark:bg-zinc-900'
-            }
-        >
-            <span className='sr-only'>Use setting</span>
-            <span
-                aria-hidden='true'
-                className={`${
-                    darkMode ? 'translate-x-6 bg-zinc-700' : 'translate-x-0 bg-orange-200'
-                } pointer-events-none inline-block flex h-[30px]
-				w-[30px] transform items-center justify-center rounded-full shadow-lg ring-0 transition duration-200 ease-in-out`}
-            >
-                {darkMode ? (
-                    <i className='bi bi-moon-fill text-white'></i>
-                ) : (
-                    <i className='bi bi-sun-fill text-black'></i>
-                )}
-            </span>
-        </Switch>
     )
 }

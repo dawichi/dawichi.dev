@@ -11,22 +11,27 @@ const About = () => {
             }
         }
         document.addEventListener('scroll', handle_scroll)
+
         return () => document.removeEventListener('scroll', handle_scroll)
     }, [scrolled])
 
     const setClassName = () => {
-        if (!scrolled) return ''
+        if (!scrolled) {return ''}
+
         return 'animate__animated animate__pulse'
     }
 
     const tint = (text: string) => <span className='skew-y-6 rounded bg-teal-500 p-1 text-white'>{text}</span>
 
+    // For future use
+    // eslint-disable-next-line no-unused-vars
     const getMyAge = (month: number, year: number) => {
         const date = new Date()
         const currentMonth = date.getMonth() + 1
         const currentYear = date.getFullYear()
         const result = currentMonth - month + (currentYear - year) * 12 + 1
-        if (result === 1) return result.toString() + ' month'
+        if (result === 1) {return result.toString() + ' month'}
+
         return result.toString() + ' months'
     }
 

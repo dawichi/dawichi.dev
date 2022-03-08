@@ -45,7 +45,7 @@ const Blog = ({ posts }: { posts: Post[] }) => (
 
 export default Blog
 
-export async function getStaticProps() {
+export function getStaticProps() {
     const files = fs.readdirSync(`${process.cwd()}/posts`)
 
     const posts = files.map(file => {
