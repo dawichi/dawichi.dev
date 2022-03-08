@@ -1,9 +1,12 @@
+import { useEffect } from 'react'
+import Link from 'next/link'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import ReactMarkdown from 'react-markdown'
-import Link from 'next/link'
-import { useEffect } from 'react'
+
+import Prism from 'public/scripts/prism'
+
 
 export default function Post({ content, frontmatter }: { content: string; frontmatter: { image: string } }) {
     useEffect(() => {
@@ -31,7 +34,7 @@ export default function Post({ content, frontmatter }: { content: string; frontm
     )
 }
 
-export async function getStaticPaths() {
+export function getStaticPaths() {
     const files = fs.readdirSync('posts')
 
     const paths = files.map(filename => ({
@@ -46,7 +49,7 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
+export function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
     const markdownWithMetadata = fs.readFileSync(path.join('posts', slug + '.md')).toString()
 
     const { data, content } = matter(markdownWithMetadata)
