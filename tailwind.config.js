@@ -3,6 +3,7 @@ module.exports = {
         './components/**/*.{html,js,jsx,ts,tsx}',
         './pages/**/*.{html,js,jsx,ts,tsx}',
         './styles/**/*.{html,js,jsx,ts,tsx}',
+        './config/**/*.{html,js,jsx,ts,tsx}',
     ],
     theme: {
         extend: {},
