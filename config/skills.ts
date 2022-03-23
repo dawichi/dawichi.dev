@@ -21,8 +21,12 @@ export const skills_sections: Section[] = [
                 percent: 95,
             },
             {
-                name: 'Jira, Trello, Slack',
-                percent: 95,
+                name: 'Git, GitHub',
+                percent: 90,
+            },
+            {
+                name: 'BitBucket, Confluence, Jira',
+                percent: 85,
             },
         ],
     },
@@ -35,12 +39,16 @@ export const skills_sections: Section[] = [
                 percent: 95,
             },
             {
-                name: 'Bootstrap, W3CSS',
+                name: 'PostCSS, Tailwind',
                 percent: 95,
             },
             {
-                name: 'PostCSS, Tailwind',
+                name: 'Bootstrap, W3CSS',
                 percent: 90,
+            },
+            {
+                name: 'Material, Mantine',
+                percent: 70,
             },
         ],
     },
@@ -49,16 +57,20 @@ export const skills_sections: Section[] = [
         icon: 'easel2-fill',
         skills: [
             {
-                name: 'React, React Native',
+                name: 'React, React Native, NextJS',
                 percent: 95,
             },
             {
-                name: 'NEXTjs, Gatsby, GraphQL',
-                percent: 85,
+                name: 'Svelte, SvelteKit',
+                percent: 70,
             },
             {
                 name: 'Vue, NuxtJS',
                 percent: 60,
+            },
+            {
+                name: 'Vite, Solid',
+                percent: 40,
             },
         ],
     },
@@ -67,7 +79,7 @@ export const skills_sections: Section[] = [
         icon: 'hdd-rack-fill',
         skills: [
             {
-                name: 'Node (Express)',
+                name: 'Node, Express, Nest',
                 percent: 95,
             },
             {
@@ -75,11 +87,11 @@ export const skills_sections: Section[] = [
                 percent: 75,
             },
             {
-                name: 'MongoDB, Mongoose',
+                name: 'MySQL, MongoDB, Redis',
                 percent: 65,
             },
             {
-                name: 'Linux services, Docker',
+                name: 'Docker, CI/CD',
                 percent: 50,
             },
         ],
