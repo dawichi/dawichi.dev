@@ -30,7 +30,7 @@ const Projects = () => (
                     key={idx_p}
                     href={'https://github.com/Dawichi/' + project.url}
                     target='_blank'
-                    className={'animate__animated animate__zoomIn animate__faster rounded-lg py-4 px-10 ' + styles.card}
+                    className={'animate__animated animate__zoomIn animate__faster rounded-lg p-4 md:py-4 md:px-10 ' + styles.card}
                     rel='noreferrer'
                 >
                     <h4 className='mb-5 text-center text-xl'>
@@ -38,7 +38,7 @@ const Projects = () => (
                     </h4>
                     <div className='flex flex-wrap justify-center'>
                         {project.tech.map((tech: string, idx_t: number) => (
-                            <span key={idx_t} className={'m-1 rounded p-1 text-white ' + tint(tech)}>
+                            <span key={idx_t} className={'m-1 rounded p-1 text-white md:text-sm ' + tint(tech)}>
                                 {tech}
                             </span>
                         ))}
