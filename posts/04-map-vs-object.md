@@ -12,7 +12,7 @@ Map and Object are collection data types. Both store data in pairs, with a uniqu
 
 Map is mainly used for fast searching and looking up data, as it has some big differences with Object who make it perfect for that cases.
 
--   **Key**: In Object the key must be simple types (string, number). Manwhile, in Map you can use anything as key, such as functions or other objects.
+-   **Key**: In Object the key must be simple types (string or number). But in Map you can use anything as key, such as functions or other objects.
 
 -   **Order**: Object doesn't respect the order of the pairs once they have been stored, but Map does.
 
@@ -92,9 +92,9 @@ map.delete('key') // @returns boolean
 map.clear()
 ```
 
-In order to achieve the same capability of `map.clear()` in Objects, we will need to iterate through all its properties and delete them one by one.
+To achieve the same capability of `map.clear()` on Objects, we will need to iterate through all of their properties and remove them one by one.
 
-Both of them will need a `O(1)` to delete a single key and `O(n)` to clear the entire structure depending of the number of pairs.
+Both will need a `O(1)` to delete a single key and `O(n)` to delete the whole structure depending on the number of pairs.
 
 ### CHECK SIZE
 
@@ -171,4 +171,4 @@ map.get('print')() // Hi I am !
 
 Object is more than a hash table, with inner logic, inheritance and more flexible features. In the other hand, Map has better performance when we want to store large sets of data, specially if all the keys and values are the same type.
 
-
+![code_gif_from_giphy](/assets/img/blog/end.gif)
