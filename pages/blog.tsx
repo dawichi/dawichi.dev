@@ -67,9 +67,11 @@ export function getStaticProps() {
         }
     })
 
+    const filtered_posts = posts.filter((post: any) => post.frontmatter.visible)
+
     return {
         props: {
-            posts,
+            posts: filtered_posts,
         },
     }
 }

@@ -3,6 +3,7 @@ title: How to build a RPG game with JavaScript
 description: The process to plan, develop and deploy a basic RPG game made with JavaScript
 date: 2022-02-07
 image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase.png'
+visible: true
 ---
 
 A few months ago I came up with the idea of creating a game in JavaScript.

@@ -3,6 +3,7 @@ title: An introduction to recursive programming
 description: How to manage when a solution for a problem contains the problem itself
 date: 2022-02-27
 image: '/assets/img/blog/recursion.jpeg'
+visible: true
 ---
 
 

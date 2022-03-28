@@ -3,6 +3,7 @@ title: Map vs Object, comparison in JS (ES6)
 description: Differences between Map and Object collection data types in JavaScript
 date: 2022-04-02
 image: '/assets/img/blog/map_vs_object.jpg'
+visible: true
 ---
 
 Map and Object are collection data types. Both store data in pairs, with a unique key and a value maped to that key.
