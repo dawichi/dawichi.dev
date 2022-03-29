@@ -30,9 +30,8 @@ const About = () => {
         const currentMonth = date.getMonth() + 1
         const currentYear = date.getFullYear()
         const result = currentMonth - month + (currentYear - year) * 12 + 1
-        if (result === 1) {return result.toString() + ' month'}
 
-        return result.toString() + ' months'
+        return result.toString() + ' month' + (result > 1 ? 's' : '')
     }
 
     return (
