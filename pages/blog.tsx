@@ -25,7 +25,7 @@ const Blog = ({ posts }: { posts: Post[] }) => (
             {posts.map(({ frontmatter: { title, description, date, image }, slug }, idx: number) => (
                 <article
                     key={idx}
-                    className={`m-2 cursor-pointer rounded-lg p-5 ${styles.card} animate__animated animate__fadeIn animate__faster`}
+                    className={`m-2 cursor-pointer rounded-lg p-5 ${styles.card} animate__animated animate__zoomIn animate__faster`}
                 >
                     <Link href={'/post/[slug]'} as={`/post/${slug}`} key={idx} passHref>
                         <div>

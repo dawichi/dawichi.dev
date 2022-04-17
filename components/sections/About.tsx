@@ -43,24 +43,24 @@ const About = () => {
             <div className='mt-5 grid lg:grid-cols-3'>
                 <div className={`lg:col-span-2 ${setClassName()}`}>
                     <p>
-                        Hi! I&apos;m a <b>software developer</b> based in Galiza (Spain), who works with{' '}
-                        {tint('JavaScript')} and {tint('Python')}.
+                        Hi! I&apos;m a <b>software engineer</b> based in Galiza (Spain), who works with{' '}
+                        {tint('JavaScript')} and {tint('Python'
+                        )}.
                     </p>
                     <p>
-                        My favourite tools are <b className='code re'>React</b> based technologies, as React Native and
-                        NEXT.js.
+                        My favourite tools are <b className='code re'>React</b> based technologies for frontend (React Native, NextJS) and NestJS or Django for backend.
                     </p>
                     <br />
 
                     <p>
                         I invest my free time in improving myself as a developer and <b>never stop learning</b>.
                     </p>
-                    <p>I&apos;m currently studying software engineering in the Universitat Oberta de Catalunya.</p>
+                    <p>I&apos;m currently studying software engineering in the UOC.</p>
                     <br />
 
                     <p>
                         I try to contribute and publish good <b>open source</b> code, always thinking on what could be
-                        useful or interesting for others. I have <b>colaborated with remote developers</b> on small
+                        useful or interesting for others. I have <b>colaborated with remote developers</b> on side
                         projects for fun, and I believe that being surrounded by the correct people is the best asset to
                         succeed. I&apos;m also fascinated by UI design, so I always try to make any project look
                         it&apos;s best in terms of <b>aesthetics and usability</b>.

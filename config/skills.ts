@@ -13,11 +13,11 @@ export const skills_sections: Section[] = [
         icon: 'bar-chart-fill',
         skills: [
             {
-                name: 'HTML, CSS',
-                percent: 95,
+                name: 'JavaScript, TypeScript',
+                percent: 98,
             },
             {
-                name: 'JavaScript, TypeScript',
+                name: 'HTML, CSS',
                 percent: 95,
             },
             {
