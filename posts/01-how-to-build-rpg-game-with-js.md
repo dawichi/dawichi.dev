@@ -10,11 +10,11 @@ A few months ago I came up with the idea of creating a game in JavaScript.
 
 I had no knowledge about game programming up to that point and I was afraid of how a system with so many variables and interactions could be made from 0. Here I'll walk you through the process I went through to create this project, what problems I ran into, and how to avoid them.
 
-Check the result here: [hexakill.vercel.app](https://hexakill.vercel.app) 🎉🎉🎉
+Check the result here: [hexakill.vercel.app](https://hexakill.vercel.app/single) 🎉🎉🎉
 
 ## 1. Planing
 
-My first impresion when trying to build it, was that going straight into a web development version might be too intimidating, so I spent a few days testing things out in a basic terminal version which you can find here: [hexakill-cli](https://github.com/dawichi/hexakill-cli).
+My first impresion when trying to build it, was that going straight into a web version might be too intimidating, so I spent a few days testing things out in a basic terminal version which you can find here: [hexakill-cli](https://github.com/dawichi/hexakill-cli).
 
 ![hexakill-cli](https://raw.githubusercontent.com/dawichi/hexakill-cli/main/showcase3.png)
 
@@ -104,10 +104,9 @@ export class Character extends BaseEntity {
         this.ad += 20
     }
 
-    // the idea is that each time you reach
-    // 100 exp points, you levelup. The while is to
-    // allow levelup 2 at a time if you gain +200 exp.
-    // The return is to know if a level up ocurred.
+    // Each time you reach 100 exp points, you levelup.
+    // The while is to allow levelUp 2 at a time if you gain +200 exp.
+    // Returning a boolean let us know if a level up ocurred.
     gainExp(exp: number) {
         const exp_total = this.exp + exp
         if (exp_total >= 100) {
@@ -217,8 +216,7 @@ while (playing) {
         break
     }
 
-    // exit the upper while loop
-    // to go to the next combat
+    // exit the upper while loop to go to the next combat
     winFightMessage()
 
     // example of exp formula to levelup
@@ -230,3 +228,34 @@ while (playing) {
 
 
 ## 4. Problems found and how I solved them
+
+During the development of the game, I found some problems. I was not able to solve them all, but I managed to find some of them.
+
+### Scaling values
+
+It was hard to find the right way to equilibrate the damage scale of the player against the health scale of the enemies.
+
+As the game is currently "infinite" (it ends once the player dies), in advanced levels, a small imbalance makes the enemies stronger than the player, or viceversa. This caused a lot of funny moments with the enemy or the player dying oneshoted by absurd amounts of damage.
+
+### Generation of enemies
+
+I experimented with different ways to generate enemies, with random stats (to add a little of RNG), but finnaly I decided to go with a defined list of enemies, with small differences in stats. The RNG was added in the value of the hits when attacking, so it makes more interesting the combats.
+
+### Damage types
+
+I wanted to offer different types of damage (physical, magic, etc), so the player could choose which one to use depending on the situation and the enemy. To do that, I added the `armor` and `mr` stats to the entities, and the `receiveAttack` and `receiveMagic` methods to the BaseEntity class. The `receiveAttack` method is called when the entity recieves an attack, and the `receiveMagic` when magic is used.
+
+This, besides to offer a better experience, doesn't make the game as complex as I inted, so I added a second layer: RNG to the damage.
+
+The attack has a better chance to hit (90%), making sure you will probably be able to deal damage (80 to 140% of your AD). Meanwhile, the magic has a lower chance to hit (70%), but with a extremly wide range of damage (30 to 200% of your AP), allowing funny coinflip decisions using magic in a decisive moment.
+
+
+## 5. Conclusion
+
+This is a very simple game, but it's a good example of how to implement different playable characters, multiple enemies generation with it's own stats and how to use the RNG to make the game more interesting. I learned a lot about the game loop, and how the logic implementation ends modifying the player experience. 
+
+In a short future, I will try to implement it inside a game engine instead of React, and see if it's possible to take the game to the next level.
+
+I hope you enjoyed this post!
+
+![code_gif_from_giphy](/assets/img/blog/end.gif)
