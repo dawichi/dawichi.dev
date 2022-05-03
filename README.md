@@ -7,4 +7,6 @@
 
 ### My personal website!
 
+<p align="center">🎉🎉🎉 Check it on <a href="https://dawichi.dev" target="_blank">dawichi.dev</a> 🎉🎉🎉</p>
+
 <img src="./public/assets/img/showcase/screenshot_light.png" width="50%;" /><img src="./public/assets/img/showcase/screenshot_dark.png" width="50%;" />
