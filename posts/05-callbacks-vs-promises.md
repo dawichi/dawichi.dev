@@ -2,195 +2,275 @@
 title: Callbacks, Promises and Async/Await
 description: The evolution of how to work with asynchronous code in JavaScript (ES6)
 date: 2022-05-26
-image: '/assets/img/blog/map_vs_object.jpg'
-visible: false
+image: '/assets/img/blog/promises.jpg'
+visible: true
 ---
 
-A callback is just a function that is passed to another function as an argument, and is executed after some operation is complete.
+When you have asynchronous code, you have to deal with some problems that can arise.
+
+For example, when you need to get data from a server, you have to wait for the server to respond. In that case, one of the first solutions was to use callbacks.
+
+## Callbacks
+
+> DEF: A callback is just a function that is passed to another function as an argument, and is executed after some operation is complete.
 
 Basic example:
 
 ```ts
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
-function doSomething(callback: () => void) {
-  delay(1000)
-    .then(() => callback())
+function getDataFromServer(endpoint, callback) {
+  const xhr = new XMLHttpRequest();
+    xhr.open('GET', endpoint);
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        callback(null, xhr.responseText);
+      } else {
+        callback(new Error('Request failed'));
+      }
+    };
 }
 
-doSomething(() => console.log('Done!'))
+getDataFromServer('/users', (err, data) => {
+    if (err) { // manage error
+        console.log(err);
+    } else { // manage data
+        console.log(data);
+    }
+})
 ```
 
 What is happening here?
 
-    -   First, we create a function that returns a promise.
-    -   Then, we pass a callback to the function.
-    -   Finally, we call the callback when the promise is resolved.
+1. We define a function called `getDataFromServer` that takes two arguments: `endpoint` and `callback`.
 
-Map and Object are collection data types. Both store data in pairs, with a unique key and a value maped to that key.
+> `Endpoint` is the endpoint of the server we want to get data from.  
+> `callback` is the function that will be called when the request is completed.
 
--   Object: `{ 1: 'one', 2: 'two' }`
--   Map: `{ (1, 'one'), (2, 'two' ) }`
+2. When the `xhr.onload` event is triggered, we execute the `callback` function with an error or the data depedning of the request status.
 
-Map is mainly used for fast searching and looking up data, as it has some big differences with Object who make it perfect for that cases.
+By this way, we can get data from the server without worrying about the request status, because we can handle both cases with inside callback. Notice that we define the logic of the callback in the function call and not in the function definition, so we can reuse the same function for different requests with different implmentations.
 
--   **Key**: In Object the key must be simple types (string or number). But in Map you can use anything as key, such as functions or other objects.
+### The problem: Callback Hell
 
--   **Order**: Object doesn't respect the order of the pairs once they have been stored, but Map does.
+There is a problem with this approach. If we have a lot of callbacks nested, it can be hard to read and understand.
 
-## Object construction
+Example, let's create a 3-step process with callbacks. In this case, our process will be:
+
+1. Get a cup
+2. Fill the cup with coffee
+3. Drink the coffee
+
+First, we define our 3 functions:
 
 ```ts
-// 3 ways to create an empty object
-const obj = {} // straight-forward
-const obj = new Object() // constructor
-const obj = Object.create(null) // prototype.create (inherits)
+const getCup = (user, cb) => {
+    console.log(`${user} got a cup`)
+    cb('coffee')
+}
+const fillCup = (liquid, cb) => {
+    console.log(`Filling the cup with ${liquid}`)
+    cb('drink')
+}
+const executeAction = (action, cb) => {
+    console.log(`To ${action} the cup`)
+    cb('Done!')
+}
 ```
 
-In general, we only use the first one as it's simpler, faster in performance and it reduces the chances for mistakes. The unique case we could be interested in use the constructors it's when we want to inherit from another object.
+Now, we can call the functions in the correct order:
 
 ```ts
-const animal = {}
-// extended object, points to the same object
-// if you modify one, both change
-const cat = new Object(animal)
-// extended object with constructor (2 different)
-const cat = Object.create(animal)
+getCup('Dawichi', (liquid) => {
+    fillCup(liquid, (action) => {
+        executeAction(action, (result) => {
+            console.log(result)
+        })
+    })
+})
 ```
 
-## Map construction
+As you can see, we have a lot of nested callbacks. This is a problem because we can't read the code and understand what is happening in an easy way. And this is just a 3-step process, so it's not a big deal; but if we have a lot of nested callbacks, it can be extremly hard to maintain and understand later.
 
-Maps are created exclusively with the new keyword and the built-in constructor.
+That's why we have promises.
+
+
+## Promises
+
+Promises are a way to handle asynchronous code in JavaScript. It's the new standard for asynchronous code in JavaScript, as most of the Node.js APIs are being changed from callbacks to promises.
+
+The idea of promises is to resolve or reject a value at some point in the future, so meanwhile we just 'promise' that the value will be available in a certain period of time.
+
+Let's see how it works:
 
 ```ts
-const map1 = new Map()
-const map2 = new Map([
-    ['first key', 'first value'],
-    ['second key', 'second value'],
-])
+const getData = () => {
+    return new Promise((resolve, reject) => {
+        // Let's simulate the request to a server with a delay
+        const error = false
+        const data = { name: 'Dawichi', age: 25 }
+        // After 1s, we resolve the promise with the data
+        setTimeout(() => {
+            if (error) {
+                reject(new Error('Request failed'))
+            } else {
+                resolve(data)
+            }
+        }, 1000)
+    })
+}
 ```
 
-## Differences in use
-
-### CREATE props
+Now, if we call the function and we print the return value directly, we will get a `Promise` object.
 
 ```ts
-// Map                      // Object
-map.set('key', 'value')     obj.key = 'value'
-                            obj['key'] = 'value'
+const data = getData()
+console.log(data) // Promise { <pending> }
 ```
 
-### ACCESS props
+This is the first step of the promise. We call the function and we get a promise of a value. So to be able to get the value, we have to call the `then` method.
 
 ```ts
-// Map                      // Object
-map.get('key')              obj.key
-                            obj['key']
+getData()
+    .then((data) => {
+        console.log(data) // { name: 'Dawichi', age: 25 }
+    })
 ```
 
-### CHECK if a prop exists
+What is happening here?
+
+1. We call the `getData` function.
+2. We get a promise of a value.
+3. We call the `then` method with a callback function.
+4. The callback function is called with the value of the promise.
+
+This is really useful because it allows us to write the code in a more readable way (with other perks).
+
+Let's see the 3-step coffee break process with promises:
 
 ```ts
-// Map                      // Object
-map.has('key')              obj.key !== undefined
-                            'key' in obj
+const getCup = () => {
+    return new Promise((resolve, reject) => {
+        console.log('Getting a cup')
+        resolve('coffee')
+    })
+}
+const fillCup = (liquid) => {
+    return new Promise((resolve, reject) => {
+        console.log(`Filling the cup with ${liquid}`)
+        resolve('drink')
+    })
+}
+const executeAction = (action) => {
+    return new Promise((resolve, reject) => {
+        console.log(`To ${action} the cup`)
+        resolve('Done!')
+    })
+}
+```
+The 3 functions are now encapsulated in promises. For sure this looks worse now, as de function definition have been increased. But then it comes the perks of promises: consume the function.
+
+We call them in the correct order:
+
+```ts
+getCup()
+    .then((liquid) => fillCup(liquid))
+    .then((action) => executeAction(action))
+    .then((result) => {
+        console.log(result)
+    })
 ```
 
-### DELETE prop
+This is a lot easier to read and understand!
 
-Object doesn't have any built-in way to delete properties. We have 2 options:
+But it doesn't end with a `.then` method. There are other methods like `catch` and `finally`, which can be used in multiple situations to make our code more readable.
+
+Let's see `catch` and `finally`:
 
 ```ts
-delete obj.key
-obj.key = undefined
+getCup()
+    .then((liquid) => fillCup(liquid))
+    .then((action) => executeAction(action))
+    .then((result) => {
+        console.log(result)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+    .finally(() => {
+        console.log('Everything is done!')
+    })
 ```
 
-The problem here is that the first one performs a much heavier operation. And the second, doesn't actually delete the pair, it just sets the value of that key to `undefined`, but it still remains in the object, so if you iterate over the keys with `Object.keys()` you still will go through that one.
+Now, if any error happens along the process, it will be handled by the `catch` method, allowing us to handle the error.
 
-Meanwhile in map, we have 2 nice methods to delete:
+This is a very useful feature, but there is still a last beautiful tool: `async/await`.
 
-```ts
-map.delete('key') // @returns boolean
-map.clear()
-```
 
-To achieve the same capability of `map.clear()` on Objects, we will need to iterate through all of their properties and remove them one by one.
+## Async/Await
 
-Both will need a `O(1)` to delete a single key and `O(n)` to delete the whole structure depending on the number of pairs.
+The `async/await` syntax is a new way to write asynchronous code in JavaScript. It was introduced in ES2017, and it allows to consume our asynchronous functions in a much more readable way in certain situations.
 
-### CHECK SIZE
+Let's change our last 3-step example into an async/await version:
+
+> NOTE: As `async/await` is based in the idea of that create an 'async function' and 'await values', we are going to encapsulate our `getCup()` call into a `process()` function in both examples.
 
 ```ts
-// Map                      // Object
-map.size                    Object.keys(obj).length
-```
-
-### ITERATING
-
-Map is iterable, but Object isn't.
-
-```ts
-// typeof <obj>[Symbol.iterator] === “function”
-typeof obj[Symbol.iterator] //undefined
-typeof map[Symbol.iterator] //function
-```
-
-As any iterable, map can be iterated directly with `for ... of` and built-in `forEach()`.
-
-```ts
-// Map
-for (const item of map) { /* item: [key, value] */ }
-for (const [key, value] of map) { /* */ }
-
-map.forEach((item) => { /* */ })
-```
-
-Meanwhile, with Object, we use `for ... in` or `Object.keys()` to iterate.
-
-```ts
-// Object
-for (const key in obj) { /* */ }
-
-Object.keys(obj).forEach((key) => { /* */ })
-```
-
-
-## When to use each one?
-
-Map has good advantages against Object, but there are some cases where Object will be better.
-
-1. Store basic data (when we are sure that the keys will be simple types), because creating an Object is much faster than creating a Map (**literal** vs **constructor**, direct access vs `get()`).
-
-2. JSON has direct support for Object, but not for Map (yet). Use Object if you plan to work with a lot of JSON.
-
-3. Apply logic to properties. Example:
-
-```ts
-const obj = {
-    name: 'David',
-    print: function sayName() {
-        return `Hi I am ${this.name}!`
-    }
+// Process function using 'then'
+const process = () => {
+    getCup()
+        .then((liquid) => fillCup(liquid))
+        .then((action) => executeAction(action))
+        .then((result) => {
+            console.log(result)
+        })
 }
 
-obj.print() // Hi I am David!
+// Process function using 'async/await'
+const process = async () => {
+    const cup = await getCup('Dawichii')
+    const drink = await fillCup(cup)
+    const result = await executeAction(drink)
+    console.log(result)
+}
 ```
 
-If you try to do it with Map, you just can't
+This allows to write code in a less nested way in some situations, and is being really used when we have a lot of complex `then` logic.
+
+The bad part is that to handle errors we have to use a `try/catch` block.
 
 ```ts
-const map = new Map([
-    ['name', 'David'],
-    ['print', function sayName() {
-        return `Hi I am ${this.name}!`
-    }]
-])
+// Process functino using 'then'
+const process = () => {
+    getCup()
+        .then((liquid) => fillCup(liquid))
+        .then((action) => executeAction(action))
+        .then((result) => {
+            console.log(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
 
-map.get('print')() // Hi I am !
+// Process function using 'async/await'
+const process = async () => {
+    try {
+        const cup = await getCup('Dawichii')
+        const drink = await fillCup(cup)
+        const result = await executeAction(drink)
+        console.log(result)
+    } catch (err) {
+        console.log(err)
+    }
+}
 ```
+
+So in small cases it creates a lot of code that could be simpler with `then`, so it depends on the situation what is better.
+
 
 ## Conclusion
 
-Object is more than a hash table, with inner logic, inheritance and more flexible features. In the other hand, Map has better performance when we want to store large sets of data, specially if all the keys and values are the same type.
+Right now, to work with asynchronous code is easier than ever. We have extremly useful tools to handle all the uses cases and preferences, depending of what we need.
 
-![code_gif_from_giphy](/assets/img/blog/end.gif)
+Pick the tool that you like the most, try it and use it to solve your own code problems, because that's the best way to learn.
+
+![code_gif_from_giphy](/assets/img/blog/endings/5.gif)

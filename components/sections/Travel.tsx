@@ -11,8 +11,8 @@ const Travel = () => (
 
         <p className='my-5 text-center'>
             I dream of traveling and knowing as many countries as possible. I would love to live in different countries
-            throughout my life. Luckily, in software development we have the ability to work from where we want and for
-            whoever we want through the internet. What an amazing job!
+            throughout my life. Luckily, in tech industry we have the ability to work remotely from where we want thanks
+            to bleisure. What an amazing oportunity!
         </p>
 
         <ComposableMap
@@ -26,7 +26,7 @@ const Travel = () => (
             <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                     geographies.map(geo => {
-                        const visited = ['Sp.', 'Fr.', 'Ger.', 'Cz.', 'Port.', 'Pol.', 'Italy', 'Neth.']
+                        const visited = ['Sp.', 'Fr.', 'Ger.', 'Cz.', 'Port.', /*'Pol.',*/ 'Italy', 'Neth.']
 
                         return (
                             <Geography

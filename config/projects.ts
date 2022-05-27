@@ -8,17 +8,17 @@ interface Project {
 
 export const projects: Project[] = [
     {
-        title: 'dawichi.dev',
-        image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/showcase/screenshot_dark.png',
-        url: 'dawichi.dev',
-        desc: 'This website! Explore its code on GitHub',
-        tech: ['NextJS', 'TypeScript', 'Tailwindcss'],
-    },
-    {
         title: 'Hexastats',
         image: 'https://raw.githubusercontent.com/Dawichi/hexastats/main/showcase.png',
         url: 'hexastats',
         desc: 'Visualize your league of legends stats',
+        tech: ['NextJS', 'TypeScript', 'Tailwindcss'],
+    },
+    {
+        title: 'dawichi.dev',
+        image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/showcase/screenshot_dark.png',
+        url: 'dawichi.dev',
+        desc: 'This website! Explore its code on GitHub',
         tech: ['NextJS', 'TypeScript', 'Tailwindcss'],
     },
     {
