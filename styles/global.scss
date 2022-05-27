@@ -87,6 +87,17 @@ html, body {
 		color: white;
 	}
 
+    blockquote {
+        background-color: rgba(160, 160, 160, 0.2);
+        border-left: 4px solid #e6e6e6;
+        padding-left: 20px;
+        margin: 20px 0;
+
+        p {
+            padding: 5px;
+        }
+    }
+
 	pre[class*='language-'] {
 		background-color: #27272a;
 		background-image: url(/assets/img/window-buttons.png);

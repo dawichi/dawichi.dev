@@ -103,3 +103,12 @@ def f(n):
 print(f(8))
 # out: [0, 1, 1, 2, 3, 5, 8, 13]
 ```
+
+
+## Conclusion
+
+Recursive programming is a way to solve problems that contain themselves. Is extremly useful for solving certain problems with a short implmementation, but they can be dangerous if we don't define the base case and the recursive case correctly, or we could end with infinite loop cases crashing our program.
+
+So take care with recursive programming!
+
+![code_gif_from_giphy](/assets/img/blog/endings/2.gif)

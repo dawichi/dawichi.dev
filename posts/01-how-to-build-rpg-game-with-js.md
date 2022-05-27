@@ -33,7 +33,7 @@ The intention was to use OOP for entity generation. I defined a basic entity wit
 
 #### 2.1 - BaseEntity
 
-Because the game was meant to have 2 types of damage (physical and magic), it also needed 2 different methods of taking damage (`receiveAttack` and `receiveMagic`), so each applies armor reduction or MagicResist to the damage before passing the value to the `#getDamage` function.
+Because the game was meant to have 2 types of damage (physical and magic), it also needed 2 different methods of taking damage (`receiveAttack` and `receiveMagic`), so each applies armor reduction or MagicResist to the damage before passing the value to the `_getDamage` function.
 
 Regarding the health counter, the final approach was to store a variable with the value of the damage received. So:
 
@@ -58,7 +58,7 @@ export class BaseEntity {
     }
 
     // process the damage received
-    #getDamage(damage: number) {
+    private _getDamage(damage: number) {
         this.dmgReceived += damage
         // If dies, HP counter shows 0 HP, not negative HP
         if (this.dmgReceived > this.health) {
@@ -67,11 +67,11 @@ export class BaseEntity {
     }
 
     receiveAttack(damage: number) {
-        this.#getDamage(damage - this.armor)
+        this._getDamage(damage - this.armor)
     }
 
     receiveMagic(damage: number) {
-        this.#getDamage(damage - this.mr)
+        this._getDamage(damage - this.mr)
     }
 
     // actions available
@@ -97,7 +97,7 @@ export class Character extends BaseEntity {
         this.exp = 0
     }
 
-    #levelUp() {
+    private _levelUp() {
         this.level++
         // increment the entity stats, for example:
         this.health += 250
@@ -111,7 +111,7 @@ export class Character extends BaseEntity {
         const exp_total = this.exp + exp
         if (exp_total >= 100) {
             while (true) {
-                this.#levelUp()
+                this._levelUp()
                 exp_total -= 100
                 if (exp_total < 100) break
             }
@@ -258,4 +258,4 @@ In a short future, I will try to implement it inside a game engine instead of Re
 
 I hope you enjoyed this post!
 
-![code_gif_from_giphy](/assets/img/blog/end.gif)
+![code_gif_from_giphy](/assets/img/blog/endings/1.gif)
