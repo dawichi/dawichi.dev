@@ -32,15 +32,14 @@ export default function MyApp({ Component, pageProps }: AppProps) {
                 </main>
 
                 <footer className='bg-white/50 dark:bg-zinc-800'>
-                    <div className='flex items-center justify-center'>
-                        <a href='https://www.buymeacoffee.com/dawichi' target='_blank' rel='noreferrer'>
-                            <div className='relative h-24 w-64'>
-                                <Image
-                                    alt='buymeacoffee'
-                                    src='https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=dawichi&button_colour=14b8a6&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00'
-                                    layout='fill'
-                                />
-                            </div>
+                    <div className='flex items-center justify-center my-5'>
+                        <a target='_blank' href='https://www.buymeacoffee.com/dawichi' rel='noreferrer'>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                className='w-64 h-24'
+                                src='https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=dawichi&button_colour=14b8a6&font_colour=ffffff&font_family=Cookie&outline_colour=000000&coffee_colour=FFDD00'
+                                alt='Coffee'
+                            />
                         </a>
                     </div>
                     <div className='p-3 dark:bg-zinc-800'>
