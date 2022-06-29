@@ -16,7 +16,9 @@ const About = () => {
     }, [scrolled])
 
     const setClassName = () => {
-        if (!scrolled) {return ''}
+        if (!scrolled) {
+            return ''
+        }
 
         return 'animate__animated animate__pulse'
     }
@@ -43,19 +45,31 @@ const About = () => {
             <div className='mt-5 grid lg:grid-cols-3'>
                 <div className={`lg:col-span-2 ${setClassName()}`}>
                     <p>
-                        Hi! I&apos;m a <b>software engineer</b> based in Galiza (Spain), who works with{' '}
-                        {tint('JavaScript')} and {tint('Python'
-                        )}.
+                        Hi! I&apos;m David, a <b>software engineer</b> based in Spain with +2 years of experience
+                        creating stuff.
+                    </p>
+                    <br />
+
+                    <p>
+                        I work mainly with {tint('JavaScript')} (specially <span title='TypeScript'>{tint('TS')}</span>
+                        ), but I love {tint('Python')} for specific tasks.
                     </p>
                     <p>
-                        My favourite tools are <b className='code re'>React</b> based technologies for frontend (React Native, NextJS) and NestJS or Django for backend.
+                        My favourite tools are <b>NestJS</b> for Backend and <b>React</b> (NextJS) based technologies
+                        for frontend.
                     </p>
+                    <br />
+
+                    <p>Also, eventually I have done small projects with other tools such as Java, PHP and C#.</p>
                     <br />
 
                     <p>
                         I invest my free time in improving myself as a developer and <b>never stop learning</b>.
                     </p>
-                    <p>I&apos;m currently studying software engineering in the UOC.</p>
+                    <p>
+                        I&apos;m currently studying the engineering, but I really love <b>Freecodecamp</b> and{' '}
+                        <b>Platzi</b>.
+                    </p>
                     <br />
 
                     <p>

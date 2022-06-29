@@ -17,15 +17,11 @@ export const skills_sections: Section[] = [
                 percent: 98,
             },
             {
-                name: 'HTML, CSS',
-                percent: 95,
-            },
-            {
                 name: 'Git, GitHub',
                 percent: 90,
             },
             {
-                name: 'BitBucket, Confluence, Jira',
+                name: 'Atlassian Suite workflow',
                 percent: 85,
             },
         ],
@@ -46,10 +42,6 @@ export const skills_sections: Section[] = [
                 name: 'Bootstrap, W3CSS',
                 percent: 90,
             },
-            {
-                name: 'Material, Mantine',
-                percent: 70,
-            },
         ],
     },
     {
@@ -62,15 +54,11 @@ export const skills_sections: Section[] = [
             },
             {
                 name: 'Svelte, SvelteKit',
-                percent: 70,
+                percent: 85,
             },
             {
                 name: 'Vue, NuxtJS',
                 percent: 60,
-            },
-            {
-                name: 'Vite, Solid',
-                percent: 40,
             },
         ],
     },
@@ -83,16 +71,16 @@ export const skills_sections: Section[] = [
                 percent: 95,
             },
             {
-                name: 'Python (Flask, Django)',
-                percent: 75,
-            },
-            {
                 name: 'MySQL, MongoDB, Redis',
-                percent: 65,
+                percent: 85,
             },
             {
                 name: 'Docker, CI/CD',
-                percent: 50,
+                percent: 80,
+            },
+            {
+                name: 'Python (Flask, Django)',
+                percent: 65,
             },
         ],
     },
