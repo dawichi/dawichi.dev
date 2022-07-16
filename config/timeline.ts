@@ -44,7 +44,7 @@ export const experience: Timeline[] = [
         title: 'as waiter, storekeeper...',
         time: '2017 - 2019',
         position: 'Summer non-tech jobs',
-        url: 'nubodata.com',
+        url: '',
         months: 0,
         type: '',
     },
