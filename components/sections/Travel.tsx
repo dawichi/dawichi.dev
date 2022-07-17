@@ -1,6 +1,6 @@
 import { ComposableMap, Geographies, Geography, Graticule } from 'react-simple-maps'
 
-const geoUrl = 'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json'
+const geoUrl = 'https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json'
 
 const Travel = () => (
     <div className='mx-auto mt-40 max-w-5xl p-5'>
@@ -26,13 +26,13 @@ const Travel = () => (
             <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                     geographies.map(geo => {
-                        const visited = ['Sp.', 'Fr.', 'Ger.', 'Cz.', 'Port.', /*'Pol.',*/ 'Italy', 'Neth.']
+                        const visited = ['Spain', 'France', 'Germany', 'Czech Republic', 'Portugal', /*'Pol.',*/ 'Italy', 'Netherlands', 'Slovenia']
 
                         return (
                             <Geography
                                 key={geo.rsmKey}
                                 geography={geo}
-                                fill={visited.indexOf(geo.properties.ABBREV) >= 0 ? '#14b8a6' : '#93939352'}
+                                fill={visited.indexOf(geo.properties.name) >= 0 ? '#14b8a6' : '#93939352'}
                                 stroke='#EAEAECa6'
                             />
                         )
