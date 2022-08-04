@@ -12,6 +12,7 @@ const tint = (tech: string) => {
         ['MongoDB', 'bg-green-500'],
         ['Docker', 'bg-sky-500'],
         ['React Native', 'bg-cyan-500'],
+        ['NuxtJS', 'bg-teal-500'],
     ])
 
     return colors.get(tech)

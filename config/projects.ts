@@ -25,7 +25,7 @@ export const projects: Project[] = [
         title: 'Hexakill',
         image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase2.png',
         url: 'hexakill',
-        desc: 'Basic RPG game made with TypeScript',
+        desc: 'Basic RPG web game',
         tech: ['NextJS', 'TypeScript', 'Tailwindcss'],
     },
     {
