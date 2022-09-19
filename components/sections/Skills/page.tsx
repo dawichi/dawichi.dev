@@ -1,5 +1,5 @@
-import { skills_sections } from 'config'
 import { styles } from 'styles/styles.config'
+import { sections } from './data'
 
 const Skills = (): JSX.Element => (
     <div>
@@ -18,7 +18,7 @@ const Skills = (): JSX.Element => (
                 <i className='bi bi-kanban'></i> What I do
             </h2>
             <div className='grid gap-4 sm:grid-cols-2 xl:grid-cols-4'>
-                {skills_sections.map((section, idx) => (
+                {sections.map((section, idx) => (
                     <div key={idx} className={'rounded p-5 ' + styles.card}>
                         <h3 className='text-xl'>
                             <i className={'bi bi-' + section.icon}></i>&nbsp;{section.title}

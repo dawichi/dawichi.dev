@@ -1,13 +1,11 @@
-interface Section {
+export const sections: {
     title: string
     icon: string
     skills: {
         name: string
         percent: number
     }[]
-}
-
-export const skills_sections: Section[] = [
+}[] = [
     {
         title: 'Basics',
         icon: 'bar-chart-fill',
