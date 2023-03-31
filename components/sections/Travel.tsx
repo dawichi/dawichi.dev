@@ -26,7 +26,7 @@ const Travel = () => (
             <Geographies geography={geoUrl}>
                 {({ geographies }) =>
                     geographies.map(geo => {
-                        const visited = ['Spain', 'France', 'Germany', 'Czech Republic', 'Portugal', /*'Pol.',*/ 'Italy', 'Netherlands', 'Slovenia']
+                        const visited = ['Spain', 'France', 'Germany', 'Czech Republic', 'Portugal', /*'Pol.',*/ 'Italy', 'Netherlands', 'Slovenia', 'Austria', 'Hungary']
 
                         return (
                             <Geography
