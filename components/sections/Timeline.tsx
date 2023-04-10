@@ -10,7 +10,7 @@ const TimelineList = ({ timeline, title }: { timeline: TimelineType[]; title: st
         <h3 className='my-5 text-center text-xl'>{title}</h3>
         <div className='flex flex-col items-center'>
             <ul className={'rounded-r-lg border-l-4 border-teal-500 p-4 md:translate-x-[6rem] ' + styles.card}>
-                {timeline.map((element: any, idx_e: number) => (
+                {timeline.map((element, idx_e: number) => (
                     <li key={idx_e} className='relative border-b-2 p-4 last:border-0'>
                         <span className='block md:absolute md:translate-x-[-12rem]'>{element.time}</span>
                         <span>{element.type}</span>
