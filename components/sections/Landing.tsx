@@ -4,15 +4,7 @@ import { ReactChild } from 'react'
 const Landing = () => {
     // Wraps the children inside a div with an animation
     const Animate = ({ animation, children }: { animation: number; children: ReactChild }) => {
-        interface AnimationKeyof {
-            0: string
-            1: string
-            2: string
-            3: string
-            4: string
-            5: string
-        }
-        const animations = {
+        const animations: Record<number, string> = {
             0: 'animate__backInDown',
             1: 'animate__lightSpeedInRight',
             2: 'animate__lightSpeedInLeft',
@@ -21,7 +13,7 @@ const Landing = () => {
             5: 'animate__rotateInUpRight',
         }
 		
-        return <div className={`animate__animated ${animations[animation as keyof AnimationKeyof]}`}>{children}</div>
+        return <div className={`animate__animated ${animations[animation]}`}>{children}</div>
     }
 
     // Returns a icon with a link to the url
