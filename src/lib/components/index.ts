@@ -1,0 +1,7 @@
+export { default as Landing } from './Landing.svelte'
+export { default as Skills } from './Skills.svelte'
+export { default as About } from './About.svelte'
+export { default as Timeline } from './Timeline.svelte'
+export { default as Languages } from './Languages.svelte'
+export { default as Travel } from './Travel.svelte'
+export { default as Contact } from './Contact.svelte'
