@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount } from "svelte"
+    import { onMount } from 'svelte'
 
     let scrolled = false
     const spanClass = 'skew-y-6 rounded bg-teal-500 p-1 text-white'
@@ -19,7 +19,7 @@
     <div class="mt-5 grid lg:grid-cols-3">
         <div class={`lg:col-span-2 ${scrolled ? 'animate__animated animate__pulse' : ''}`}>
             <p>
-                Hi! I&apos;m David, a <b>software engineer</b> based in Spain with +2 years of experience creating stuff.
+                Hi! I&apos;m David, a <b>software engineer</b> based in Spain with +3 years of experience creating stuff.
             </p>
             <br />
 
@@ -28,19 +28,16 @@
                 ), but I love <span class={spanClass}>Python</span> for specific tasks.
             </p>
             <p>
-                My favourite tools are <b>NestJS</b> for Backend and <b>React</b> (NextJS) based technologies for frontend.
+                My favourite tools are <b>NestJS</b> for backend and <b>Svelte</b> / <b>React</b> for frontend.
             </p>
             <br />
 
-            <p>Also, eventually I have done small projects with other tools such as Java, PHP and C#.</p>
+            <p>Also, eventually I have done small projects with other tools such as Java, C# and PHP.</p>
             <br />
 
             <p>
-                I invest my free time in improving myself as a developer and <b>never stop learning</b>.
-            </p>
-            <p>
-                I&apos;m currently studying the engineering, but I really love <b>Freecodecamp</b> and{' '}
-                <b>Platzi</b>.
+                I love immersing myself in the new tools that become available to us constantly and looking for how to use them to improve other people's lives
+                and make their jobs easier through automation and process improvements.
             </p>
             <br />
 

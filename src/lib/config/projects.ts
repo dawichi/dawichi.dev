@@ -16,7 +16,7 @@ export const projects: Project[] = [
     },
     {
         title: 'dawichi.dev',
-        image: 'https://raw.githubusercontent.com/Dawichi/dawichi.dev/master/public/assets/img/showcase/screenshot_dark.png',
+        image: '/assets/img/showcase/screenshot_light.png',
         url: 'dawichi.dev',
         desc: 'This website! Explore its code on GitHub',
         tech: ['SvelteKit', 'TypeScript', 'Tailwindcss'],
