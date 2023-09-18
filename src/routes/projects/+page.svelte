@@ -15,6 +15,7 @@
         Redis: 'bg-red-500',
         NestJS: 'bg-red-600',
         SvelteKit: 'bg-orange-400',
+        Astro: 'bg-gray-900',
     }
 </script>
 
@@ -37,7 +38,7 @@
                 </h4>
                 <div class="flex flex-wrap justify-center">
                     {#each project.tech as tech}
-                        <span class={'m-1 rounded p-1 text-white md:text-sm ' + badgeColors[tech]}>
+                        <span class={'m-1 rounded py-1 px-2 text-white md:text-sm ' + badgeColors[tech]}>
                             {tech}
                         </span>
                     {/each}

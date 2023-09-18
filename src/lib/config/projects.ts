@@ -22,6 +22,13 @@ export const projects: Project[] = [
         tech: ['SvelteKit', 'TypeScript', 'Tailwindcss'],
     },
     {
+        title: 'Blog',
+        image: 'https://blog.dawichi.dev/images/showcase.png',
+        url: 'blog',
+        desc: 'A blog about sofware engineering',
+        tech: ['Astro', 'Tailwindcss'],
+    },
+    {
         title: 'Hexakill',
         image: 'https://raw.githubusercontent.com/Dawichi/hexakill/main/showcase2.png',
         url: 'hexakill',
