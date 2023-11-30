@@ -1,14 +1,5 @@
 <script lang="ts">
-    import { onMount } from 'svelte'
-
-    let scrolled = false
     const spanClass = 'skew-y-6 rounded bg-teal-500 p-1 text-white'
-
-    onMount(() => {
-        document.onscroll = () => {
-            window.scrollY > 1300 && window.scrollY < 2500 ? (scrolled = true) : (scrolled = false)
-        }
-    })
 </script>
 
 <div class="container mx-auto mt-40 p-5">
@@ -17,22 +8,21 @@
     </h2>
     <hr class="mx-auto h-1 w-3/4 rounded border-0 bg-zinc-700 dark:bg-zinc-200" />
     <div class="mt-5 grid lg:grid-cols-3">
-        <div class={`lg:col-span-2 ${scrolled ? 'animate__animated animate__pulse' : ''}`}>
+        <div class="lg:col-span-2">
             <p>
-                Hi! I&apos;m David, a <b>software engineer</b> based in Spain with +3 years of experience creating stuff.
+                Hi! I&apos;m David, a <b>software engineer</b> based in Spain with +4 years of experience creating stuff.
             </p>
             <br />
 
             <p>
-                I work mainly with <span class={spanClass}>JavaScript</span> (specially <span title="TypeScript"><span class={spanClass}>TS</span></span>
-                ), but I love <span class={spanClass}>Python</span> for specific tasks.
+                I work mainly with <span class={spanClass}>JavaScript</span> (specially <span title="TypeScript"><span class={spanClass}>TS</span></span>). And <span class={spanClass}>Python</span> or <span class={spanClass}>Go</span> and for specific tasks.
             </p>
             <p>
-                My favourite tools are <b>NestJS</b> for backend and <b>Svelte</b> / <b>React</b> for frontend.
+                My main tools are <b>NestJS</b> for backend and <b>Svelte</b> / <b>React</b> for frontend.
             </p>
             <br />
 
-            <p>Also, eventually I have done small projects with other tools such as Java, C# and PHP.</p>
+            <p>Also, eventually I have done small projects with languages such as Java, C# and PHP.</p>
             <br />
 
             <p>
