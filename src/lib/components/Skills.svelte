@@ -1,125 +1,81 @@
 <script lang="ts">
-    import { styles } from '$lib/config/styles'
-
-    type SectionDefinition = {
-        title: string
-        icon: string
-        skills: Array<{
-            name: string
-            percent: number
-        }>
-    }
-
-    const sections: Array<SectionDefinition> = [
-        {
-            title: 'Basics',
-            icon: 'bar-chart-fill',
-            skills: [
-                {
-                    name: 'JavaScript, TypeScript',
-                    percent: 98,
-                },
-                {
-                    name: 'Git, GitHub',
-                    percent: 90,
-                },
-                {
-                    name: 'Atlassian Suite workflow',
-                    percent: 85,
-                },
-            ],
-        },
-        {
-            title: 'Styling',
-            icon: 'brush-fill',
-            skills: [
-                {
-                    name: 'SASS, LESS',
-                    percent: 95,
-                },
-                {
-                    name: 'PostCSS, Tailwind',
-                    percent: 95,
-                },
-                {
-                    name: 'Bootstrap, W3CSS',
-                    percent: 90,
-                },
-            ],
-        },
-        {
-            title: 'Front',
-            icon: 'easel2-fill',
-            skills: [
-                {
-                    name: 'React, React Native, NextJS',
-                    percent: 95,
-                },
-                {
-                    name: 'Svelte, SvelteKit',
-                    percent: 85,
-                },
-                {
-                    name: 'Vue, NuxtJS',
-                    percent: 60,
-                },
-            ],
-        },
-        {
-            title: 'Back',
-            icon: 'hdd-rack-fill',
-            skills: [
-                {
-                    name: 'Node, Express, Nest',
-                    percent: 95,
-                },
-                {
-                    name: 'MySQL, MongoDB, Redis',
-                    percent: 85,
-                },
-                {
-                    name: 'Docker, CI/CD',
-                    percent: 80,
-                },
-                {
-                    name: 'Python (Flask, Django)',
-                    percent: 65,
-                },
-            ],
-        },
-    ]
+    import SkillsCard from './SkillsCard.svelte'
 </script>
 
-<div>
-    <div class="skew-y-6 bg-teal-500 p-10 text-center text-2xl text-white shadow shadow-teal-300 dark:bg-teal-800 dark:shadow-teal-500">
-        <h3>
-            Web development <br /> <i class="bi bi-code-slash" />
-        </h3>
+<div class="container mx-auto mt-20 px-5">
+    <h2 class="my-5 text-center text-2xl">
+        <i class="bi bi-journal-text"></i> What I do
+    </h2>
+    <hr class="mx-auto h-1 w-3/4 rounded border-0 bg-zinc-700 dark:bg-zinc-200" />
+    <br />
+
+    <!-- FIRST ROW -->
+    <div class="grid lg:grid-cols-3 gap-4 pb-4">
+        <div class="grid w-auto h-full">
+            <img src="/assets/svg/pair-programming.svg" alt="pair programming" class="opacity-90 m-auto py-2 w-3/5" />
+        </div>
+
+        <SkillsCard
+            title="Basics"
+            titleIcon="bi-bar-chart-fill"
+            paragraphs={[
+                'Software development of scalable systems from scratch to production.',
+                'Experience with different languages, paradigms and methodologies.',
+            ]}
+            technologies={['javascript', 'typescript', 'python', 'go', 'php']}
+        />
+
+        <SkillsCard
+            title="Backend"
+            titleIcon="bi-hdd-rack-fill"
+            paragraphs={['APIs with REST and GraphQL. Performant, secure and scalable.', 'Database design, with preference for Mongo, PostgreSQL and Redis.']}
+            technologies={['nodejs', 'nestjs', 'docker', 'redis', 'mongodb']}
+        />
     </div>
 
-    <div class="container mx-auto mt-20 px-5">
-        <h2 class="my-5 text-2xl">
-            <i class="bi bi-kanban" /> What I do
-        </h2>
-        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {#each sections as section}
-                <div class={'rounded p-5 ' + styles.card}>
-                    <h3 class="text-xl">
-                        <i class={'bi bi-' + section.icon} />&nbsp;{section.title}
-                    </h3>
-                    <hr />
-                    <br />
-                    {#each section.skills as skill}
-                        <div>
-                            <span>{skill.name}</span>
-                            <div class="h-2 rounded bg-zinc-200 dark:bg-zinc-700">
-                                <div class="h-2 rounded bg-teal-500" style="width: {skill.percent}%" />
-                            </div>
-                            <br />
-                        </div>
-                    {/each}
-                </div>
-            {/each}
+    <!-- SECOND ROW -->
+    <div class="grid lg:grid-cols-3 gap-4 pb-4">
+        <div class="grid w-auto h-full lg:order-3">
+            <img src="/assets/svg/meeting.svg" alt="meeting" class="opacity-90 m-auto py-2 w-3/5" />
         </div>
+
+        <SkillsCard
+            title="Frontend"
+            titleIcon="bi-easel2-fill"
+            paragraphs={['Web applications, from SPAs with complex state management and dozens of screens, to mobile apps with React Native.']}
+            technologies={['react', 'nextjs', 'vuejs', 'nuxtjs', 'svelte', 'flutter']}
+        />
+
+        <SkillsCard
+            title="Styling"
+            titleIcon="bi-brush-fill"
+            paragraphs={['+10 custom UI component libraries, working close to the UI/UX designers, for different projects and companies.']}
+            technologies={['css3', 'sass', 'tailwindcss']}
+        />
+    </div>
+
+    <!-- THIRD ROW -->
+    <div class="grid lg:grid-cols-3 gap-4 pb-4">
+        <div class="grid w-auto h-full">
+            <img src="/assets/svg/coffee.svg" alt="coffee" class="opacity-90 m-auto py-2 w-2/5" />
+        </div>
+
+        <SkillsCard
+            title="Team player"
+            titleIcon="bi-kanban-fill"
+            paragraphs={[
+                'Experience working asynchronously with international distributed teams of different sizes, from small startups to large companies.',
+                'Solid communication skills from working directly with clients and providers.',
+            ]}
+        />
+
+        <SkillsCard
+            title="Blog"
+            titleIcon="bi-pen-fill"
+            paragraphs={[
+                "From time to time, I'm bored enough to write some articles about my experiences, projects and personal development.",
+                'Check them out! ;)',
+            ]}
+        />
     </div>
 </div>
