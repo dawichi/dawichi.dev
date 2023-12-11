@@ -27,9 +27,9 @@
     <div class="mt-5 grid gap-4 lg:grid-cols-2 xl:grid-cols-3">
         {#each projects as project}
             <a
-                href={'https://github.com/Dawichi/' + project.url}
+                href="https://github.com/dawichi/{project.url}"
                 target="_blank"
-                class={'animate__animated animate__zoomIn animate__faster rounded-lg p-4 md:py-4 md:px-10 ' + styles.card}
+                class="animate__animated animate__zoomIn animate__faster rounded p-4 md:py-4 md:px-10 {styles.card}"
                 rel="noreferrer"
             >
                 <h4 class="mb-5 text-center text-xl">
@@ -38,7 +38,7 @@
                 </h4>
                 <div class="flex flex-wrap justify-center">
                     {#each project.tech as tech}
-                        <span class={'m-1 rounded py-1 px-2 text-white md:text-sm ' + badgeColors[tech]}>
+                        <span class="m-1 rounded py-1 px-2 text-white md:text-sm {badgeColors[tech]}">
                             {tech}
                         </span>
                     {/each}
