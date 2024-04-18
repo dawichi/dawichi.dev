@@ -1,0 +1,24 @@
+---
+import { styles } from '../config/styles'
+
+interface Props {
+    title: string
+    titleIcon: string
+    paragraphs: Array<string>
+    technologies?: Array<string>
+}
+
+const { title, titleIcon, paragraphs, technologies = [] } = Astro.props
+---
+
+<aside class={`rounded p-5 ${styles.card} border-l-4 border-teal-500`}>
+    <h3 class='pb-4 text-xl'>
+        <i class={`bi ${titleIcon}`}></i>&nbsp; {title}
+    </h3>
+
+    {paragraphs.map(paragraph => <p class='pb-4'>{paragraph}</p>)}
+
+    <p class='flex gap-2'>
+        {technologies.map(tech => <i class={`text-2xl devicon-${tech}-plain`} />)}
+    </p>
+</aside>

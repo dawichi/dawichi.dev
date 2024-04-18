@@ -1,0 +1,38 @@
+---
+import type { TimelineDTO } from '../types/Timeline'
+import { styles } from '../config/styles'
+
+interface Props {
+    timeline: Array<TimelineDTO>
+    title: string
+}
+
+const { timeline, title } = Astro.props
+---
+
+<div>
+    <h3 class='my-5 text-center text-xl'>{title}</h3>
+    <div class='flex flex-col items-center'>
+        <ul class={`rounded-r-lg border-l-4 border-teal-500 p-4 md:translate-x-[6rem] ${styles.card}`}>
+            {
+                timeline.map(item => (
+                    <li class='relative border-b-2 p-4 last:border-0'>
+                        <span class='block md:absolute md:translate-x-[-12rem]'>{item.time}</span>
+                        <span>{item.type}</span>
+                        <h5>{item.position}</h5>
+                        {item.months ? (
+                            <p>
+                                <a class='text-teal-500' href='https://{item.url}' target='_blank' rel='noreferrer'>
+                                    {item.title}
+                                </a>
+                                {item.months}
+                            </p>
+                        ) : (
+                            <p>{item.title}</p>
+                        )}
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</div>
