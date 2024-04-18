@@ -1,24 +1,27 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from '../layouts/Layout.astro'
 
 // Components
-import About from "../components/About.astro"
-import Timeline from "../components/Timeline.astro"
-import Skills from "../components/Skills.astro"
-import Languages from "../components/Languages.astro"
-import Travel from "../components/Travel.astro"
-import Contact from "../components/Contact.astro"
+import Landing from '../components/Landing.astro'
+import About from '../components/About.astro'
+import Timeline from '../components/Timeline.astro'
+import Skills from '../components/Skills.astro'
+import Languages from '../components/Languages.astro'
+import Travel from '../components/Travel.astro'
+import Contact from '../components/Contact.astro'
 ---
-<Layout title="Home">
-    <div class="animate__animated animate__fadeIn animate__faster">
-        <!-- <Landing /> -->
-    
-        <div class="skew-y-6 bg-teal-500 p-10 text-center text-2xl text-white shadow shadow-teal-300 dark:bg-teal-800 dark:shadow-teal-500">
+
+<Layout title='Home'>
+    <div class='animate__animated animate__fadeIn animate__faster'>
+        <Landing />
+
+        <div class='skew-y-6 bg-teal-500 p-10 text-center text-2xl text-white shadow shadow-teal-300 dark:bg-teal-800 dark:shadow-teal-500'>
             <h3>
-                Web development <br /> <i class="bi bi-code-slash" />
+                Web development <br />
+                <i class='bi bi-code-slash'></i>
             </h3>
         </div>
-    
+
         <About />
         <Timeline />
         <Skills />
@@ -26,5 +29,4 @@ import Contact from "../components/Contact.astro"
         <Travel />
         <Contact />
     </div>
-    
 </Layout>
