@@ -22,7 +22,7 @@ const { timeline, title } = Astro.props
                         <h5>{item.position}</h5>
                         {item.months ? (
                             <p>
-                                <a class='text-teal-500' href='https://{item.url}' target='_blank' rel='noreferrer'>
+                                <a class='text-teal-500' href={`https://${item.url}`} target='_blank' rel='noreferrer'>
                                     {item.title}
                                 </a>
                                 {item.months}
