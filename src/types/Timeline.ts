@@ -24,11 +24,19 @@ export interface TimelineDTO {
 
 export const experience: Array<TimelineDTO> = [
     {
+        title: 'Giunti Psy',
+        time: 'Jun 24 - now',
+        position: 'Software Engineer',
+        url: 'giuntipsy.com',
+        months: getMonthsWorking(5, 2024),
+        type: '',
+    },
+    {
         title: 'BizAway',
-        time: 'Nov 21 - now',
+        time: 'Nov 21 - Jun 24',
         position: 'Backend Engineer',
         url: 'bizaway.com',
-        months: getMonthsWorking(11, 2021),
+        months: '2 years 8 months',
         type: '',
     },
     {
@@ -36,7 +44,7 @@ export const experience: Array<TimelineDTO> = [
         time: 'Dec 20 - Nov 21',
         position: 'Junior Frontend Developer',
         url: 'dosespacios.com',
-        months: '11 months',
+        months: '1 year',
         type: '',
     },
     {
@@ -47,13 +55,13 @@ export const experience: Array<TimelineDTO> = [
         months: '4 months',
         type: '',
     },
-    {
-        title: 'as waiter, storekeeper...',
-        time: '2017 - 2019',
-        position: 'Summer non-tech jobs',
-        url: '',
-        type: '',
-    },
+    // {
+    //     title: 'as waiter, storekeeper...',
+    //     time: '2017 - 2019',
+    //     position: 'Summer non-tech jobs',
+    //     url: '',
+    //     type: '',
+    // },
 ]
 
 export const studies: Array<TimelineDTO> = [
