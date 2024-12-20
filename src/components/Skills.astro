@@ -22,14 +22,17 @@ import SkillsCard from './SkillsCard.astro'
                 'Software development of scalable systems from scratch to production.',
                 'Experience with different languages, paradigms and methodologies.',
             ]}
-            technologies={['javascript', 'typescript', 'python', 'go', 'php']}
+            technologies={['javascript', 'typescript', 'python', 'csharp', 'go', 'php', 'java']}
         />
 
         <SkillsCard
             title='Backend'
             titleIcon='bi-hdd-rack-fill'
-            paragraphs={['APIs with REST and GraphQL. Performant, secure and scalable.', 'Database design, with preference for Mongo, PostgreSQL and Redis.']}
-            technologies={['nodejs', 'nestjs', 'docker', 'redis', 'mongodb']}
+            paragraphs={[
+                'APIs with REST and GraphQL. Performant, secure, well documented and scalable.',
+                'Database design, with preference for SQLite + Redis.',
+            ]}
+            technologies={['nodejs', 'nestjs', 'docker', 'sqlite', 'redis', 'mongodb']}
         />
     </div>
 
@@ -43,7 +46,7 @@ import SkillsCard from './SkillsCard.astro'
             title='Frontend'
             titleIcon='bi-easel2-fill'
             paragraphs={['Web applications, from SPAs with complex state management and dozens of screens, to mobile apps with React Native.']}
-            technologies={['react', 'nextjs', 'vuejs', 'nuxtjs', 'svelte', 'flutter']}
+            technologies={['react', 'nextjs', 'angular', 'vuejs', 'nuxtjs', 'svelte']}
         />
 
         <SkillsCard
