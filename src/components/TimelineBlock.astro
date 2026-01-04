@@ -16,16 +16,26 @@ const { timeline, title } = Astro.props
         <ul class={`rounded-r-lg border-l-4 border-teal-500 p-4 md:translate-x-[6rem] ${styles.card}`}>
             {
                 timeline.map(item => (
-                    <li class='relative border-b-2 p-4 last:border-0'>
+                    <li
+                        class='relative border-b-2 p-4 last:border-0'
+                        {...(item.startMonth && item.startYear
+                            ? {
+                                  'data-start-month': item.startMonth,
+                                  'data-start-year': item.startYear,
+                              }
+                            : {})}
+                    >
                         <span class='block md:absolute md:translate-x-[-12rem]'>{item.time}</span>
                         <span>{item.type}</span>
                         <h5>{item.position}</h5>
-                        {item.months ? (
+                        {(item.months || item.startMonth) ? (
                             <p>
                                 <a class='text-teal-500' href={`https://${item.url}`} target='_blank' rel='noreferrer'>
                                     {item.title}
                                 </a>
-                                {item.months}
+                                <span class='timeline-months'>
+                                    {item.months || ''}
+                                </span>
                             </p>
                         ) : (
                             <p>{item.title}</p>
@@ -36,3 +46,34 @@ const { timeline, title } = Astro.props
         </ul>
     </div>
 </div>
+
+<script>
+    function getMonthsWorking(month: number, year: number): string {
+        const date = new Date()
+        const currentMonth = date.getMonth() + 1
+        const currentYear = date.getFullYear()
+
+        const totalMonths = currentMonth - month + (currentYear - year) * 12
+
+        const years = Math.floor(totalMonths / 12)
+        const months = totalMonths % 12
+
+        if (!years) return `${months} months`
+        if (!months) return `${years} years`
+        return `${years} year${years > 1 ? 's' : ''} ${months} month${months > 1 ? 's' : ''}`
+    }
+
+    // Find all timeline items with start date data attributes
+    document.querySelectorAll('[data-start-month][data-start-year]').forEach((item) => {
+        const startMonth = parseInt(item.getAttribute('data-start-month') || '0')
+        const startYear = parseInt(item.getAttribute('data-start-year') || '0')
+
+        if (startMonth && startYear) {
+            const monthsElement = item.querySelector('.timeline-months')
+            if (monthsElement) {
+                const calculatedMonths = getMonthsWorking(startMonth, startYear)
+                monthsElement.textContent = calculatedMonths
+            }
+        }
+    })
+</script>

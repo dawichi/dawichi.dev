@@ -1,24 +1,11 @@
-function getMonthsWorking(month: number, year: number): string {
-    const date = new Date()
-    const currentMonth = date.getMonth() + 1
-    const currentYear = date.getFullYear()
-
-    const totalMonths = currentMonth - month + (currentYear - year) * 12
-
-    const years = Math.floor(totalMonths / 12)
-    const months = totalMonths % 12
-
-    if (!years) return `${months} months`
-    if (!months) return `${years} years`
-    return `${years} year${years > 1 ? 's' : ''} ${months} month${months > 1 ? 's' : ''}`
-}
-
 export interface TimelineDTO {
     title: string
     time: string
     position: string
     url: string
     months?: string
+    startMonth?: number
+    startYear?: number
     type: string
 }
 
@@ -28,7 +15,8 @@ export const experience: Array<TimelineDTO> = [
         time: 'Jun 24 - now',
         position: 'Software Engineer',
         url: 'giuntipsy.com',
-        months: getMonthsWorking(5, 2024),
+        startMonth: 5,
+        startYear: 2024,
         type: '',
     },
     {
