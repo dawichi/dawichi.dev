@@ -9,6 +9,10 @@ const work = [
         mode: 'remote',
         startMonth: 6,
         startYear: 2024,
+        bullets: [
+            'Working across a microservice architecture (20+ repositories), from backend services to Angular applications covering internal tooling, client portals, and patient-facing assessment',
+            'Driving codebase modernization to TypeScript and composable Angular standalone components, improving both code health and UI/UX consistency across the product',
+        ],
     },
     {
         period: 'Nov 2021 – Jun 2024',
@@ -18,6 +22,10 @@ const work = [
         location: 'Vigo, Spain',
         mode: 'remote',
         duration: '2 years 8 months',
+        bullets: [
+            'Progressive refactor of a legacy Express.js monolith, driving modern TS practices and Jest end-to-end testing',
+            'Worked on live flight booking integrations at a B2B travel platform, handling fare reservations, seat selection, and more',
+        ],
     },
     {
         period: 'Dec 2020 – Nov 2021',
@@ -27,6 +35,10 @@ const work = [
         location: 'Vilagarcía de Arousa, Spain',
         mode: 'hybrid',
         duration: '1 year',
+        bullets: [
+            'Delivered ~30 e-commerce stores (PrestaShop / WooCommerce) and 4 React Native apps for iOS and Android',
+            'Built B2B tools with Next.js + NestJS: inventory dashboards, CRM systems, and client sites with custom WordPress plugins, including interactive maps',
+        ],
     },
     {
         period: 'Sep 2020 – Dec 2020',
@@ -36,6 +48,10 @@ const work = [
         location: 'Pontevedra, Spain',
         mode: 'on-site',
         duration: '4 months',
+        bullets: [
+            'Configured Zabbix to monitor company infrastructure (servers, DBs, routers) displayed live on an office TV',
+            'Built a client WordPress e-commerce store and prototyped Nubodata\'s new public site in React',
+        ],
     },
 ] as const
 
@@ -115,6 +131,13 @@ const modeStyles = {
                                         />
                                     )}
                                 </div>
+                                {'bullets' in item && item.bullets && (
+                                    <ul class="mt-2 text-zinc-400 text-sm leading-relaxed space-y-1 list-disc list-inside marker:text-zinc-600">
+                                        {item.bullets.map((bullet) => (
+                                            <li>{bullet}</li>
+                                        ))}
+                                    </ul>
+                                )}
                             </div>
                         ))
                     }
