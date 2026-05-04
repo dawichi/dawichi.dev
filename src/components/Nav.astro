@@ -1,0 +1,130 @@
+<header
+    class="fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-xl border-b border-zinc-900"
+>
+    <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <a
+            href="/"
+            class="font-mono font-semibold text-zinc-100 tracking-tight hover:text-teal-400 transition-colors duration-200"
+        >
+            dawichi
+        </a>
+
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-8">
+            <a
+                href="/#about"
+                class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                >About</a
+            >
+            <a
+                href="/#experience"
+                class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                >Experience</a
+            >
+            <a
+                href="/#skills"
+                class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                >Skills</a
+            >
+            <a
+                href="/projects"
+                class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                >Projects</a
+            >
+            <a
+                href="https://blog.dawichi.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-zinc-400 hover:text-zinc-100 transition-colors duration-200"
+                >Blog</a
+            >
+            <a
+                href="/#contact"
+                class="text-sm px-4 py-1.5 bg-teal-600 hover:bg-teal-500 text-white rounded-lg font-medium transition-colors duration-200"
+                >Contact</a
+            >
+        </nav>
+
+        <!-- Mobile hamburger -->
+        <button
+            id="menu-btn"
+            class="md:hidden flex flex-col gap-1.5 p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+        >
+            <span class="block w-5 h-px bg-current transition-all duration-200" id="bar1"></span>
+            <span class="block w-5 h-px bg-current transition-all duration-200" id="bar2"></span>
+            <span class="block w-5 h-px bg-current transition-all duration-200" id="bar3"></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-zinc-900 bg-[#09090b]">
+        <nav class="max-w-5xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <a
+                href="/#about"
+                class="mobile-link text-sm text-zinc-400 hover:text-zinc-100 py-2.5 transition-colors duration-200"
+                >About</a
+            >
+            <a
+                href="/#experience"
+                class="mobile-link text-sm text-zinc-400 hover:text-zinc-100 py-2.5 transition-colors duration-200"
+                >Experience</a
+            >
+            <a
+                href="/#skills"
+                class="mobile-link text-sm text-zinc-400 hover:text-zinc-100 py-2.5 transition-colors duration-200"
+                >Skills</a
+            >
+            <a
+                href="/projects"
+                class="mobile-link text-sm text-zinc-400 hover:text-zinc-100 py-2.5 transition-colors duration-200"
+                >Projects</a
+            >
+            <a
+                href="https://blog.dawichi.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-link text-sm text-zinc-400 hover:text-zinc-100 py-2.5 transition-colors duration-200"
+                >Blog</a
+            >
+            <a
+                href="/#contact"
+                class="mobile-link text-sm text-zinc-400 hover:text-zinc-100 py-2.5 transition-colors duration-200"
+                >Contact</a
+            >
+        </nav>
+    </div>
+</header>
+
+<script>
+    const btn = document.getElementById('menu-btn')
+    const menu = document.getElementById('mobile-menu')
+    const bar1 = document.getElementById('bar1')
+    const bar2 = document.getElementById('bar2')
+    const bar3 = document.getElementById('bar3')
+
+    btn?.addEventListener('click', () => {
+        const isOpen = menu?.classList.toggle('hidden') === false
+        btn.setAttribute('aria-expanded', String(isOpen))
+        if (isOpen) {
+            bar1?.classList.add('translate-y-2', 'rotate-45')
+            bar2?.classList.add('opacity-0')
+            bar3?.classList.add('-translate-y-2', '-rotate-45')
+        } else {
+            bar1?.classList.remove('translate-y-2', 'rotate-45')
+            bar2?.classList.remove('opacity-0')
+            bar3?.classList.remove('-translate-y-2', '-rotate-45')
+        }
+    })
+
+    document.querySelectorAll('.mobile-link').forEach((link) => {
+        link.addEventListener('click', () => {
+            menu?.classList.add('hidden')
+            btn?.setAttribute('aria-expanded', 'false')
+            bar1?.classList.remove('translate-y-2', 'rotate-45')
+            bar2?.classList.remove('opacity-0')
+            bar3?.classList.remove('-translate-y-2', '-rotate-45')
+        })
+    })
+</script>

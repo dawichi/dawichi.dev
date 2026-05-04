@@ -1,0 +1,42 @@
+---
+const langs = [
+    { name: 'Spanish', level: 'Native', progress: 100 },
+    { name: 'Galician', level: 'Native', progress: 100 },
+    { name: 'English', level: 'Professional', progress: 90 },
+    { name: 'German', level: 'Intermediate', progress: 45 },
+    { name: 'Korean', level: 'Beginner', progress: 10 },
+]
+---
+
+<section id="languages" class="py-24 border-t border-zinc-900 scroll-mt-14">
+    <div class="max-w-5xl mx-auto px-6">
+        <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">Languages</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">Human languages</h2>
+        <p class="text-zinc-400 leading-relaxed mb-12 max-w-2xl">
+            I've always been fascinated by languages — learning one is like unlocking a new way of
+            thinking and connecting with people. Each one opens a different world.
+        </p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {
+                langs.map((lang) => (
+                    <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-zinc-200 font-medium">{lang.name}</span>
+                            <span class="text-xs text-zinc-500 font-mono">{lang.level}</span>
+                        </div>
+                        <div class="h-1.5 rounded-full bg-zinc-800">
+                            <div
+                                class="h-1.5 rounded-full bg-teal-500 transition-all duration-500"
+                                style={`width: ${lang.progress}%`}
+                            />
+                        </div>
+                        <p class="text-right text-xs text-zinc-600 mt-1 font-mono">
+                            {lang.progress}%
+                        </p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

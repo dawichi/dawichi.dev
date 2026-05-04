@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@theme {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+}
+
+::selection {
+    background-color: theme(colors.teal.500 / 30%);
+    color: theme(colors.zinc.100);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: theme(colors.zinc.700) transparent;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: theme(colors.zinc.700);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: theme(colors.teal.600);
+}

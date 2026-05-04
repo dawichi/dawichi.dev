@@ -1,0 +1,71 @@
+---
+const categories = [
+    {
+        label: 'Languages',
+        accent: false,
+        tags: ['JavaScript', 'TypeScript', 'Python', 'Go', 'C#', 'Java'],
+    },
+    {
+        label: 'Backend',
+        accent: true,
+        tags: [
+            'Node.js',
+            'NestJS',
+            'Express',
+            'REST API',
+            'GraphQL',
+            'Docker',
+            'Redis',
+            'MongoDB',
+            'SQLite',
+        ],
+    },
+    {
+        label: 'Frontend',
+        accent: false,
+        tags: ['Svelte', 'React', 'Angular', 'Vue', 'Next.js', 'Nuxt.js'],
+    },
+    {
+        label: 'Styling',
+        accent: false,
+        tags: ['CSS', 'Sass', 'Tailwind CSS'],
+    },
+    {
+        label: 'DevOps & Tools',
+        accent: false,
+        tags: ['Git', 'GitHub', 'CI/CD', 'Linux'],
+    },
+]
+---
+
+<section id="skills" class="py-24 border-t border-zinc-900 scroll-mt-14">
+    <div class="max-w-5xl mx-auto px-6">
+        <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">Skills</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">Technologies I work with</h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {
+                categories.map((cat) => (
+                    <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6">
+                        <h3 class="text-zinc-300 font-semibold text-sm uppercase tracking-wider mb-4">
+                            {cat.label}
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            {cat.tags.map((tag) => (
+                                <span
+                                    class={`text-xs px-2.5 py-1 rounded-md font-medium ${
+                                        cat.accent
+                                            ? 'bg-teal-900/40 text-teal-300 border border-teal-800/50'
+                                            : 'bg-zinc-800 text-zinc-400'
+                                    }`}
+                                >
+                                    {tag}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

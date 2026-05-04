@@ -1,0 +1,64 @@
+---
+import { projects } from '../config/projects'
+---
+
+<section id="about" class="py-24 border-t border-zinc-900 scroll-mt-14">
+    <div class="max-w-5xl mx-auto px-6">
+        <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">About</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">
+            Building from interface to infrastructure
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-12 mb-0">
+            <div class="space-y-5 text-zinc-400 leading-relaxed">
+                <p>
+                    Hi, I'm David. A software engineer based in Galicia, Spain, with professional
+                    experience building web applications end to end — backend APIs, frontends, and
+                    everything in between.
+                </p>
+                <p>
+                    I work primarily with <span class="text-zinc-200 font-medium">TypeScript</span>,
+                    and reach for Python or Go when the task calls for it. I care deeply about code
+                    quality, open source, and building tools that genuinely improve how people work.
+                </p>
+                <p>
+                    I'm fascinated by UI design, asynchronous remote collaboration, and learning new
+                    languages — both programming and human ones.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 content-start">
+                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
+                    <p id="years-coding" class="text-3xl font-bold text-teal-400 mb-1">12+</p>
+                    <p class="text-zinc-500 text-sm">years coding</p>
+                </div>
+                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
+                    <p id="years-professional" class="text-3xl font-bold text-teal-400 mb-1">5+</p>
+                    <p class="text-zinc-500 text-sm">years professional</p>
+                </div>
+                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
+                    <p class="text-3xl font-bold text-teal-400 mb-1">{projects.length}</p>
+                    <p class="text-zinc-500 text-sm">open source projects</p>
+                </div>
+                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
+                    <p class="text-3xl font-bold text-teal-400 mb-1">EU</p>
+                    <p class="text-zinc-500 text-sm">remote-native</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const codingEl = document.getElementById('years-coding')
+    if (codingEl) {
+        codingEl.textContent = (new Date().getFullYear() - 2014) + '+'
+    }
+
+    const profEl = document.getElementById('years-professional')
+    if (profEl) {
+        const start = new Date(2020, 8, 1)
+        const years = Math.floor((Date.now() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
+        profEl.textContent = years + '+'
+    }
+</script>
