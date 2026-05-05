@@ -1,38 +1,7 @@
 ---
-const featured = [
-    {
-        title: 'Hexastats',
-        description:
-            'League of Legends stats visualization platform. NestJS backend fetching data from the Riot Games API, served to a SvelteKit frontend.',
-        tags: ['NestJS', 'TypeScript', 'SvelteKit', 'REST API'],
-        github: 'https://github.com/dawichi/hexastats',
-        live: null,
-    },
-    {
-        title: 'Hexakill',
-        description:
-            'Turn-based RPG browser game with multiple character classes and a pool of randomized enemies with varying stats across combat rounds.',
-        tags: ['Next.js', 'TypeScript', 'Game Logic'],
-        github: 'https://github.com/dawichi/hexakill',
-        live: null,
-    },
-    {
-        title: 'Timeline Guess',
-        description:
-            'Browser game about sorting historical events into the correct chronological order. Fast and addictive.',
-        tags: ['Astro', 'JavaScript'],
-        github: 'https://github.com/dawichi/timeline-guess',
-        live: null,
-    },
-    {
-        title: 'Blog',
-        description:
-            'Personal blog about software engineering, tools, and things I find interesting. Built with Astro.',
-        tags: ['Astro', 'TypeScript'],
-        github: 'https://github.com/dawichi/blog',
-        live: 'https://blog.dawichi.dev',
-    },
-]
+import { projects } from '../config/projects'
+
+const featured = projects.slice(0, 4)
 ---
 
 <section id="projects" class="py-24 border-t border-zinc-900 scroll-mt-14">
