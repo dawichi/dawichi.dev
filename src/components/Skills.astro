@@ -2,38 +2,39 @@
 const categories = [
     {
         label: 'Languages',
-        accent: false,
-        tags: ['JavaScript', 'TypeScript', 'Python', 'Go', 'C#', 'Java'],
+        description: 'TypeScript is my daily driver. I reach for Python when data work calls for it, and Go or Rust when performance or concurrency matters.',
+        tags: ['TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'C#', 'Java'],
+        iconHtml: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
     },
     {
         label: 'Backend',
-        accent: true,
-        tags: [
-            'Node.js',
-            'NestJS',
-            'Express',
-            'REST API',
-            'GraphQL',
-            'Docker',
-            'Redis',
-            'MongoDB',
-            'SQLite',
-        ],
+        description: 'NestJS-first backend development: REST and GraphQL APIs, MySQL and SQLite for persistence, Redis for caching. Docker in every production stack.',
+        tags: ['NestJS', 'Express', 'Node.js', 'REST API', 'GraphQL', 'Docker', 'Redis', 'MySQL', 'SQLite', 'MongoDB'],
+        iconHtml: '<rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/>',
     },
     {
         label: 'Frontend',
-        accent: false,
-        tags: ['Svelte', 'React', 'Angular', 'Vue', 'Next.js', 'Nuxt.js'],
+        description: 'Shipped in React, Angular, and Svelte across real products. Comfortable with both complex state management and SSR.',
+        tags: ['React', 'Angular', 'Svelte', 'Vue', 'Next.js', 'Nuxt.js'],
+        iconHtml: '<rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/>',
     },
     {
-        label: 'Styling',
-        accent: false,
-        tags: ['CSS', 'Sass', 'Tailwind CSS'],
+        label: 'UI & Design',
+        description: 'Strong design sensibility from shipping component libraries and reworking full product flows. Have redesigned UIs for international audiences with contradictory regional expectations.',
+        tags: ['CSS', 'Sass', 'Tailwind CSS', 'Responsive', 'Accessibility'],
+        iconHtml: '<circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>',
     },
     {
         label: 'DevOps & Tools',
-        accent: false,
-        tags: ['Git', 'GitHub', 'CI/CD', 'Linux'],
+        description: 'Automated pipelines, containerized deployments, and cloud infrastructure on AWS and Azure. VPS setup and server configuration from a sysadmin background.',
+        tags: ['Git', 'GitHub Actions', 'Docker', 'CI/CD', 'Linux', 'AWS', 'Azure'],
+        iconHtml: '<line x1="6" x2="6" y1="3" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/>',
+    },
+    {
+        label: 'Team & Process',
+        description: 'Fully remote since 2021. I work well async across timezones and have shipped within teams ranging from 3 to 30+ engineers.',
+        tags: ['Remote-first', 'Async', 'Agile', 'Code review', 'Pair programming'],
+        iconHtml: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 1-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
     },
 ]
 ---
@@ -41,24 +42,32 @@ const categories = [
 <section id="skills" class="py-24 border-t border-zinc-900 scroll-mt-14">
     <div class="max-w-5xl mx-auto px-6">
         <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">Skills</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">Technologies I work with</h2>
+        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">What I build and how I work</h2>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {
                 categories.map((cat) => (
-                    <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6">
-                        <h3 class="text-zinc-300 font-semibold text-sm uppercase tracking-wider mb-4">
-                            {cat.label}
-                        </h3>
+                    <div class="bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-6 flex flex-col gap-3 transition-colors duration-200">
+                        <div class="flex items-center gap-3">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="18"
+                                height="18"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="text-teal-400 shrink-0"
+                                set:html={cat.iconHtml}
+                            />
+                            <h3 class="text-zinc-100 font-semibold">{cat.label}</h3>
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed grow">{cat.description}</p>
                         <div class="flex flex-wrap gap-2">
                             {cat.tags.map((tag) => (
-                                <span
-                                    class={`text-xs px-2.5 py-1 rounded-md font-medium ${
-                                        cat.accent
-                                            ? 'bg-teal-900/40 text-teal-300 border border-teal-800/50'
-                                            : 'bg-zinc-800 text-zinc-400'
-                                    }`}
-                                >
+                                <span class="text-xs px-2.5 py-1 rounded-md font-medium bg-zinc-800 text-zinc-400">
                                     {tag}
                                 </span>
                             ))}
