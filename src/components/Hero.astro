@@ -41,8 +41,8 @@
 
             <!-- Description -->
             <p class="text-zinc-400 text-lg leading-relaxed mb-10 max-w-lg">
-                Software engineer with 4+ years building and optimizing systems that serve thousands
-                of users globally. I collaborate asynchronously with distributed teams — analyzing
+                Software engineer with <span id="hero-years">5</span>+ years building and optimizing systems that serve thousands
+                of users globally. I collaborate asynchronously with distributed teams, analyzing
                 requirements, shipping reliable solutions, and crafting software that's genuinely
                 satisfying to use.
             </p>
@@ -209,3 +209,12 @@
         </svg>
     </div>
 </section>
+
+<script>
+    const el = document.getElementById('hero-years')
+    if (el) {
+        const start = new Date(2020, 8, 1)
+        const years = Math.floor((Date.now() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
+        el.textContent = String(years)
+    }
+</script>
