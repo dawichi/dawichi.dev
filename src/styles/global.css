@@ -1,5 +1,17 @@
 @import 'tailwindcss';
 
+/*
+  Typography scale
+  ─────────────────────────────────────────────────────────────────
+  section-label   text-teal-400 text-sm font-medium uppercase tracking-widest
+  heading-1       text-3xl sm:text-4xl font-bold text-zinc-100
+  heading-2       text-lg font-semibold text-zinc-300
+  heading-3       font-semibold text-zinc-100
+  body            text-sm text-zinc-400 leading-relaxed
+  meta            text-xs text-zinc-500 font-mono    ← dates, durations, labels
+  ─────────────────────────────────────────────────────────────────
+*/
+
 @theme {
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'Roboto Mono', monospace;
