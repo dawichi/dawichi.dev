@@ -50,7 +50,10 @@ import { projects } from '../config/projects'
                         )}
                         <div class="p-5">
                             <div class="flex items-start justify-between mb-3">
-                                <h2 class="text-zinc-100 font-semibold">{project.title}</h2>
+                                <div class="flex items-baseline gap-2">
+                                    <h2 class="text-zinc-100 font-semibold">{project.title}</h2>
+                                    {project.year && <span class="text-zinc-600 text-xs">{project.year}</span>}
+                                </div>
                                 <div class="flex items-center gap-2 ml-3 shrink-0">
                                     {project.github && (
                                     <a
