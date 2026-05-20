@@ -2,6 +2,7 @@
 import '../styles/global.css'
 import Nav from '../components/Nav.astro'
 import { yearsOfExperience } from '../config/experience'
+import { Analytics } from '@vercel/analytics/astro'
 
 interface Props {
     title: string
@@ -49,6 +50,7 @@ const canonicalURL = 'https://dawichi.dev'
         <main>
             <slot />
         </main>
+        <Analytics />
         <footer class="border-t border-zinc-900 py-8 mt-24">
             <div
                 class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-zinc-600 text-sm"
