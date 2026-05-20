@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Nav from '../components/Nav.astro'
+import { yearsOfExperience } from '../config/experience'
 
 interface Props {
     title: string
@@ -9,7 +10,7 @@ interface Props {
 
 const {
     title,
-    description = 'Software engineer with 4+ years of experience building full-stack applications. TypeScript, NestJS, Svelte, React.',
+    description = `Software engineer with ${yearsOfExperience()}+ years of experience building full-stack applications. TypeScript, NestJS, Svelte, React.`,
 } = Astro.props
 const canonicalURL = 'https://dawichi.dev'
 ---

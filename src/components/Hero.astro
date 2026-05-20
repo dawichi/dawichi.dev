@@ -211,10 +211,9 @@
 </section>
 
 <script>
+    import { yearsOfExperience } from '../config/experience'
     const el = document.getElementById('hero-years')
     if (el) {
-        const start = new Date(2020, 8, 1)
-        const years = Math.floor((Date.now() - start.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
-        el.textContent = String(years)
+        el.textContent = String(yearsOfExperience())
     }
 </script>
