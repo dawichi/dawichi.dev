@@ -10,6 +10,15 @@ interface Project {
 
 export const projects: Project[] = [
     {
+        title: 'tiny-stacks',
+        image: 'https://raw.githubusercontent.com/dawichi/tiny-stacks/main/public/screenshots/home-page.png',
+        description: 'A 2D microservices simulation game. Place services, connect them, and watch HTTP request packets flow through your system. Runs entirely in the browser.',
+        tags: ['Angular', 'TypeScript', 'Game Logic'],
+        year: 2026,
+        github: 'https://github.com/dawichi/tiny-stacks',
+        live: 'https://tiny-stacks.dawichi.dev',
+    },
+    {
         title: 'Hexastats',
         image: 'https://raw.githubusercontent.com/Dawichi/hexastats/main/showcase.png',
         description: 'League of Legends stats visualization platform. NestJS backend fetching data from the Riot Games API, served to a SvelteKit frontend.',
