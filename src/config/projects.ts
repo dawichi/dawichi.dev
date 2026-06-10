@@ -12,7 +12,7 @@ export const projects: Project[] = [
     {
         title: 'Quarry',
         image: 'https://raw.githubusercontent.com/dawichi/quarrydb/main/screenshots/browse.png',
-        description: 'A local SQLite UI manager with a visual, composable query builder. Chain WHERE, JOIN, GROUP BY and more — each step shows its live result, like .filter().map() for SQL. Built as a Tauri desktop app.',
+        description: 'A local SQLite UI manager with a visual, composable query builder. Chain WHERE, JOIN, GROUP BY and more, with each step showing its live result, like .filter().map() for SQL. Built as a Tauri desktop app.',
         tags: ['Tauri', 'Angular', 'Rust', 'SQLite'],
         year: 2026,
         github: 'https://github.com/dawichi/quarrydb',
