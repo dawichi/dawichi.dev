@@ -10,6 +10,15 @@ interface Project {
 
 export const projects: Project[] = [
     {
+        title: 'Quarry',
+        image: 'https://raw.githubusercontent.com/dawichi/quarrydb/main/screenshots/browse.png',
+        description: 'A local SQLite UI manager with a visual, composable query builder. Chain WHERE, JOIN, GROUP BY and more — each step shows its live result, like .filter().map() for SQL. Built as a Tauri desktop app.',
+        tags: ['Tauri', 'Angular', 'Rust', 'SQLite'],
+        year: 2026,
+        github: 'https://github.com/dawichi/quarrydb',
+        live: 'https://quarrydb.app',
+    },
+    {
         title: 'tiny-stacks',
         image: 'https://raw.githubusercontent.com/dawichi/tiny-stacks/main/public/screenshots/home-page.png',
         description: 'A 2D microservices simulation game. Place services, connect them, and watch HTTP request packets flow through your system. Runs entirely in the browser.',
