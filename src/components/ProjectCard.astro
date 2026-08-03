@@ -1,0 +1,73 @@
+---
+import Icon from './Icon.astro'
+import type { Project } from '../config/projects'
+
+interface Props {
+    project: Project
+    showImage?: boolean
+    headingLevel?: 'h2' | 'h3'
+}
+
+const { project, showImage = false, headingLevel = 'h3' } = Astro.props
+const Heading = headingLevel
+---
+
+<article
+    class="group bg-zinc-900/40 border border-zinc-800 hover:border-teal-500/25 rounded-2xl overflow-hidden transition-all duration-200 hover:bg-zinc-900/60 hover:-translate-y-0.5"
+>
+    {
+        showImage && project.image && (
+            <div class="h-40 overflow-hidden bg-zinc-900">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 transition-opacity"
+                />
+            </div>
+        )
+    }
+    <div class={showImage ? 'p-5' : 'p-6'}>
+        <div class="flex items-start justify-between mb-3">
+            <div class="flex items-baseline gap-2">
+                <Heading class="text-zinc-100 font-semibold">{project.title}</Heading>
+                {project.year && <span class="text-zinc-400 text-xs">{project.year}</span>}
+            </div>
+            <div class="flex items-center gap-2 ml-3 shrink-0">
+                {
+                    project.github && (
+                        <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-zinc-400 hover:text-zinc-300 transition-colors"
+                            aria-label={`${project.title} GitHub repository`}
+                        >
+                            <Icon name="github" size={17} />
+                        </a>
+                    )
+                }
+                {
+                    project.live && (
+                        <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-zinc-400 hover:text-zinc-300 transition-colors"
+                            aria-label={`${project.title} live demo`}
+                        >
+                            <Icon name="external-link" size={16} />
+                        </a>
+                    )
+                }
+            </div>
+        </div>
+        <p class="text-zinc-400 text-sm leading-relaxed mb-3">{project.description}</p>
+        <div class="flex flex-wrap gap-1.5">
+            {
+                project.tags.map((tag) => (
+                    <span class="text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded-md">{tag}</span>
+                ))
+            }
+        </div>
+    </div>
+</article>

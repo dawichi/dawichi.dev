@@ -13,7 +13,8 @@ const {
     title,
     description = `Software engineer with ${yearsOfExperience()}+ years of experience building full-stack applications. TypeScript, NestJS, Svelte, React.`,
 } = Astro.props
-const canonicalURL = 'https://dawichi.dev'
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const ogImageURL = new URL('/og.png', Astro.site)
 ---
 
 <!doctype html>
@@ -22,6 +23,7 @@ const canonicalURL = 'https://dawichi.dev'
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="canonical" href={canonicalURL} />
         <meta name="generator" content={Astro.generator} />
 
         <title>dawichi | {title}</title>
@@ -32,11 +34,13 @@ const canonicalURL = 'https://dawichi.dev'
         <meta property="og:url" content={canonicalURL} />
         <meta property="og:title" content="dawichi | software engineer" />
         <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageURL} />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={canonicalURL} />
         <meta property="twitter:title" content="dawichi | software engineer" />
         <meta property="twitter:description" content={description} />
+        <meta property="twitter:image" content={ogImageURL} />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,7 +57,7 @@ const canonicalURL = 'https://dawichi.dev'
         <Analytics />
         <footer class="border-t border-zinc-900 py-8 mt-24">
             <div
-                class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-zinc-600 text-sm"
+                class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-zinc-400 text-sm"
             >
                 <span>dawichi.dev &copy; {new Date().getFullYear()}</span>
                 <span>Made with TypeScript and coffee</span>

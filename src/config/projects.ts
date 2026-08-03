@@ -1,6 +1,6 @@
-interface Project {
+export interface Project {
     title: string
-    image: string
+    image?: string
     description: string
     tags: string[]
     year?: number
