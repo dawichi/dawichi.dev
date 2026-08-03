@@ -1,44 +1,4 @@
 ---
-import { feature } from 'topojson-client'
-import { geoAzimuthalEqualArea, geoGraticule, geoPath } from 'd3-geo'
-import type { Topology, GeometryCollection } from 'topojson-specification'
-import worldDataRaw from 'world-atlas/countries-50m.json'
-
-// world-atlas ships no bundled types; the JSON conforms to the TopoJSON spec
-const worldData = worldDataRaw as unknown as Topology
-
-// ISO 3166-1 numeric codes for visited countries
-const visited = new Set([
-    8,   // Albania
-    40,  // Austria
-    203, // Czech Republic
-    208, // Denmark
-    250, // France
-    276, // Germany
-    348, // Hungary
-    380, // Italy
-    528, // Netherlands
-    620, // Portugal
-    705, // Slovenia
-    724, // Spain
-    752, // Sweden
-])
-
-const W = 800
-const H = 490
-
-const projection = geoAzimuthalEqualArea()
-    .rotate([-20.0, -52.0, 0])
-    .scale(700)
-    .translate([W / 2, H / 2])
-
-const pathGen = geoPath(projection)
-const countries = feature(worldData, worldData.objects.countries as GeometryCollection)
-const graticulePath = pathGen(geoGraticule()())
-
-const countryPaths = countries.features
-    .map((f) => ({ d: pathGen(f), isVisited: visited.has(Number(f.id)) }))
-    .filter((p) => p.d !== null)
 ---
 
 <section id="travel" class="py-24 border-t border-zinc-900 scroll-mt-14">
@@ -52,23 +12,15 @@ const countryPaths = countries.features
         </p>
 
         <div class="rounded-2xl border border-zinc-800 overflow-hidden bg-zinc-900/40 p-4">
-            <svg
-                viewBox={`0 0 ${W} ${H}`}
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-full"
-            >
-                <path d={graticulePath ?? ''} fill="none" stroke="#52525b70" stroke-width="0.5" />
-                {
-                    countryPaths.map(({ d, isVisited }) => (
-                        <path
-                            d={d}
-                            fill={isVisited ? '#14b8a6' : '#3f3f46'}
-                            stroke="#09090b"
-                            stroke-width="0.5"
-                        />
-                    ))
-                }
-            </svg>
+            <img
+                src="/map.svg"
+                alt="World map showing the countries I have visited highlighted in teal"
+                width="800"
+                height="490"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-auto"
+            />
         </div>
     </div>
 </section>
