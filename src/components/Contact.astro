@@ -1,70 +1,48 @@
 ---
-import Icon from './Icon.astro'
+import Icon, { type IconName } from './Icon.astro'
+import Section from './ui/Section.astro'
+import Button from './ui/Button.astro'
+import { links, site } from '../config/site'
+
+const channels: { label: string; href: string; icon: IconName }[] = [
+    { label: 'GitHub', href: links.github, icon: 'github' },
+    { label: 'LinkedIn', href: links.linkedin, icon: 'linkedin' },
+    { label: 'Blog', href: links.blog, icon: 'edit' },
+]
 ---
 
-<section id="contact" class="py-24 border-t border-zinc-900 scroll-mt-14">
-    <div class="max-w-5xl mx-auto px-6">
-        <div class="max-w-2xl mx-auto text-center">
-            <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">Contact</p>
-            <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-4">Let's work together</h2>
-            <p class="text-zinc-400 text-lg leading-relaxed mb-10">
-                Have an interesting project or role in mind? My inbox is always open.
-            </p>
+<Section
+    id="contact"
+    label="Contact"
+    title="Let's work together"
+    intro="Have an interesting project or role in mind? My inbox is always open."
+    center
+>
+    <div class="flex flex-col items-center">
+        <Button href={`mailto:${site.email}`} size="lg" class="mb-14">
+            <Icon name="mail" size={20} />
+            Send me an email
+        </Button>
 
-            <a
-                href="mailto:davidmf99@gmail.com"
-                class="inline-flex items-center gap-3 px-8 py-4 bg-teal-700 hover:bg-teal-600 text-white rounded-xl font-medium text-lg transition-all duration-200 hover:shadow-xl hover:shadow-teal-500/25 mb-14"
-            >
-                <Icon name="mail" size={20} />
-                Send me an email
-            </a>
-
-            <div class="flex items-center justify-center gap-8">
-                <a
-                    href="https://github.com/dawichi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    class="flex flex-col items-center gap-2.5 text-zinc-400 hover:text-zinc-300 transition-colors group"
-                >
-                    <div
-                        class="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 group-hover:border-zinc-600 transition-colors"
-                    >
-                        <Icon name="github" size={20} />
-                    </div>
-                    <span class="text-sm font-medium">GitHub</span>
-                </a>
-
-                <a
-                    href="https://www.linkedin.com/in/dawichi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                    class="flex flex-col items-center gap-2.5 text-zinc-400 hover:text-zinc-300 transition-colors group"
-                >
-                    <div
-                        class="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 group-hover:border-zinc-600 transition-colors"
-                    >
-                        <Icon name="linkedin" size={20} />
-                    </div>
-                    <span class="text-sm font-medium">LinkedIn</span>
-                </a>
-
-                <a
-                    href="https://blog.dawichi.dev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Blog"
-                    class="flex flex-col items-center gap-2.5 text-zinc-400 hover:text-zinc-300 transition-colors group"
-                >
-                    <div
-                        class="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 group-hover:border-zinc-600 transition-colors"
-                    >
-                        <Icon name="edit" size={20} />
-                    </div>
-                    <span class="text-sm font-medium">Blog</span>
-                </a>
-            </div>
-        </div>
+        <ul class="flex items-center justify-center gap-8">
+            {
+                channels.map((channel) => (
+                    <li>
+                        <a
+                            href={channel.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex flex-col items-center gap-2.5 text-zinc-400 hover:text-zinc-200 transition-colors group"
+                        >
+                            <span class="w-12 h-12 flex items-center justify-center rounded-xl bg-zinc-900 border border-zinc-800 group-hover:border-zinc-600 transition-colors">
+                                <Icon name={channel.icon} size={20} />
+                            </span>
+                            <span class="text-sm font-medium">{channel.label}</span>
+                            <span class="sr-only">(opens in a new tab)</span>
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
     </div>
-</section>
+</Section>

@@ -1,190 +1,99 @@
 ---
 import Icon from './Icon.astro'
+import Section from './ui/Section.astro'
+import {
+    education,
+    formatDuration,
+    formatPeriod,
+    monthKey,
+    work,
+    type WorkMode,
+} from '../config/experience'
 
-const work = [
-    {
-        period: 'Jun 2024 – present',
-        role: 'Software Engineer',
-        company: 'Giunti Psy',
-        url: 'https://giuntipsy.com',
-        location: 'Madrid, Spain',
-        mode: 'remote',
-        startMonth: 6,
-        startYear: 2024,
-        bullets: [
-            'Working across a microservice architecture (20+ repositories), from backend services to Angular applications covering internal tooling, client portals, and patient-facing assessment',
-            'Driving codebase modernization to TypeScript and composable Angular standalone components, improving both code health and UI/UX consistency across the product',
-        ],
-    },
-    {
-        period: 'Nov 2021 – Jun 2024',
-        role: 'Backend Engineer',
-        company: 'BizAway',
-        url: 'https://bizaway.com',
-        location: 'Vigo, Spain',
-        mode: 'remote',
-        duration: '2 years 8 months',
-        bullets: [
-            'Progressive refactor of a legacy Express.js monolith, driving modern TS practices and Jest end-to-end testing',
-            'Worked on live flight booking integrations at a B2B travel platform, handling fare reservations, seat selection, and more',
-        ],
-    },
-    {
-        period: 'Dec 2020 – Nov 2021',
-        role: 'Junior Frontend Developer',
-        company: 'DosEspacios',
-        url: 'https://dosespacios.com',
-        location: 'Vilagarcía de Arousa, Spain',
-        mode: 'hybrid',
-        duration: '1 year',
-        bullets: [
-            'Delivered ~30 e-commerce stores (PrestaShop / WooCommerce) and 4 React Native apps for iOS and Android',
-            'Built B2B tools with Next.js + NestJS: inventory dashboards, CRM systems, and client sites with custom WordPress plugins, including interactive maps',
-        ],
-    },
-    {
-        period: 'Sep 2020 – Dec 2020',
-        role: 'Sysadmin Internship',
-        company: 'Nubodata',
-        url: 'https://nubodata.com',
-        location: 'Pontevedra, Spain',
-        mode: 'on-site',
-        duration: '4 months',
-        bullets: [
-            'Configured Zabbix to monitor company infrastructure (servers, DBs, routers) displayed live on an office TV',
-            'Built a client WordPress e-commerce store and prototyped Nubodata\'s new public site in React',
-        ],
-    },
-] as const
-
-const education = [
-    {
-        period: 'Sep 2021 – Jun 2022',
-        degree: 'Software Engineering',
-        institution: 'Universitat Oberta de Catalunya',
-        type: 'Degree (incomplete)',
-    },
-    {
-        period: '2017 – 2020',
-        degree: 'Computer Systems Administration',
-        institution: 'IES Armando Cotarelo Valledor',
-        type: 'Technician',
-    },
-    {
-        period: '2015 – 2017',
-        degree: 'European Baccalaureate',
-        institution: 'IES Castro Alobre',
-        type: '',
-    },
-]
-
-const modeStyles = {
+const modeStyles: Record<WorkMode, string> = {
     remote: 'bg-teal-900/40 text-teal-400 border border-teal-800/50',
     hybrid: 'bg-zinc-800 text-zinc-400 border border-zinc-700',
     'on-site': 'bg-zinc-800 text-zinc-400 border border-zinc-700',
 }
 ---
 
-<section id="experience" class="py-24 border-t border-zinc-900 scroll-mt-14">
-    <div class="max-w-5xl mx-auto px-6">
-        <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">Experience</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">
-            Where I've worked & studied
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-12">
-            <!-- Work -->
-            <div>
-                <h3 class="text-lg font-semibold text-zinc-300 mb-6">Work</h3>
-                <div class="relative pl-6 border-l border-zinc-800 space-y-8">
-                    {
-                        work.map((item, i) => (
-                            <div class="relative">
-                                <span class={`absolute -left-[30px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-[#09090b] ${i === 0 ? 'bg-teal-500' : 'bg-zinc-600'}`} />
-                                <p class="text-xs text-zinc-400 mb-1 font-mono">{item.period}</p>
-                                <h4 class="text-zinc-100 font-semibold">{item.role}</h4>
-                                <div class="flex items-center gap-2 flex-wrap mt-0.5">
-                                    <a
-                                        href={item.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        class="text-teal-400 hover:text-teal-300 hover:underline text-sm transition-colors"
+<Section id="experience" label="Experience" title="Where I've worked & studied">
+    <div class="grid md:grid-cols-2 gap-12">
+        <!-- Work -->
+        <div>
+            <h3 class="heading-2 mb-6">Work</h3>
+            <div class="relative pl-6 border-l border-zinc-800 space-y-8">
+                {
+                    work.map((item, i) => (
+                        <div class="relative">
+                            <span
+                                class={`absolute -left-[30px] top-1.5 w-2.5 h-2.5 rounded-full ring-4 ring-[#09090b] ${i === 0 ? 'bg-teal-500' : 'bg-zinc-600'}`}
+                            />
+                            <p class="meta mb-1">{formatPeriod(item.start, item.end)}</p>
+                            <h4 class="text-zinc-100 font-semibold">{item.role}</h4>
+                            <div class="flex items-center gap-2 flex-wrap mt-0.5">
+                                <a
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-teal-400 hover:text-teal-300 hover:underline text-sm transition-colors"
+                                >
+                                    {item.company}
+                                    <span class="sr-only">(opens in a new tab)</span>
+                                </a>
+                                <span
+                                    class={`text-xs px-1.5 py-0.5 rounded font-medium ${modeStyles[item.mode]}`}
+                                >
+                                    {item.mode}
+                                </span>
+                            </div>
+                            <div class="flex items-center gap-1 mt-1">
+                                <Icon name="location" size={11} class="text-zinc-400 shrink-0" />
+                                <span class="text-xs text-zinc-400 font-mono">{item.location}</span>
+                                <span class="text-xs text-zinc-400 font-mono">
+                                    ·{' '}
+                                    <span
+                                        data-live-duration={
+                                            item.end ? undefined : monthKey(item.start)
+                                        }
                                     >
-                                        {item.company}
-                                    </a>
-                                    <span class={`text-xs px-1.5 py-0.5 rounded font-medium ${modeStyles[item.mode]}`}>
-                                        {item.mode}
+                                        {formatDuration(item.start, item.end)}
                                     </span>
-                                </div>
-                                <div class="flex items-center gap-1 mt-1">
-                                    <Icon name="location" size={11} class="text-zinc-400 shrink-0" />
-                                    <span class="text-xs text-zinc-400 font-mono">{item.location}</span>
-                                    {'duration' in item && item.duration && (
-                                        <span class="text-xs text-zinc-400 font-mono">· {item.duration}</span>
-                                    )}
-                                    {'startMonth' in item && item.startMonth && item.startYear && (
-                                        <span
-                                            class="text-xs text-zinc-400 font-mono duration-label"
-                                            data-start-month={item.startMonth}
-                                            data-start-year={item.startYear}
-                                        />
-                                    )}
-                                </div>
-                                {'bullets' in item && item.bullets && (
-                                    <ul class="mt-2 text-zinc-400 text-sm leading-relaxed space-y-1 list-disc list-inside marker:text-zinc-600">
-                                        {item.bullets.map((bullet) => (
-                                            <li>{bullet}</li>
-                                        ))}
-                                    </ul>
-                                )}
+                                </span>
                             </div>
-                        ))
-                    }
-                </div>
+                            {item.bullets.length > 0 && (
+                                <ul class="mt-2 text-zinc-400 text-sm leading-relaxed space-y-1 list-disc list-inside marker:text-zinc-600">
+                                    {item.bullets.map((bullet) => (
+                                        <li>{bullet}</li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    ))
+                }
             </div>
+        </div>
 
-            <!-- Education -->
-            <div>
-                <h3 class="text-lg font-semibold text-zinc-300 mb-6">Education</h3>
-                <div class="relative pl-6 border-l border-zinc-800 space-y-8">
-                    {
-                        education.map((item) => (
-                            <div class="relative">
-                                <span class="absolute -left-[30px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-700 ring-4 ring-[#09090b]" />
-                                <p class="text-xs text-zinc-400 mb-1 font-mono">{item.period}</p>
-                                <h4 class="text-zinc-100 font-semibold">{item.degree}</h4>
-                                <p class="text-zinc-400 text-sm">{item.institution}</p>
-                                {item.type && (
-                                    <span class="inline-block mt-1 text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded-md">
-                                        {item.type}
-                                    </span>
-                                )}
-                            </div>
-                        ))
-                    }
-                </div>
+        <!-- Education -->
+        <div>
+            <h3 class="heading-2 mb-6">Education</h3>
+            <div class="relative pl-6 border-l border-zinc-800 space-y-8">
+                {
+                    education.map((item) => (
+                        <div class="relative">
+                            <span class="absolute -left-[30px] top-1.5 w-2.5 h-2.5 rounded-full bg-zinc-700 ring-4 ring-[#09090b]" />
+                            <p class="meta mb-1">{item.period}</p>
+                            <h4 class="text-zinc-100 font-semibold">{item.degree}</h4>
+                            <p class="text-zinc-400 text-sm">{item.institution}</p>
+                            {item.note && (
+                                <span class="inline-block mt-1 text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded-md">
+                                    {item.note}
+                                </span>
+                            )}
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>
-</section>
-
-<script>
-    function calcDuration(startMonth: number, startYear: number): string {
-        const now = new Date()
-        const totalMonths =
-            (now.getFullYear() - startYear) * 12 + (now.getMonth() + 1 - startMonth)
-        const years = Math.floor(totalMonths / 12)
-        const months = totalMonths % 12
-        const yStr = years ? `${years} year${years !== 1 ? 's' : ''}` : ''
-        const mStr = months ? `${months} month${months !== 1 ? 's' : ''}` : ''
-        return [yStr, mStr].filter(Boolean).join(' ')
-    }
-
-    document
-        .querySelectorAll<HTMLElement>('.duration-label[data-start-month][data-start-year]')
-        .forEach((el) => {
-            const month = parseInt(el.dataset.startMonth ?? '0')
-            const year = parseInt(el.dataset.startYear ?? '0')
-            if (month && year) el.textContent = `· ${calcDuration(month, year)}`
-        })
-</script>
+</Section>

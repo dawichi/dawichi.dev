@@ -1,0 +1,122 @@
+---
+import type { GetStaticPaths } from 'astro'
+import { Image } from 'astro:assets'
+import { render } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+import Icon from '../../components/Icon.astro'
+import StatusBadge from '../../components/projects/StatusBadge.astro'
+import ProjectLinks from '../../components/projects/ProjectLinks.astro'
+import { getProjects, type Project } from '../../lib/projects'
+
+export const getStaticPaths = (async () => {
+    const projects = await getProjects()
+    return projects
+        .filter((project) => project.data.caseStudy)
+        .map((project) => {
+            if (!project.body?.trim()) {
+                throw new Error(`Project "${project.id}" has caseStudy: true but no body`)
+            }
+            return { params: { slug: project.id }, props: { project } }
+        })
+}) satisfies GetStaticPaths
+
+interface Props {
+    project: Project
+}
+
+const { project } = Astro.props
+const { data } = project
+const { Content } = await render(project)
+---
+
+<Layout title={data.title} description={data.summary} image={data.image}>
+    <article class="max-w-3xl mx-auto px-6 py-32">
+        <a
+            href="/projects"
+            class="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors text-sm mb-12"
+        >
+            <Icon name="chevron-left" size={14} />
+            All projects
+        </a>
+
+        <header class="mb-10">
+            <p class="section-label mb-4">Case study</p>
+            <h1 class="text-4xl sm:text-5xl font-bold text-zinc-50 tracking-tight mb-4">
+                {data.title}
+            </h1>
+            <p class="text-zinc-300 text-lg leading-relaxed mb-6">{data.summary}</p>
+
+            <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm mb-6">
+                <div>
+                    <dt class="meta mb-1">Period</dt>
+                    <dd class="text-zinc-200">{data.period}</dd>
+                </div>
+                <div>
+                    <dt class="meta mb-1">Status</dt>
+                    <dd class="text-zinc-200">
+                        {
+                            data.status === 'released' ? (
+                                'Released'
+                            ) : (
+                                <StatusBadge status={data.status} />
+                            )
+                        }
+                    </dd>
+                </div>
+                {
+                    data.role && (
+                        <div>
+                            <dt class="meta mb-1">Role</dt>
+                            <dd class="text-zinc-200">{data.role}</dd>
+                        </div>
+                    )
+                }
+                {
+                    data.org && (
+                        <div>
+                            <dt class="meta mb-1">Studio</dt>
+                            <dd>
+                                <a
+                                    href={data.org.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="text-teal-400 hover:text-teal-300"
+                                >
+                                    {data.org.name}
+                                    <span class="sr-only">(opens in a new tab)</span>
+                                </a>
+                            </dd>
+                        </div>
+                    )
+                }
+            </dl>
+
+            {data.statusNote && <p class="text-sm text-zinc-400 mb-6">{data.statusNote}.</p>}
+
+            <ProjectLinks title={data.title} links={data.links} />
+        </header>
+
+        {
+            data.image && (
+                <figure class="card overflow-hidden mb-12">
+                    <Image
+                        src={data.image}
+                        alt={data.imageAlt ?? ''}
+                        widths={[640, 960, 1440]}
+                        sizes="(min-width: 768px) 720px, 100vw"
+                        loading="eager"
+                        class="w-full h-auto"
+                    />
+                </figure>
+            )
+        }
+
+        <div class="prose-content">
+            <Content />
+        </div>
+
+        <ul class="flex flex-wrap gap-1.5 mt-12" aria-label="Technologies">
+            {data.tags.map((tag) => <li class="tag">{tag}</li>)}
+        </ul>
+    </article>
+</Layout>

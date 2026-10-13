@@ -1,0 +1,39 @@
+---
+interface Props {
+    id: string
+    label: string
+    title: string
+    intro?: string
+    center?: boolean
+}
+
+const { id, label, title, intro, center = false } = Astro.props
+---
+
+<section
+    id={id}
+    aria-labelledby={`${id}-title`}
+    class="py-24 border-t border-zinc-900 scroll-mt-14"
+>
+    <div class="max-w-5xl mx-auto px-6">
+        <div class:list={[center && 'max-w-2xl mx-auto text-center']}>
+            <p class="section-label mb-4">{label}</p>
+            <h2 id={`${id}-title`} class:list={['heading-1', intro ? 'mb-4' : 'mb-12']}>
+                {title}
+            </h2>
+            {
+                intro && (
+                    <p
+                        class:list={[
+                            'text-zinc-400 leading-relaxed mb-12',
+                            center ? 'text-lg' : 'max-w-2xl',
+                        ]}
+                    >
+                        {intro}
+                    </p>
+                )
+            }
+        </div>
+        <slot />
+    </div>
+</section>

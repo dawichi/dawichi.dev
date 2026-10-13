@@ -1,20 +1,42 @@
 ---
+import '@fontsource-variable/inter'
+import '@fontsource/roboto-mono/600.css'
 import '../styles/global.css'
 import Nav from '../components/Nav.astro'
+import Icon from '../components/Icon.astro'
+import { links, site } from '../config/site'
 import { yearsOfExperience } from '../config/experience'
 import Analytics from '@vercel/analytics/astro'
+import { getImage } from 'astro:assets'
 
 interface Props {
     title: string
     description?: string
+    /** Social preview image. Defaults to /og.png */
+    image?: ImageMetadata | undefined
 }
 
 const {
     title,
-    description = `Software engineer with ${yearsOfExperience()}+ years of experience building full-stack applications. TypeScript, NestJS, Svelte, React.`,
+    description = `Software engineer with ${yearsOfExperience()}+ years of experience building TypeScript products end to end with Angular and NestJS. Currently leading Board Vault.`,
+    image,
 } = Astro.props
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const ogImageURL = new URL('/og.png', Astro.site)
+const ogImage = image ? await getImage({ src: image, width: 1200, format: 'jpeg', quality: 80 }) : undefined
+const ogImageURL = new URL(ogImage?.src ?? '/og.png', Astro.site)
+const fullTitle = `dawichi | ${title}`
+
+const person = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: site.name,
+    alternateName: site.handle,
+    url: site.url,
+    jobTitle: site.role,
+    worksFor: { '@type': 'Organization', name: 'Giunti Psy', url: 'https://giuntipsy.com' },
+    address: { '@type': 'PostalAddress', addressRegion: 'Galicia', addressCountry: 'ES' },
+    sameAs: [links.github, links.linkedin, links.blog],
+}
 ---
 
 <!doctype html>
@@ -26,42 +48,77 @@ const ogImageURL = new URL('/og.png', Astro.site)
         <link rel="canonical" href={canonicalURL} />
         <meta name="generator" content={Astro.generator} />
 
-        <title>dawichi | {title}</title>
-        <meta name="title" content="dawichi | software engineer" />
+        <title>{fullTitle}</title>
+        <meta name="theme-color" content="#09090b" />
         <meta name="description" content={description} />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalURL} />
-        <meta property="og:title" content="dawichi | software engineer" />
+        <meta property="og:title" content={fullTitle} />
+        <meta property="og:site_name" content="dawichi.dev" />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={ogImageURL} />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={canonicalURL} />
-        <meta property="twitter:title" content="dawichi | software engineer" />
+        <meta property="twitter:title" content={fullTitle} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={ogImageURL} />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@600&display=swap"
-            rel="stylesheet"
-        />
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />
     </head>
     <body class="bg-[#09090b] text-zinc-100 antialiased">
+        <a
+            href="#main"
+            class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-teal-700 focus:text-white"
+        >
+            Skip to content
+        </a>
         <Nav />
-        <main>
+        <main id="main" tabindex="-1" class="outline-none">
             <slot />
         </main>
         <Analytics />
         <footer class="border-t border-zinc-900 py-8 mt-24">
             <div
-                class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-zinc-400 text-sm"
+                class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-400 text-sm"
             >
                 <span>dawichi.dev &copy; {new Date().getFullYear()}</span>
-                <span>Made with TypeScript and coffee</span>
+                <ul class="flex items-center gap-5">
+                    <li>
+                        <a
+                            href={links.source}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex items-center gap-1.5 hover:text-zinc-200 transition-colors"
+                        >
+                            <Icon name="github" size={15} />
+                            Source<span class="sr-only"> (opens in a new tab)</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </footer>
+
+        <script>
+            import {
+                formatDuration,
+                fromMonthKey,
+                yearsCoding,
+                yearsOfExperience,
+            } from '../config/experience'
+
+            // The HTML already holds build-time values for crawlers and link previews.
+            // Refresh them here so they stay current when the last deploy is old.
+            const years = { coding: yearsCoding, experience: yearsOfExperience }
+
+            document.querySelectorAll<HTMLElement>('[data-live-years]').forEach((el) => {
+                const compute = years[el.dataset.liveYears as keyof typeof years]
+                if (compute) el.textContent = String(compute())
+            })
+
+            document.querySelectorAll<HTMLElement>('[data-live-duration]').forEach((el) => {
+                el.textContent = formatDuration(fromMonthKey(el.dataset.liveDuration!))
+            })
+        </script>
     </body>
 </html>

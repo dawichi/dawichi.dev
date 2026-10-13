@@ -29,8 +29,14 @@ const projection = geoAzimuthalEqualArea()
     .rotate([-20.0, -52.0, 0])
     .scale(700)
     .translate([W / 2, H / 2])
+    // Drop geometry outside the visible frame; most of the world is never shown
+    .clipExtent([
+        [0, 0],
+        [W, H],
+    ])
 
-const pathGen = geoPath(projection)
+// One decimal is sub-pixel at this size and keeps the file small
+const pathGen = geoPath(projection).digits(1)
 const countries = feature(worldData, worldData.objects.countries)
 const graticulePath = pathGen(geoGraticule()())
 

@@ -1,64 +1,50 @@
 ---
-import { projects } from '../config/projects'
+import Section from './ui/Section.astro'
+import { yearsCoding, yearsOfExperience } from '../config/experience'
+import { getProjects } from '../lib/projects'
+
+const projects = await getProjects()
+const openSource = projects.filter((p) => p.data.links.some((link) => link.kind === 'repo'))
+
+const stats = [
+    { value: yearsCoding(), suffix: '+', live: 'coding', label: 'years coding' },
+    { value: yearsOfExperience(), suffix: '+', live: 'experience', label: 'years of experience' },
+    { value: openSource.length, label: 'open source projects' },
+    { value: 'EU', label: 'remote-native' },
+]
 ---
 
-<section id="about" class="py-24 border-t border-zinc-900 scroll-mt-14">
-    <div class="max-w-5xl mx-auto px-6">
-        <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">About</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">
-            Building from interface to infrastructure
-        </h2>
-
-        <div class="grid md:grid-cols-2 gap-12 mb-0">
-            <div class="space-y-5 text-zinc-400 leading-relaxed">
-                <p>
-                    Hi, I'm David. A software engineer based in Galicia, Spain, with professional
-                    experience building web applications end to end: backend APIs, frontends, and
-                    everything in between.
-                </p>
-                <p>
-                    I work primarily with <span class="text-zinc-200 font-medium">TypeScript</span>,
-                    and reach for Python or Go when the task calls for it. I care deeply about code
-                    quality, open source, and building tools that genuinely improve how people work.
-                </p>
-                <p>
-                    I'm fascinated by UI design, asynchronous remote collaboration, and learning new
-                    languages, both programming and human ones.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 content-start">
-                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
-                    <p id="years-coding" class="text-3xl font-bold text-teal-400 mb-1">12+</p>
-                    <p class="text-zinc-400 text-sm">years coding</p>
-                </div>
-                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
-                    <p id="years-professional" class="text-3xl font-bold text-teal-400 mb-1">5+</p>
-                    <p class="text-zinc-400 text-sm">years of experience</p>
-                </div>
-                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
-                    <p class="text-3xl font-bold text-teal-400 mb-1">{projects.length}</p>
-                    <p class="text-zinc-400 text-sm">open source projects</p>
-                </div>
-                <div class="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-6 text-center">
-                    <p class="text-3xl font-bold text-teal-400 mb-1">EU</p>
-                    <p class="text-zinc-400 text-sm">remote-native</p>
-                </div>
-            </div>
+<Section id="about" label="About" title="Building from interface to infrastructure">
+    <div class="grid md:grid-cols-2 gap-12">
+        <div class="space-y-5 text-zinc-400 leading-relaxed">
+            <p>
+                Hi, I'm David, a software engineer based in Galicia, Spain. I build web applications
+                end to end: backend APIs, frontends, and everything in between.
+            </p>
+            <p>
+                I work mostly in <span class="text-zinc-200 font-medium">TypeScript</span>, with
+                Angular and NestJS as my main tools, and reach for Python, Go or Rust when the task
+                calls for it. I care deeply about code quality, open source, and building tools that
+                genuinely improve how people work.
+            </p>
+            <p>
+                I'm fascinated by UI design, asynchronous remote collaboration, and learning new
+                languages, both programming and human ones.
+            </p>
         </div>
+
+        <dl class="grid grid-cols-2 gap-4 content-start">
+            {
+                stats.map((stat) => (
+                    <div class="card p-6 text-center flex flex-col-reverse">
+                        <dt class="text-zinc-400 text-sm">{stat.label}</dt>
+                        <dd class="text-3xl font-bold text-teal-400 mb-1">
+                            <span data-live-years={stat.live}>{stat.value}</span>
+                            {stat.suffix}
+                        </dd>
+                    </div>
+                ))
+            }
+        </dl>
     </div>
-</section>
-
-<script>
-    import { yearsOfExperience } from '../config/experience'
-
-    const codingEl = document.getElementById('years-coding')
-    if (codingEl) {
-        codingEl.textContent = (new Date().getFullYear() - 2014) + '+'
-    }
-
-    const profEl = document.getElementById('years-professional')
-    if (profEl) {
-        profEl.textContent = yearsOfExperience() + '+'
-    }
-</script>
+</Section>

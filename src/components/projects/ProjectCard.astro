@@ -1,0 +1,131 @@
+---
+import { Image } from 'astro:assets'
+import Icon from '../Icon.astro'
+import StatusBadge from './StatusBadge.astro'
+import ProjectLinks from './ProjectLinks.astro'
+import { projectUrl, type Project } from '../../lib/projects'
+
+interface Props {
+    project: Project
+    /** feature: wide with a large image; standard: image on top; compact: no image */
+    variant?: 'feature' | 'standard' | 'compact'
+    headingLevel?: 'h2' | 'h3'
+}
+
+const { project, variant = 'standard', headingLevel = 'h3' } = Astro.props
+const { data } = project
+const Heading = headingLevel
+const href = projectUrl(project)
+const showImage = variant !== 'compact' && data.image
+---
+
+<article
+    id={project.id}
+    class:list={[
+        'card scroll-mt-20 overflow-hidden transition-colors duration-200 hover:border-zinc-700 flex flex-col',
+        variant === 'feature' && 'md:grid md:grid-cols-5',
+    ]}
+>
+    {
+        showImage && data.image && (
+            <div
+                class:list={[
+                    'overflow-hidden bg-zinc-900 border-zinc-800',
+                    variant === 'feature'
+                        ? 'h-56 md:h-full md:col-span-3 border-b md:border-b-0 md:border-r'
+                        : 'h-44 border-b',
+                ]}
+            >
+                <Image
+                    src={data.image}
+                    alt={data.imageAlt ?? ''}
+                    widths={[480, 800, 1200]}
+                    sizes={
+                        variant === 'feature'
+                            ? '(min-width: 1024px) 600px, 100vw'
+                            : '(min-width: 768px) 480px, 100vw'
+                    }
+                    class="w-full h-full object-cover object-top"
+                />
+            </div>
+        )
+    }
+    <div
+        class:list={[
+            'flex flex-col gap-3 grow',
+            variant === 'feature' ? 'p-6 md:p-8 md:col-span-2' : 'p-6',
+        ]}
+    >
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+            <Heading
+                class:list={[
+                    'text-zinc-100 font-semibold',
+                    variant === 'feature' ? 'text-xl' : 'text-base',
+                ]}
+            >
+                {
+                    href ? (
+                        <a href={href} class="hover:text-teal-300 transition-colors">
+                            {data.title}
+                        </a>
+                    ) : (
+                        data.title
+                    )
+                }
+            </Heading>
+            <span class="meta">{data.period}</span>
+            <StatusBadge status={data.status} />
+        </div>
+
+        {
+            (data.role || data.org) && (
+                <p class="text-xs text-zinc-400">
+                    {data.role}
+                    {data.role && data.org && ' · '}
+                    {data.org && (
+                        <>
+                            a{' '}
+                            <a
+                                href={data.org.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-zinc-300 hover:text-teal-300 underline decoration-zinc-700 underline-offset-2"
+                            >
+                                {data.org.name}
+                                <span class="sr-only">(opens in a new tab)</span>
+                            </a>{' '}
+                            project
+                        </>
+                    )}
+                </p>
+            )
+        }
+
+        <p class="text-zinc-400 text-sm leading-relaxed">{data.summary}</p>
+        {
+            data.statusNote && data.status !== 'released' && (
+                <p class="text-xs text-zinc-400 italic">{data.statusNote}</p>
+            )
+        }
+
+        <ul class="flex flex-wrap gap-1.5" aria-label="Technologies">
+            {data.tags.map((tag) => <li class="tag">{tag}</li>)}
+        </ul>
+
+        <div class="mt-auto pt-2 flex flex-wrap items-center justify-between gap-3">
+            <ProjectLinks title={data.title} links={data.links} />
+            {
+                href && (
+                    <a
+                        href={href}
+                        class="inline-flex items-center gap-1 text-sm font-medium text-teal-400 hover:text-teal-300 transition-colors"
+                    >
+                        Case study
+                        <span class="sr-only">: {data.title}</span>
+                        <Icon name="chevron-right" size={14} />
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</article>

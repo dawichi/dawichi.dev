@@ -1,0 +1,30 @@
+---
+import Icon from '../Icon.astro'
+import type { Project } from '../../lib/projects'
+
+interface Props {
+    title: string
+    links: Project['data']['links']
+}
+
+const { title, links } = Astro.props
+---
+
+<ul class="flex flex-wrap items-center gap-x-4 gap-y-2" aria-label={`${title} links`}>
+    {
+        links.map((link) => (
+            <li>
+                <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-1.5 text-sm text-zinc-400 hover:text-teal-300 transition-colors"
+                >
+                    <Icon name={link.kind === 'repo' ? 'github' : 'arrow-up-right'} size={15} />
+                    {link.label}
+                    <span class="sr-only">(opens in a new tab)</span>
+                </a>
+            </li>
+        ))
+    }
+</ul>

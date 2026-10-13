@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import ProjectCard from '../../components/projects/ProjectCard.astro'
+import Icon from '../../components/Icon.astro'
+import { getProjectsByTier, tierDescriptions, tierLabels } from '../../lib/projects'
+
+const groups = await getProjectsByTier()
+const variants = { flagship: 'feature', side: 'standard', experiment: 'compact' } as const
+---
+
+<Layout
+    title="Projects"
+    description="Projects by David M. Fajardo: Board Vault (Angular, NestJS, Turso), Quarry (Tauri, Rust, Angular), Hexastats, tiny-stacks, and smaller games and tools."
+>
+    <div class="max-w-5xl mx-auto px-6 py-32">
+        <a
+            href="/"
+            class="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors text-sm mb-12"
+        >
+            <Icon name="chevron-left" size={14} />
+            Back
+        </a>
+
+        <p class="section-label mb-4">Projects</p>
+        <h1 class="heading-1 mb-4">All projects</h1>
+        <p class="text-zinc-400 leading-relaxed mb-16 max-w-2xl">
+            Things I've built outside work, from long-running products to small games and tools.
+        </p>
+
+        <div class="flex flex-col gap-16">
+            {
+                groups
+                    .filter((group) => group.projects.length > 0)
+                    .map((group) => (
+                        <section aria-labelledby={`tier-${group.tier}`}>
+                            <h2 id={`tier-${group.tier}`} class="heading-2 mb-2">
+                                {tierLabels[group.tier]}
+                            </h2>
+                            <p class="text-zinc-400 text-sm leading-relaxed mb-6">
+                                {tierDescriptions[group.tier]}
+                            </p>
+                            <div
+                                class:list={[
+                                    'grid grid-cols-1 gap-5',
+                                    group.tier === 'side' && 'md:grid-cols-2',
+                                    group.tier === 'experiment' && 'md:grid-cols-2 lg:grid-cols-3',
+                                ]}
+                            >
+                                {group.projects.map((project) => (
+                                    <ProjectCard
+                                        project={project}
+                                        headingLevel="h3"
+                                        variant={variants[group.tier]}
+                                    />
+                                ))}
+                            </div>
+                        </section>
+                    ))
+            }
+        </div>
+    </div>
+</Layout>

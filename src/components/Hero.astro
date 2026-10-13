@@ -1,10 +1,21 @@
 ---
 import Icon from './Icon.astro'
+import Button from './ui/Button.astro'
+import { links, site } from '../config/site'
+import { yearsOfExperience } from '../config/experience'
+
+const years = yearsOfExperience()
+
+const socials = [
+    { label: 'GitHub', href: links.github, icon: 'github' },
+    { label: 'LinkedIn', href: links.linkedin, icon: 'linkedin' },
+    { label: 'Instagram', href: links.instagram, icon: 'instagram' },
+    { label: 'X', href: links.x, icon: 'x' },
+] as const
 ---
 
 <section id="hero" class="relative min-h-screen flex items-center">
-    <!-- Teal glow -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
         <div
             class="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-teal-600/10 blur-3xl"
         >
@@ -13,116 +24,69 @@ import Icon from './Icon.astro'
 
     <div class="relative z-10 max-w-5xl mx-auto px-6 w-full pt-32 pb-20">
         <div class="max-w-2xl">
-            <!-- Name -->
             <h1
                 class="text-6xl sm:text-7xl font-bold text-zinc-50 mb-2 tracking-tight leading-tight"
             >
-                David M. Fajardo
+                {site.name}
             </h1>
-            <p class="font-mono text-zinc-400 text-sm mb-4 tracking-wide">// dawichi</p>
+            <p class="font-mono text-zinc-400 text-sm mb-4 tracking-wide">// {site.handle}</p>
 
-            <!-- Role -->
-            <p class="text-2xl sm:text-3xl font-semibold text-teal-400 mb-4">Software Engineer</p>
+            <p class="text-2xl sm:text-3xl font-semibold text-teal-400 mb-4">{site.role}</p>
 
-            <!-- Location -->
-            <div class="flex items-center gap-1.5 text-zinc-400 text-sm mb-6">
+            <p class="flex items-center gap-1.5 text-zinc-400 text-sm mb-6">
                 <Icon name="location" size={14} />
-                Galicia, Spain
-            </div>
-
-            <!-- Description -->
-            <p class="text-zinc-400 text-lg leading-relaxed mb-10 max-w-lg">
-                Software engineer with <span id="hero-years">5</span>+ years building and optimizing systems that serve thousands
-                of users globally. I collaborate asynchronously with distributed teams, analyzing
-                requirements, shipping reliable solutions, and crafting software that's genuinely
-                satisfying to use.
+                {site.location}
             </p>
 
-            <!-- CTAs -->
+            <p class="text-zinc-300 text-lg leading-relaxed mb-4 max-w-xl">
+                Software engineer with <span data-live-years="experience">{years}</span>+ years
+                building and optimizing systems that serve thousands of users globally. I
+                collaborate asynchronously with distributed teams, analyzing requirements, shipping
+                reliable solutions, and crafting software that's genuinely satisfying to use.
+            </p>
+            <p class="text-zinc-400 text-sm mb-10 max-w-xl">
+                <span class="text-teal-400 font-medium">Now:</span> taking Board Vault from private beta
+                to open registration.
+            </p>
+
             <div class="flex flex-wrap items-center gap-4 mb-12">
-                <a
-                    href="/#projects"
-                    class="inline-flex items-center gap-2 px-6 py-3 bg-teal-700 hover:bg-teal-600 text-white rounded-xl font-medium transition-all duration-200 hover:shadow-lg hover:shadow-teal-500/20"
-                >
+                <Button href="/#projects">
                     View my work
                     <Icon name="chevron-right" size={16} />
-                </a>
-                <a
-                    href="/#contact"
-                    class="inline-flex items-center gap-2 px-6 py-3 border border-zinc-800 hover:border-zinc-600 text-zinc-300 hover:text-zinc-100 rounded-xl font-medium transition-all duration-200"
-                >
-                    Get in touch
-                </a>
-                <a
-                    href="https://blog.dawichi.dev"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-6 py-3 border border-zinc-800 hover:border-zinc-600 text-zinc-300 hover:text-zinc-100 rounded-xl font-medium transition-all duration-200"
-                >
-                    <Icon name="external-link" size={15} />
-                    Blog
-                </a>
+                </Button>
+                <Button href="/#contact" variant="secondary">Get in touch</Button>
             </div>
 
-            <!-- Social links -->
-            <div class="flex items-center gap-5 flex-wrap">
-                <a
-                    href="https://github.com/dawichi"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub profile"
-                    class="flex items-center gap-2 text-zinc-400 hover:text-zinc-300 transition-colors duration-200 text-sm"
-                >
-                    <Icon name="github" size={18} />
-                    GitHub
-                </a>
-                <span class="text-zinc-800">·</span>
-                <a
-                    href="https://www.linkedin.com/in/dawichi/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn profile"
-                    class="flex items-center gap-2 text-zinc-400 hover:text-zinc-300 transition-colors duration-200 text-sm"
-                >
-                    <Icon name="linkedin" size={18} />
-                    LinkedIn
-                </a>
-                <span class="text-zinc-800">·</span>
-                <a
-                    href="https://www.instagram.com/dawichi_/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram profile"
-                    class="flex items-center gap-2 text-zinc-400 hover:text-zinc-300 transition-colors duration-200 text-sm"
-                >
-                    <Icon name="instagram" size={17} />
-                    Instagram
-                </a>
-                <span class="text-zinc-800">·</span>
-                <a
-                    href="https://x.com/dawichi_"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="X profile"
-                    class="flex items-center gap-2 text-zinc-400 hover:text-zinc-300 transition-colors duration-200 text-sm"
-                >
-                    <Icon name="x" size={17} />
-                    X
-                </a>
-            </div>
+            <ul class="flex items-center gap-5 flex-wrap">
+                {
+                    socials.map((social, i) => (
+                        <li class="flex items-center gap-5">
+                            {i > 0 && (
+                                <span class="text-zinc-800" aria-hidden="true">
+                                    ·
+                                </span>
+                            )}
+                            <a
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors duration-200 text-sm"
+                            >
+                                <Icon name={social.icon} size={18} />
+                                {social.label}
+                                <span class="sr-only">(opens in a new tab)</span>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
         </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-700 animate-bounce">
+    <div
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 text-zinc-600 motion-safe:animate-bounce"
+        aria-hidden="true"
+    >
         <Icon name="chevron-down" size={20} />
     </div>
 </section>
-
-<script>
-    import { yearsOfExperience } from '../config/experience'
-    const el = document.getElementById('hero-years')
-    if (el) {
-        el.textContent = String(yearsOfExperience())
-    }
-</script>

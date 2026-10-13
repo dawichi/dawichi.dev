@@ -1,28 +1,43 @@
 ---
-import { projects } from '../config/projects'
-import ProjectCard from './ProjectCard.astro'
+import Section from './ui/Section.astro'
+import ProjectCard from './projects/ProjectCard.astro'
 import Icon from './Icon.astro'
+import { getProjects } from '../lib/projects'
 
-const featured = projects.slice(0, 4)
+const projects = await getProjects()
+const flagships = projects.filter((p) => p.data.tier === 'flagship')
+const sideProjects = projects.filter((p) => p.data.tier === 'side')
 ---
 
-<section id="projects" class="py-24 border-t border-zinc-900 scroll-mt-14">
-    <div class="max-w-5xl mx-auto px-6">
-        <p class="text-teal-400 text-sm font-medium uppercase tracking-widest mb-4">Projects</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-zinc-100 mb-12">What I've built</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {featured.map((project) => <ProjectCard project={project} />)}
-        </div>
-
-        <div class="mt-8 text-center">
-            <a
-                href="/projects"
-                class="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-300 transition-colors text-sm"
-            >
-                See all projects
-                <Icon name="chevron-right" size={14} />
-            </a>
-        </div>
+<Section id="projects" label="Projects" title="What I'm building">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {flagships.map((project) => <ProjectCard project={project} />)}
     </div>
-</section>
+
+    <div class="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm">
+        <div class="flex flex-wrap items-baseline gap-x-1.5 text-zinc-400">
+            <span id="side-projects-title">Side projects:</span>
+            <ul aria-labelledby="side-projects-title" class="flex flex-wrap gap-x-1.5">
+                {
+                    sideProjects.map((project) => (
+                        <li class="flex not-last:after:content-[',']">
+                            <a
+                                href={`/projects#${project.id}`}
+                                class="text-zinc-300 hover:text-teal-300 underline decoration-zinc-700 underline-offset-2 transition-colors"
+                            >
+                                {project.data.title}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+        <a
+            href="/projects"
+            class="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 transition-colors shrink-0"
+        >
+            See all projects
+            <Icon name="chevron-right" size={14} />
+        </a>
+    </div>
+</Section>

@@ -1,0 +1,50 @@
+---
+import Section from './ui/Section.astro'
+import { languages } from '../config/languages'
+---
+
+<Section
+    id="beyond"
+    label="Beyond code"
+    title="Languages and places"
+    intro="Learning a language is like unlocking a new way of thinking and connecting with people. Travel is the other half of that, and remote work makes it easier every year."
+>
+    <div class="grid lg:grid-cols-3 gap-8">
+        <div>
+            <h3 class="heading-2 mb-4">Languages I speak</h3>
+            <dl class="card divide-y divide-zinc-800">
+                {
+                    languages.map((lang) => (
+                        <div class="px-5 py-4">
+                            <div class="flex items-baseline justify-between gap-4 mb-2.5">
+                                <dt class="text-zinc-200 font-medium">{lang.name}</dt>
+                                <dd class="meta text-right">{lang.level}</dd>
+                            </div>
+                            <div class="h-1.5 rounded-full bg-zinc-800" aria-hidden="true">
+                                <div
+                                    class="h-1.5 rounded-full bg-teal-500"
+                                    style={`width: ${lang.progress}%`}
+                                />
+                            </div>
+                        </div>
+                    ))
+                }
+            </dl>
+        </div>
+
+        <div class="lg:col-span-2">
+            <h3 class="heading-2 mb-4">Exploring Europe, so far</h3>
+            <div class="card overflow-hidden p-4">
+                <img
+                    src="/map.svg"
+                    alt="Map of Europe with the countries I have visited highlighted in teal: Spain, Portugal, France, Italy, Slovenia, Austria, Hungary, Czech Republic, Germany, the Netherlands, Denmark, Sweden, and Albania"
+                    width="800"
+                    height="490"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-auto"
+                />
+            </div>
+        </div>
+    </div>
+</Section>

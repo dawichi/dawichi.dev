@@ -1,20 +1,40 @@
 @import 'tailwindcss';
 
-/*
-  Typography scale
-  ─────────────────────────────────────────────────────────────────
-  section-label   text-teal-400 text-sm font-medium uppercase tracking-widest
-  heading-1       text-3xl sm:text-4xl font-bold text-zinc-100
-  heading-2       text-lg font-semibold text-zinc-300
-  heading-3       font-semibold text-zinc-100
-  body            text-sm text-zinc-400 leading-relaxed
-  meta            text-xs text-zinc-400 font-mono    ← dates, durations, labels
-  ─────────────────────────────────────────────────────────────────
-*/
+/* Typography scale and shared surfaces. Prefer these over repeating utility lists. */
+
+@utility section-label {
+    @apply text-teal-400 text-sm font-medium uppercase tracking-widest;
+}
+
+@utility heading-1 {
+    @apply text-3xl sm:text-4xl font-bold text-zinc-100;
+}
+
+@utility heading-2 {
+    @apply text-lg font-semibold text-zinc-300;
+}
+
+@utility meta {
+    @apply text-xs text-zinc-400 font-mono;
+}
+
+@utility card {
+    @apply bg-zinc-900/40 border border-zinc-800 rounded-2xl;
+}
+
+@utility tag {
+    @apply text-xs px-2 py-0.5 bg-zinc-800 text-zinc-400 rounded-md;
+}
 
 @theme {
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
     --font-mono: 'Roboto Mono', monospace;
+}
+
+:focus-visible {
+    outline: 2px solid theme(colors.teal.400);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
 ::selection {
@@ -42,4 +62,34 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: theme(colors.teal.600);
+}
+
+/* Long-form Markdown, used by the project case studies */
+.prose-content {
+    @apply text-zinc-400 leading-relaxed;
+
+    & h2 {
+        @apply text-2xl font-bold text-zinc-100 mt-12 mb-4;
+    }
+
+    & p,
+    & ul {
+        @apply mb-5;
+    }
+
+    & ul {
+        @apply list-disc pl-5 space-y-2 marker:text-zinc-600;
+    }
+
+    & strong {
+        @apply text-zinc-200 font-semibold;
+    }
+
+    & a {
+        @apply text-teal-400 underline decoration-teal-800 underline-offset-2 hover:text-teal-300;
+    }
+
+    & code {
+        @apply font-mono text-sm text-zinc-200 bg-zinc-800/70 px-1 py-0.5 rounded;
+    }
 }
